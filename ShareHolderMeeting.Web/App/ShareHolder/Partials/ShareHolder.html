@@ -1,0 +1,84 @@
+﻿<h3>ShareHolder</h3>
+
+
+<label>Search <span class="glyphicon glyphicon-search"></span></label>
+<input type="text" ng-model="search.ShareHolderCode" class="form-control" placeholder="ShareHolder Code" />
+
+
+<div class="row">
+    <span class="col-md-2"></span>
+    <div ng-init="loading = true;">
+        <img ng-src="../Images/bhvImages/ajax-loader.gif" alt="Image not found" ng-show="loading" />
+    </div>
+
+</div>
+<div class="table-responsive">
+    <table class="table table-bordered table-hover">
+        <thead>
+            <tr>
+                <th class="col-md-2 text-center">
+                    Action
+                </th>
+                <th class="col-md-2 text-center">
+                    <a href="" ng-click="sortField='ShareHolderCode'; reverse = !reverse">ShareHolderCode</a>
+                </th>
+                <th class="col-md-2 text-center">
+                    <a href="" ng-click="sortField='NumberOfShares'; reverse = !reverse">NumberOfShares</a>
+                </th>
+                <th class="col-md-2 text-center">
+                    <a href="" ng-click="sortField='Name'; reverse = !reverse">Name</a>
+                </th>
+                <th class="col-md-2 text-center">Id</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td data-ng-if="addingMode">
+                    <button class="btn btn-default" ng-click="postShareHolder()"><span class="glyphicon glyphicon-plus-sign"> </span></button>
+                </td>
+                <td data-ng-if="!addingMode">
+                    <button class="btn btn-default" ng-click="putShareHolder()"><span class="glyphicon glyphicon-ok"></span></button>
+                    <button class="btn btn-default" ng-click="setAddingMode()"><span class="glyphicon glyphicon-remove"></span></button>
+                </td>
+                <td>
+                    <input type="text" id="newCode" ng-model="newShareHolder.ShareHolderCode" class="form-control" />
+                </td>
+                <td>
+                    <input type="text" id="newShares" ng-model="newShareHolder.NumberOfShares" class="form-control" />
+                </td>
+                <td>
+                    <input type="text" id="newName" ng-model="newShareHolder.Name" class="form-control" />
+                </td>
+                <td>
+                    {{newShareHolder.ShareHolderId}}
+                </td>
+            </tr>
+            <!--<tr ng-repeat="sh in shareHolders | filter : search: strict | orderBy: sortField : reverse">-->
+            <tr ng-repeat="sh in shareHolders | filter : search | orderBy: sortField : reverse">
+                <td>
+                    <a href="" ng-click="deleteShareHolder(sh)" class="btn btn-default"><span class="glyphicon glyphicon-trash"></span></a>
+                    <a href="" ng-click="setEditingMode(sh)" class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span></a>
+                </td>
+                <td>{{sh.ShareHolderCode}}</td>
+                <td>{{sh.NumberOfShares | number}}</td>
+                <td>{{sh.Name}}</td>
+                <td>{{sh.ShareHolderId}}</td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+
+                <th>
+                    Total number
+                </th>
+                <th>
+                    ({{shareHolders.length}})
+                </th>
+                <th>
+                    ({{(shareHolders | sharesTotal | number)}})
+                </th>
+
+            </tr>
+        </tfoot>
+    </table>
+</div>

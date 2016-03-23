@@ -1,0 +1,97 @@
+﻿<h3>Register ShareHolders</h3>
+<div ng-init="loading=true;">
+    <img ng-src="../Images/bhvImages/ajax-loader.gif" ng-show="loading" />
+</div>
+<div class="row">
+    <div class="col-md-6">
+        <label>Search</label>
+        <input type="text" ng-model="search.ShareHolderCode" class="form-control" placeholder="ShareHolder Code" />
+    </div>
+    <div class="col-md-6">
+        <h4 class="text-danger text-right">You should register BOD/BOS candidates before doing this functionality. Otherwise, contact your admin for help!</h4>
+    </div>
+</div>
+<div class="table-responsive">
+    <table class="table table-bordered table-hover>
+    <thead>
+        <tr>
+            <th class=" col-md-3">
+        Action</th>
+        <th class="col-md-2">
+            <a href="" ng-click="sortField='ShareHolderCode'; reverse = !reverse">ShareHolderCode</a>
+        </th>
+        <th class="col-md-2">
+            <a href="" ng-click="sortField='NumberOfShares'; reverse = !reverse">NumberOfShares</a>
+        </th>
+        <th class="col-md-2">
+            <a href="" ng-click="sortField='StatusAtMeeting'; reverse = !reverse">Status</a>
+        </th>
+        <th class="col-md-2" ng-show="showName">
+            <a href="" ng-click="sortField='Name'; reverse = !reverse">Name</a>
+        </th>
+        <th class="col-md-1">
+            Id
+        </th>
+        </tr>
+        </thead>
+        <tbody>
+            <tr ng-show="registeringMode">
+                <td>
+                    <button class="btn btn-default" ng-click="updateStatus()">Update</button>
+                    <button class="btn btn-default" ng-click="cancelUpdate()">Cancel</button>
+                </td>
+                <td>
+                    <input type="text" id="newCode" ng-model="toBeRegisted.ShareHolderCode" class="form-control" disabled />
+                </td>
+                <td>
+                    <input type="text" id="Text1" ng-model="toBeRegisted.NumberOfShares" class="form-control" disabled />
+                </td>
+                <td>
+                    <select ng-model="statusSelected" ng-options="status.name for status in statusOptions" class="form-control"></select>
+                </td>
+                <td ng-show="showName">
+                    <input type="text" id="newName" ng-model="toBeRegisted.Name" disabled />
+                </td>
+                <td>
+                    {{toBeRegisted.shareHolderId}}
+                </td>
+            </tr>
+            <!--<tr ng-repeat="sh in shareHolders | filter : search: strict | orderBy: sortField : reverse">-->
+            <tr ng-repeat="sh in shareHolders | filter : search | orderBy: sortField : reverse">
+                <td>
+                    <a href="" ng-click="setRegisteringMode(sh)" class="btn btn-default">Register</a>
+                </td>
+                <td>{{sh.ShareHolderCode}}</td>
+                <td>{{sh.NumberOfShares | number}}</td>
+                <td>
+                    {{statusText(sh.StatusAtMeeting)}}
+                </td>
+                <td ng-show="showName">{{sh.Name}}</td>
+                <td>{{sh.ShareHolderId}}</td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <th>Total ShareHolders</th>
+                <th>{{statisticData.totalShareHolders}}</th>
+                <th>{{statisticData.totalNumberOfShares | number}}</th>
+            </tr>
+            <tr>
+                <th>Absent</th>
+                <th>{{statisticData.totalShareHolders - statisticData.currentShareHolders}}</th>
+                <th>{{statisticData.totalNumberOfShares - statisticData.currentNumberOfShares | number}}</th>
+            </tr>
+            <tr>
+                <th>Attended/Delegated</th>
+                <th>{{statisticData.currentShareHolders}}</th>
+                <th>{{statisticData.currentNumberOfShares | number}}</th>
+            </tr>
+            <tr>
+                <th>Attended/Delegated Rate</th>
+                <th>{{statisticData.shareHolderRate}}%</th>
+                <th>{{statisticData.numberOfSharesRate | number}}%</th>
+            </tr>
+        </tfoot>
+
+    </table>
+</div>

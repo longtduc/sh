@@ -1,0 +1,50 @@
+﻿<h3>{{title}}</h3>
+<div class="table-responsive">
+    <table class="table table-hover table-bordered">
+        <thead>
+            <tr>
+                <th class="col-md-1">Action</th>
+                <th class="col-md-1">Name</th>
+                <th class="col-md-1">Id</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    <button class="btn btn-default" ng-click="postCandidate()">Add</button>
+                </td>
+                <td>
+                    <input type="text" ng-model="newCandidate.Name" class="form-control" />
+                </td>
+                <td>
+                    {{newCandidate.Id}}
+                </td>
+
+            </tr>
+            <tr ng-repeat="c in candidates">
+                <td>
+                    <span ng-hide="selectedRow == c.Id">
+                        <a href="" ng-click="deleteCandidate(c)" class="btn btn-default">Delete</a>
+                        <a href="" ng-click="setEditingMode(c)" class="btn btn-default">Edit</a>
+                    </span>
+                    <span ng-show="selectedRow == c.Id">
+                        <a href="" ng-click="putCandidate()" class="btn btn-default">Save</a>
+                        <a href="" ng-click="cancelEditing()" class="btn btn-default">Cancel</a>
+                    </span>
+                </td>
+
+                <td>
+                    <span ng-hide="selectedRow == c.Id">{{c.Name}}</span>
+                    <input ng-show="selectedRow == c.Id" type="text" ng-model="editCandidate.Name" value="{{editCandidate.Name}}" class="form-control" />
+                </td>
+                <td>{{c.Id}}</td>
+
+
+
+            </tr>
+
+
+
+        </tbody>
+    </table>
+</div>

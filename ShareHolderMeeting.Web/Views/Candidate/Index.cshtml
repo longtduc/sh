@@ -1,0 +1,11 @@
+﻿
+<div ng-app="CandidateApp" ng-init="type=@ViewBag.Type">
+    <div ng-view=""></div>   
+</div>
+
+@section scripts{
+    <script src="~/Scripts/angular.js"></script>
+    <script src="~/Scripts/angular-route.js"></script>
+    <script src="~/App/Candidate/CandidateApp.js"></script>
+    <script src="~/App/Candidate/CandidateCtrls.js"></script>
+}

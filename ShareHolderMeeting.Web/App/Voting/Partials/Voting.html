@@ -1,0 +1,67 @@
+﻿<h3>Vote {{title()}}</h3>
+
+<b>Search</b>
+<input type="text" ng-model="search" class="form-control" placeholder="ShareHolder Code" />
+
+<div class="table-responsive">
+    <table class="table table-striped table-hover">
+        <thead>
+            <tr>
+                <th class="col-md-2">Action</th>
+                <th class="col-md-1">
+                    <a href="" ng-click="sortField='ShareHolderCode'; reverse = !reverse">ShareHolderCode</a>
+                </th>
+                <th class="col-md-1">
+                    <a href="" ng-click="sortField='NumberOfShares'; reverse = !reverse">Available To Vote</a>
+                </th>
+                <th class="col-md-1">
+                    <a href="" ng-click="sortField='AmtAlreadyVoted' ; reverse = !reverse">AlreadyVoted</a>
+                </th>
+                <th class="col-md-1">
+                    <a href="" ng-click="sortField='IsVoted' ; reverse = !reverse">Voted</a>
+                </th>
+
+                <th class="col-md-1">
+                    <a href="" ng-click="sortField='IsValid' ; reverse = !reverse">Invalid (Voting) </a>
+                </th>
+                <th ng-show="showName" class="col-md-2">
+                    <a href="" ng-click="sortField='Name'; reverse = !reverse">ShareHolder'sName</a>
+                </th>
+                <th class="col-md-1">
+                    VotingCardId
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="card in votingCards | filter : search: strict | orderBy: sortField : reverse">
+                <td>
+                    <a href="" ng-click="open(card)" class="btn btn-default">Vote</a>
+                    <a href="" ng-click="revert(card.Id)" class="btn btn-default" ng-show="card.IsVoted">Revert</a>
+                </td>
+                <td>{{card.ShareHolderCode}}</td>
+                <td>{{card.NumberOfShares * card.NumberOfCandidates | number}}</td>
+                <td>{{card.AmtAlreadyVoted | number}}</td>
+                <td>
+                    <input type="checkbox" ng-model="card.IsVoted" disabled />
+                </td>
+                <td>
+                    <input type="checkbox" ng-model="card.IsInvalid" disabled />
+                </td>
+                <td ng-show="showName">{{card.ShareHolderName}}</td>
+                <td>{{card.Id}}</td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <th>Total Attended/Delegated ShareHolders</th>
+                <th>{{votingCards.length | number }} </th>
+            </tr>
+            <tr>
+                <th>ShareHolders Voted</th>
+                <th>{{votingCards | cardsVoted | number }} </th>
+            </tr>
+        </tfoot>
+
+    </table>
+
+</div>

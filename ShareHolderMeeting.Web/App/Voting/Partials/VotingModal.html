@@ -1,0 +1,61 @@
+﻿<div class="modal-header">
+    <h3 class="modal-title">Voting</h3>
+</div>
+<div class="modal-body">
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th class="col-md-2 col-xm-4">
+                    Description
+                </th>
+                <th class="col-md-2 col-xm-6">
+                    Value
+                </th>
+                <th class="col-md-2 col-xm-2 "></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    ShareHolder Code
+                </td>
+                <td>
+                    {{ShareHolderCode}}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Available To Vote
+                </td>
+                <td>
+                    {{card.NumberOfShares * card.NumberOfCandidates | number}}
+                </td>
+                <td>
+                    <button class="btn btn-default input-sm" type="button" ng-click="voteAll()">Vote All Equally</button>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Is Invalid
+                </td>
+                <td><input type="checkbox" ng-model="card.IsInvalid" /></td>
+                <td></td>
+            </tr>
+            <tr ng-repeat="c in card.VotingCardLines">
+                <td>
+                    {{c.CandidateName}}
+                </td>
+                <td>
+                    <input type="text" ng-model="c.VotingAmt" class="form-control input-sm" />
+                </td>
+                <td>
+                    <button class="btn btn-default input-sm" type="button" ng-click="voteTheRest(c.Id)">Vote The Rest</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-primary" type="button" ng-click="ok()">OK</button>
+    <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+</div>

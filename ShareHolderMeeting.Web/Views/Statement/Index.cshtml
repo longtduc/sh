@@ -1,0 +1,67 @@
+﻿<div ng-app="statementApp" ng-controller="statementCtrl" ng-cloak="">
+    <h3>Statements</h3>
+    <div class="table-responsive">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th class="col-md-2">
+                        Action
+                    </th>
+                    <th class="col-md-2">
+                        Description
+                    </th>
+                    <th class="col-md-1">
+                        Id
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+
+                    <td>
+                        <button class="btn btn-default" ng-click="post()">Add</button>
+                    </td>
+                    <td>
+                        <input type="text" ng-model="newStatement.Description" class="form-control" />
+                    </td>
+                    <td></td>
+                </tr>
+                <tr ng-repeat="s in statements">
+                    <td>
+                        <span ng-hide="selectedRow == s.Id">
+                            <a href="" ng-click="delete(s)" class="btn btn-default">Delete</a>
+                            <a href="" ng-click="setEditingMode(s)" class="btn btn-default">Edit</a>
+                        </span>
+                        <span ng-show="selectedRow == s.Id">
+                            <a href="" ng-click="put()" class="btn btn-default">Save</a>
+                            <a href="" ng-click="cancelEditing()" class="btn btn-default">Cancel</a>
+                        </span>
+                    </td>
+                    <td>
+                        <span ng-hide="selectedRow == s.Id">
+                            {{s.Description}}
+                        </span>
+                        <input type="text" ng-show="selectedRow == s.Id" ng-model="editedStatement.Description" class="form-control" />
+                    </td>
+                    <td>
+                        {{s.Id}}
+                    </td>
+                </tr>
+            </tbody>
+
+        </table>
+    </div>
+
+</div>
+
+@section scripts{
+    <script src="~/Scripts/angular.js"></script>
+    <script src="~/App/Statement/statementApp.js"></script>
+
+
+}
+
+
+
+
+

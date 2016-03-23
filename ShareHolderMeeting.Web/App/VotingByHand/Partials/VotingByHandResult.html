@@ -1,0 +1,63 @@
+﻿<h3>VotingByHand Result</h3>
+<div class="table-responsive">
+    <table class="table table-hover table-striped">
+        <thead>
+
+            <tr>
+                <th class="col-md-1">
+                    OrderNo
+                </th>
+                <th class="col-md-3">
+                    Description
+                </th>
+                <th class="col-md-1">
+                    Agreed
+                </th>
+                <th class="col-md-1">
+                    Rate(%)
+                </th>
+                <th class="col-md-1">
+                    Disagreed
+                </th>
+                <th class="col-md-1">
+                    Rate(%)
+                </th>
+                <th class="col-md-1">
+                    Other
+                </th>
+                <th class="col-md-1">
+                    Rate(%)
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="s in model.StatementResults">
+                <td>
+                    {{s.Id}}
+                </td>
+                <td>
+                    {{s.Description}}
+                </td>
+                <td>
+                    {{s.AmtOfSharesYes | number}}
+                </td>
+                <td>
+                    {{s.YesRate}}
+                </td>
+                <td>
+                    {{s.AmtOfSharesNo | number}}
+                </td>
+                <td>
+                    {{s.NoRate}}
+                </td>
+                <td>
+                    {{s.AmtOfSharesOther | number}}
+                </td>
+                <td>
+                    {{s.OtherRate}}
+                </td>
+            </tr>
+        </tbody>
+
+    </table>
+</div>

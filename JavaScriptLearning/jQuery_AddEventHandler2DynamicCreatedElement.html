@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script src="../Scripts/jquery-1.9.1.js"></script>
+    <script type="text/javascript">
+        var i = 2;
+        $(function () {
+            $('input[type="button"]').on('click', function () {
+                i += 1;
+                var newItem = $('<li> ' + 'Item ' + i.toString() + '</li>');
+                $('ul').append(newItem);
+            });
+
+            $('ul').on('click', 'li', function () {
+                $(this).fadeOut(500);
+            });
+
+           
+        });
+    </script>
+</head>
+<body>
+    <input type="button" value="Add Item" />
+    <div>
+        <ul>
+            <li>Item 1</li>
+            <li>Item 2</li>
+        </ul>
+    </div>
+</body>
+</html>

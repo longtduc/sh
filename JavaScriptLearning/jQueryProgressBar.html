@@ -1,0 +1,27 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script src="../Scripts/jquery-1.9.1.js"></script>
+    <script type="text/javascript">
+
+        $(function () {
+            $('input[type="button"]').click(function () {
+                $("#innerDiv").animate({ 'width': '200px', 'background-color': 'red' }, 3000);
+            });
+
+        });
+
+
+
+    </script>
+</head>
+<body>
+
+
+    <div id="outerDiv" style="width:200px; background:#808080">
+        <div id="innerDiv" style="width:0px; background-color:red"></div>
+    </div>
+    <input type="button" value="Start Animate" />
+</body>
+</html>

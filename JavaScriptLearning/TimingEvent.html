@@ -1,0 +1,28 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+
+</head>
+<body>
+
+
+    <div id="divResult"></div>
+
+    <input type="button" value="Clear" onclick="stopGetCurrentDate();" />
+    <script type="text/javascript">
+        var intervalId;
+        function getCurrentDateTime() {
+            document.getElementById("divResult").innerHTML = new Date();
+        }
+        var intervalId = setInterval(getCurrentDateTime, 1000);
+        //setTimeout(getCurrentDateTime, 2000);
+        function stopGetCurrentDate() {
+            clearInterval(intervalId);
+        };
+
+    </script>
+
+
+</body>
+</html>

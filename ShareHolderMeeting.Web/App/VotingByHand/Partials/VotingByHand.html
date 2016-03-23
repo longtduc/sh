@@ -1,0 +1,56 @@
+﻿<h3>Voting By Hand</h3>
+
+<div>
+    <label>Search</label>
+    <input type="text" ng-model="search.ShareHolderCode" class="form-control" placeholder="ShareHolder Code" />
+</div>
+<div class="table-responsive">
+    <table class="table table-hover table-striped">
+        <thead>
+            <tr>
+                <th class="col-md-2">
+                    Action
+                </th>
+                <th class="col-md-1">
+                    <a href="" ng-click="sortField = 'ShareHolderCode'; reverse = !reverse">ShareHolderCode</a>
+                </th>
+                <th class="col-md-1">
+                    Shares
+                </th>
+                <th class="col-md-2" ng-show="false">
+                    Name
+                </th>
+                <th class="col-md-4">
+                    Description
+                </th>
+                <th class="col-md-1">
+                    Id
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="voting in votingByHands | filter : search | orderBy : sortField : reverse">
+                <td>
+                    <a href="" ng-click="open(voting)" class="btn btn-default">Update</a>
+                </td>
+                <td>{{voting.ShareHolderCode}}</td>
+                <td>{{voting.NumberOfShares | number}}</td>
+                <td ng-show="false">{{voting.ShareHolderName}}</td>
+                <td>
+                    <div class="row" ng-repeat="line in voting.VotingByHandLines">
+                        <div class="col-md-6">
+                            {{line.StatementDesc}}                            
+                        </div>
+                        <div class="col-md-1">
+                            -
+                        </div>
+                        <div class="col-md-3">
+                            {{votingOptionText(line.VotingOption)}}
+                        </div>
+                    </div>            
+                </td>
+                <td>{{voting.Id}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,19 @@
+﻿
+<div ng-app="votingCardApp" ng-cloak="" ng-controller="votingCardCtrl">
+
+    <h3>Generate All Voting Cards</h3>
+    <div class="row">
+        <div class="col-md-2">
+            <a href="" ng-click="generateVotingCards()" class="btn btn-danger">Generate Voting Cards</a>
+        </div>       
+        <div class="col-md-4">
+            <h4 class="text-danger">{{statusLine}}</h4>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    <script src="~/Scripts/angular.js"></script>
+    <script src="~/App/VotingCard/votingCardApp.js"></script>
+}
+

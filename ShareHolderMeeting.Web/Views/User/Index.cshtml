@@ -1,0 +1,17 @@
+﻿
+<div ng-app="userApp" ng-cloak="" ng-controller="userAppCtrl">
+    <div ng-show="loading">
+        <img src="~/Images/bhvImages/ajax-loader.gif" class="ajax-loader" />
+    </div>
+    <div ng-view=""></div>
+</div>
+
+@section scripts {
+
+    <script src="~/Scripts/angular.js"></script>
+    <script src="~/Scripts/angular-route.js"></script>
+
+    <script src="~/App/Users/userApp.js"></script>
+    <script src="~/App/Users/userFactory.js"></script>
+    <script src="~/App/Users/userCtrls.js"></script>
+}

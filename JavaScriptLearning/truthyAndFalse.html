@@ -1,0 +1,29 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script type="text/javascript">
+        function toBoolean(value, message) {
+            if (value) {
+                document.getElementById('result').textContent = message + ':' + 'true';
+            }
+            else {
+                document.getElementById('result').textContent = message + ':'+'false';
+            };
+
+        }
+
+    </script>
+</head>
+<body>
+    Truthy and falsy in JS: Empty string, 0, null and undefined are treated as falsy
+    <br />    
+    Result: <span id="result" tex></span>
+    <br />
+    <input type="button" value="empty string " onclick="toBoolean('', 'empty string');" />
+    <input type="button" value="zero" onclick="toBoolean(0, 'zero');" />
+    <input type="button" value="null" onclick="toBoolean(null, 'null');" />
+    <input type="button" value="undefined" onclick="toBoolean(null, 'undefine');" />
+
+</body>
+</html>

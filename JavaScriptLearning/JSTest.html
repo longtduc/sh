@@ -1,0 +1,37 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>    
+    <script>
+        window.onload = function () {
+            var e = document.getElementById("Output");
+            var closure = myClosure();
+           
+            e.innerHTML = closure();
+            window.setTimeout(function () {
+                e.innerHTML += "<br/>" + closure();
+            }, 500);       
+            
+
+        };
+
+        function myNoneClosure() {
+            var date = new Date();         
+            return date.getMilliseconds();
+        }
+
+        function myClosure() {
+            var date = new Date();
+            var globalVar = 100;
+            return function () {
+                return date.getMilliseconds();
+            };
+
+        }
+    </script>
+
+</head>
+<body>
+    <div id="Output"></div>
+</body>
+</html>

@@ -1,0 +1,21 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script>
+        function makeCounter() {
+            var count = 0;
+            function Counter() {
+                return count++;
+            }
+            return Counter;
+        };
+
+        var doCounter = makeCounter();
+
+    </script>
+</head>
+<body>
+    <input type="button" onclick="alert(doCounter()); " value="Increase" />
+</body>
+</html>

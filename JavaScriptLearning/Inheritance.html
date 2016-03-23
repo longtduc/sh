@@ -1,0 +1,30 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script type="text/javascript">
+        function Employee(name) {
+            this.name = name;
+
+        }
+
+        Employee.prototype.getName = function () {
+            return this.name;
+        };
+
+        var emp = new Employee("Long2-3");
+        //emp.getName = function () {
+        //    return this.name;
+        //};
+
+
+        document.write(emp.getName());
+
+
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

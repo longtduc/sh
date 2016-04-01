@@ -33,7 +33,7 @@ namespace ShareHolderMeeting.Web.Services
             //Create/Delete Voting Card when registering shareholders
             if ((StatusAtMeeting)newStatus == StatusAtMeeting.Absent)
             {
-                RemoveVotingCard(shareHolderId);
+                DeleteVotingCard(shareHolderId);
             }
             else
             {
@@ -70,7 +70,7 @@ namespace ShareHolderMeeting.Web.Services
 
         }
 
-        public void RemoveVotingCard(int shareHolderId)
+        public void DeleteVotingCard(int shareHolderId)
         {
             var votingCards = _votingCardRepo.All.
                 Where(m => m.ShareHolderId == shareHolderId);

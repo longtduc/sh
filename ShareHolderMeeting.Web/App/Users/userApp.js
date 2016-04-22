@@ -1,4 +1,5 @@
-﻿/// <reference path="D:\00-OnlineInsurance\ITAsset\ITAsset\Scripts/angular.js" />
+﻿/// <reference path="D:\00-OnlineInsurance\ShareHolderMeeting\ShareHolderMeeting.Web\Scripts/angular.min.js" />
+/// <reference path="D:\00-OnlineInsurance\ShareHolderMeeting\ShareHolderMeeting.Web\Scripts/angular-route.js" />
 
 angular.module('userApp', ['ngRoute', 'userCtrls', 'userFactory'])
     .config(function ($routeProvider, $locationProvider) {

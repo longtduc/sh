@@ -1,4 +1,4 @@
-﻿/// <reference path="D:\00-OnlineInsurance\ShareHolderMeeting\ShareHolderMeeting.Web\Scripts/angular.js" />
+﻿/// <reference path="D:\00-OnlineInsurance\ShareHolderMeeting\ShareHolderMeeting.Web\Scripts/angular.min.js" />
 
 angular.module('shareHolderFactory', [])
     .factory('shareHolderFactory', ['$http', '$q', function ($http, $q) {

@@ -1,4 +1,4 @@
-﻿
+﻿/// <reference path="D:\00-OnlineInsurance\ShareHolderMeeting\ShareHolderMeeting.Web\Scripts/angular.min.js" />
 
 var votingFactories = angular.module('votingFactory', []);
 

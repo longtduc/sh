@@ -1,4 +1,4 @@
-﻿/// <reference path="D:\00-OnlineInsurance\OnlineInsurance\OnlineInsurance.Web.Bhv\Scripts/angular.js" />
+﻿/// <reference path="D:\00-OnlineInsurance\OnlineInsurance\OnlineInsurance.Web.Bhv\Scripts/angular.min.js" />
 
 var userCtrls = angular.module('userCtrls', []);
 

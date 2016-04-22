@@ -1,4 +1,6 @@
-﻿angular.module('userFactory', [])
+﻿/// <reference path="D:\00-OnlineInsurance\ShareHolderMeeting\ShareHolderMeeting.Web\Scripts/angular.min.js" />
+
+angular.module('userFactory', [])
         .factory('userFactory', function ($http) {
             return {
 

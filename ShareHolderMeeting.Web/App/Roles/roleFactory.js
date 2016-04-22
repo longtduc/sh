@@ -1,4 +1,5 @@
-﻿
+﻿/// <reference path="D:\00-OnlineInsurance\ShareHolderMeeting\ShareHolderMeeting.Web\Scripts/angular.min.js" />
+
 angular.module('roleFactory', [])
     .factory('roleFactory', ['$http', '$q', function ($http, $q) {
         return {

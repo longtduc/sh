@@ -1,4 +1,5 @@
-﻿var CandidateCtrls = angular.module('CandidateCtrls', []);
+﻿/// <reference path="D:\00-OnlineInsurance\ShareHolderMeeting\ShareHolderMeeting.Web\Scripts/angular.min.js" />
+var CandidateCtrls = angular.module('CandidateCtrls', []);
 
 CandidateCtrls.controller('CandidateCtrl', ['$scope', '$http', function ($scope, $http) {
 

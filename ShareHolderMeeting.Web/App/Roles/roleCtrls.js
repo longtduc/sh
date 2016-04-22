@@ -1,4 +1,5 @@
-﻿var roleCtrls = angular.module('roleCtrls', []);
+﻿/// <reference path="D:\00-OnlineInsurance\ShareHolderMeeting\ShareHolderMeeting.Web\Scripts/angular.min.js" />
+var roleCtrls = angular.module('roleCtrls', []);
 
 roleCtrls.controller('roleAppCtrl',
     ['$scope', '$http', 'roleFactory',

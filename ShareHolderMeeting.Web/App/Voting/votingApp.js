@@ -1,4 +1,6 @@
-﻿/// <reference path="D:\00-OnlineInsurance\ShareHolderMeeting\ShareHolderMeeting.Web\Scripts/angular.js" />
+﻿/// <reference path="D:\00-OnlineInsurance\ShareHolderMeeting\ShareHolderMeeting.Web\Scripts/angular.min.js" />
+/// <reference path="D:\00-OnlineInsurance\ShareHolderMeeting\ShareHolderMeeting.Web\Scripts/angular-route.js" />
+
 
 var votingApp = angular.module('votingApp',
     ['ngRoute', 'shareHolderFactory', 'votingFactory',
@@ -16,6 +18,6 @@ votingApp.config(function ($routeProvider) {
           controller: 'VoteResultCtrl'
       }).    
       otherwise({
-          redirectTo: '/'
+          redirectTo: '/Voting/1'
       });
 });

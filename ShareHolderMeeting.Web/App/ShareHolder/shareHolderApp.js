@@ -2,17 +2,6 @@
 
 var shareHolderApp = angular.module('shareHolderApp', ['ngRoute', 'shareHolderFactory', 'shareHoldersCtrls']);
 
-//calculate total of shares
-shareHolderApp.filter('sharesTotal', function () {
-    return function (shareHolders) {
-        var total = 0;
-        angular.forEach(shareHolders, function (shareHolder) {
-            total += parseInt(shareHolder.NumberOfShares);
-        });
-        return total;
-    }
-});
-
 shareHolderApp.config(function ($routeProvider) {
     $routeProvider.
       when('/', {

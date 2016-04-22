@@ -35,11 +35,6 @@ namespace ShareHolderMeeting.Web.Controllers
             return View();
         }
 
-        public ActionResult VotingByHand()
-        {
-            return View();
-        }
-
         public JsonResult GetVotingByHands()
         {
 

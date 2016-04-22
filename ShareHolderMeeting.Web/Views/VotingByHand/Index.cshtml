@@ -1,48 +1,29 @@
 ﻿
-<div ng-app="votingGenApp" ng-cloak="" ng-controller="votingGenCtrl">
-    <h3>Generate Voting By Hand Data</h3>
-    <a href="" ng-click="generateVotingByHands()" class="btn btn-danger">Generate Data</a>
-    <div class="table-responsive">
-        <table class="table table-hover table-bordered">
-            <thead>
-                <tr>
-                    <th class="col-md-1">
-                        Code
-                    </th>
-                    <th class="col-md-1">
-                        Shares
-                    </th>
-                    <th class="col-md-2">
-                        Name
-                    </th>
-                    <th class="col-md-1">
-                        Id
-                    </th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr ng-repeat="voting in votingByHands">
-                    <td>{{voting.ShareHolderCode}}</td>
-                    <td>{{voting.NumberOfShares | number}}</td>
-                    <td>{{voting.ShareHolderName}}</td>
-                    <td>{{voting.Id}}</td>
-                </tr>
-            </tbody>
-            <tfoot>
-                <tr>
-                    <th>Total ({{votingByHands.length | number}} ShareHolders )</th>
-                </tr>
-            </tfoot>
-        </table>
+<ul class="nav nav-stacked">
+    <li><a href="#/" class="col-md-2">VotingByHand</a></li>
+    <li><a href="#/Result" class="col-md-2">Voting Result</a></li>
+</ul>
+
+<div ng-app="votingByHandApp" ng-cloak="">
+    <div ng-view="">
     </div>
 </div>
 
 @section scripts{
     <script src="~/Scripts/angular.js"></script>
+        <script src="~/Scripts/angular-route.js"></script>
 
-    <script src="~/App/VotingByHand/votingGenApp.js"></script>
+        <script src="~/Scripts/angular-animate.js"></script>
+        <script src="~/Scripts/ui-bootstrap-tpls-0.14.3.js"></script>
+    @*<script src="~/Scripts/angular.min.js"></script>
+    <script src="~/Scripts/angular-route.min.js"></script>
+
+    <script src="~/Scripts/angular-animate.js"></script>
+    <script src="~/Scripts/ui-bootstrap-tpls-0.14.3.js"></script>*@
+
+    <script src="~/App/VotingByHand/votingByHandApp.js"></script>
+    <script src="~/App/VotingByHand/votingByHandCtrls.js"></script>
     <script src="~/App/VotingByHand/votingByHandFactory.js"></script>
-
 
 }
 

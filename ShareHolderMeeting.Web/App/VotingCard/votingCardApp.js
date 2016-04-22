@@ -1,5 +1,5 @@
 ﻿/// <reference path="D:\00-OnlineInsurance\ShareHolderMeeting\ShareHolderMeeting.Web\Scripts/angular.min.js" />
-/// <reference path="D:\00-OnlineInsurance\ShareHolderMeeting\ShareHolderMeeting.Web\Scripts/angular-route.js" />
+/// <reference path="D:\00-OnlineInsurance\ShareHolderMeeting\ShareHolderMeeting.Web\Scripts/angular-route.min.js" />
 angular.module('votingCardApp', [])
     .controller('votingCardCtrl', function ($scope, $http) {
         $scope.statusLine = 'You should generate All Voting Cards only if there is a change of BOD/BOS candidates after registering shareholders at meeting';

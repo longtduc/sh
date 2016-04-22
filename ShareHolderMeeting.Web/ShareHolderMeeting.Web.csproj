@@ -291,6 +291,7 @@
     <Content Include="Scripts\angular-animate.js" />
     <Content Include="Scripts\angular-animate.min.js" />
     <Content Include="Scripts\angular-route.js" />
+    <Content Include="Scripts\angular-route.min.js" />
     <Content Include="Scripts\angular.js" />
     <Content Include="Scripts\angular.min.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -309,6 +310,7 @@
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\ui-bootstrap-tpls-0.14.3.js" />
     <Content Include="Scripts\ui-bootstrap-tpls-0.14.3.min.js" />
+    <Content Include="Scripts\ui-bootstrap-tpls-1.3.2.min.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -354,7 +356,6 @@
     <Content Include="Views\ShareHolder\Index.cshtml" />
     <Content Include="Views\Statement\Index.cshtml" />
     <Content Include="Views\VotingByHand\Index.cshtml" />
-    <Content Include="Views\VotingByHand\VotingByHand.cshtml" />
     <Content Include="Views\Voting\Index.cshtml" />
     <Content Include="web_backup.config" />
     <Content Include="Views\VotingCard\Index.cshtml" />

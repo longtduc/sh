@@ -12,27 +12,28 @@
     </div>
 </div>
 <div class="table-responsive">
-    <table class="table table-bordered table-hover>
-    <thead>
-        <tr>
-            <th class=" col-md-3">
-        Action</th>
-        <th class="col-md-2">
-            <a href="" ng-click="sortField='ShareHolderCode'; reverse = !reverse">ShareHolderCode</a>
-        </th>
-        <th class="col-md-2">
-            <a href="" ng-click="sortField='NumberOfShares'; reverse = !reverse">NumberOfShares</a>
-        </th>
-        <th class="col-md-2">
-            <a href="" ng-click="sortField='StatusAtMeeting'; reverse = !reverse">Status</a>
-        </th>
-        <th class="col-md-2" ng-show="showName">
-            <a href="" ng-click="sortField='Name'; reverse = !reverse">Name</a>
-        </th>
-        <th class="col-md-1">
-            Id
-        </th>
-        </tr>
+    <table class="table table-bordered table-hover">
+        <thead>
+            <tr>
+                <th class=" col-md-3">
+                    Action
+                </th>
+                <th class="col-md-2">
+                    <a href="" ng-click="sortField='ShareHolderCode'; reverse = !reverse">ShareHolderCode</a>
+                </th>
+                <th class="col-md-2">
+                    <a href="" ng-click="sortField='NumberOfShares'; reverse = !reverse">NumberOfShares</a>
+                </th>
+                <th class="col-md-2">
+                    <a href="" ng-click="sortField='StatusAtMeeting'; reverse = !reverse">Status</a>
+                </th>
+                <th class="col-md-2" ng-show="showName">
+                    <a href="" ng-click="sortField='Name'; reverse = !reverse">Name</a>
+                </th>
+                <th class="col-md-1">
+                    Id
+                </th>
+            </tr>
         </thead>
         <tbody>
             <tr ng-show="registeringMode">
@@ -71,6 +72,11 @@
             </tr>
         </tbody>
         <tfoot>
+            <tr>
+                <th colspan="3">
+                    <button ng-click="reloadData()" class="btn btn-info">Refresh Data</button>
+                </th>
+            </tr>
             <tr>
                 <th>Total ShareHolders</th>
                 <th>{{statisticData.totalShareHolders}}</th>

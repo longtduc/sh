@@ -3,7 +3,7 @@
 
 var registrationCtrls = angular.module('registrationCtrls', []);
 
-registrationCtrls.controller('registrationCtrl', function ($scope, $http, shareHolderFactory) {  
+registrationCtrls.controller('registrationCtrl', function ($scope, $http, $route, shareHolderFactory) {  
     
     //Used for sorting
     $scope.reverse = false;
@@ -94,6 +94,12 @@ registrationCtrls.controller('registrationCtrl', function ($scope, $http, shareH
 
     //Calculate statistic data for opening the meeting
     $scope.statisticData = {};
+
+    //Reload data
+    $scope.reloadData = function () {
+        $route.reload();
+    };
+
     function calculateStatistic() {
         var totalShareHolders = 0,
             totalNumberOfShares = 0,

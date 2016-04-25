@@ -3,7 +3,7 @@
 
 var VotingCtrls = angular.module('VotingCtrls', ['ngAnimate', 'ui.bootstrap']);
 
-VotingCtrls.controller('VoteCtrl', function ($scope, $http, $uibModal, $log, $routeParams, votingFactory) {
+VotingCtrls.controller('VoteCtrl', function ($scope, $http, $uibModal, $log, $routeParams,$route, votingFactory) {
 
    
     $scope.reverse = false;
@@ -68,6 +68,7 @@ VotingCtrls.controller('VoteCtrl', function ($scope, $http, $uibModal, $log, $ro
                 alert('Error happend when updating VotingCard (/VotingCard/UpdateVotingCard)');
             });
     };
+
     //Revert the voting
     $scope.revert = function (id) {
         $http.post('/VotingCard/RevertVotingCard', { id: id }).
@@ -84,6 +85,12 @@ VotingCtrls.controller('VoteCtrl', function ($scope, $http, $uibModal, $log, $ro
             error(function () {
                 alert('Error happend when reverting VotingCard (/VotingCard/RevertVotingCard)');
             });
+    };
+
+    //Refesh data
+
+    $scope.reloadData = function () {
+        $route.reload();
     };
 
 });

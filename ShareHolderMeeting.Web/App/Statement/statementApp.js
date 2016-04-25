@@ -27,10 +27,10 @@ angular.module('statementApp', [])
             $scope.selectedRow = -1;
         };
 
-        $scope.post = function () {
+        $scope.put = function () {
             var dataSent = { Id: 0, Description: $scope.newStatement.Description };
 
-            $http({ method: 'POST', url: '/Statement/Post', params: dataSent })
+            $http({ method: 'put', url: '/Statement/Put', params: dataSent })
                 .success(
                     function (data) {
                         if (data.Status) {
@@ -46,7 +46,7 @@ angular.module('statementApp', [])
 
         $scope.delete = function (statement) {
             var dataSent = { id: statement.Id };
-            $http({ method: 'GET', url: '/Statement/Delete', params: dataSent })
+            $http({ method: 'delete', url: '/Statement/Delete', params: dataSent })
                 .success(function (data) {
                     if (data.Status) {
                         var i = $scope.statements.indexOf(statement);
@@ -61,10 +61,10 @@ angular.module('statementApp', [])
 
         };
 
-        $scope.put = function () {
+        $scope.post = function () {
             var dataSent = { id: $scope.editedStatement.Id, description: $scope.editedStatement.Description };
             //console.log(dataSent);
-            $http({ method: 'POST', url: '/Statement/Put', params: dataSent })
+            $http({ method: 'post', url: '/Statement/post', params: dataSent })
                 .success(function (data) {
                     if (data.Status == true) {
                         var length = $scope.statements.length;

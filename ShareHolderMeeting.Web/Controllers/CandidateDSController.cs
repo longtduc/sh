@@ -34,7 +34,7 @@ namespace ShareHolderMeeting.Web.Controllers
             return (CandidateType)type;
         }
 
-        public HttpResponseMessage Post([FromBody] Candidate candidate)
+        public HttpResponseMessage Put([FromBody] Candidate candidate)
         {
             var response = new HttpResponseMessage();
 
@@ -71,7 +71,7 @@ namespace ShareHolderMeeting.Web.Controllers
             return candidateToDelete;
         }
 
-        public HttpResponseMessage Put([FromBody]Candidate candidate)
+        public HttpResponseMessage Post([FromBody]Candidate candidate)
         {
             var response = new HttpResponseMessage();          
 

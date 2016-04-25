@@ -45,7 +45,7 @@ namespace ShareHolderMeeting.Web.Controllers
             return shareHolder;
         }
 
-        public HttpResponseMessage Post([FromBody]ShareHolder shareHolder)
+        public HttpResponseMessage Put([FromBody]ShareHolder shareHolder)
         {
             //Validate and returnn errors if any
             var response = new HttpResponseMessage();
@@ -82,7 +82,7 @@ namespace ShareHolderMeeting.Web.Controllers
             return shareHolder;
         }
 
-        public HttpResponseMessage Put([FromBody]ShareHolder shareHolder)
+        public HttpResponseMessage Post([FromBody]ShareHolder shareHolder)
         {
             //Validate and Return Errors
             var response = new HttpResponseMessage();

@@ -45,14 +45,14 @@ shareHoldersCtrls.controller('shareHoldersCtrl', ['$scope', '$http', 'shareHolde
     $scope.init();
         
     //Add a new shareholder
-    $scope.postShareHolder = function () {
+    $scope.putShareHolder = function () {
         var dataSent = {
             shareHolderCode: $scope.newShareHolder.ShareHolderCode,
             name: $scope.newShareHolder.Name,
             numberOfShares: $scope.newShareHolder.NumberOfShares
         };
         //alert(JSON.stringify(dataSent));
-        $http.post('/Api/ShareHolderDS', dataSent)
+        $http.put('/Api/ShareHolderDS', dataSent)
             .success(function (data, status, headers, config) {
                 if (status === 201) { //Post is OK
                     //update the model                  
@@ -102,7 +102,7 @@ shareHoldersCtrls.controller('shareHoldersCtrl', ['$scope', '$http', 'shareHolde
     };
 
     //update while in editing mode
-    $scope.putShareHolder = function () {
+    $scope.postShareHolder = function () {
         var dataSent = {
             shareHolderCode: $scope.newShareHolder.ShareHolderCode,
             name: $scope.newShareHolder.Name,
@@ -112,7 +112,7 @@ shareHoldersCtrls.controller('shareHoldersCtrl', ['$scope', '$http', 'shareHolde
         };
 
         //alert(JSON.stringify(dataSent));
-        $http.put('/Api/ShareHolderDS', dataSent)
+        $http.post('/Api/ShareHolderDS', dataSent)
             .success(function (data, status, headers, config) {
                 //if (status === 200) {
                 var length = $scope.shareHolders.length;

@@ -19,7 +19,7 @@
                 <tr>
 
                     <td>
-                        <button class="btn btn-default" ng-click="post()">Add</button>
+                        <button class="btn btn-default" ng-click="put()">Add</button>
                     </td>
                     <td>
                         <input type="text" ng-model="newStatement.Description" class="form-control" />
@@ -33,7 +33,7 @@
                             <a href="" ng-click="setEditingMode(s)" class="btn btn-default">Edit</a>
                         </span>
                         <span ng-show="selectedRow == s.Id">
-                            <a href="" ng-click="put()" class="btn btn-default">Save</a>
+                            <a href="" ng-click="post()" class="btn btn-default">Save</a>
                             <a href="" ng-click="cancelEditing()" class="btn btn-default">Cancel</a>
                         </span>
                     </td>

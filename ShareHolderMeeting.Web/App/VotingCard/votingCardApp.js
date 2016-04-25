@@ -7,7 +7,7 @@ angular.module('votingCardApp', [])
             if (!confirm('Are you sure to generate All Voting Cards?'))
                 return;
 
-            $http({ method: 'POST', url: '/VotingCard/GenerateVotingCards' })
+            $http({ method: 'post', url: '/VotingCard/GenerateVotingCards' })
                 .then(
                     function (response) {
 

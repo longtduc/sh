@@ -34,13 +34,15 @@ namespace ShareHolderMeeting.Web.Controllers
             return View();
         }
 
+        [HttpGet]
         public JsonResult GetStatements()
         {
             var result = _repo.All.ToList();
             return Json(result, JsonRequestBehavior.AllowGet);
         }
 
-        public JsonResult Post(StatementVM vm)
+        [HttpPut]
+        public JsonResult Put(StatementVM vm)
         {
             dynamic result;
 
@@ -65,7 +67,8 @@ namespace ShareHolderMeeting.Web.Controllers
             return Json(result, JsonRequestBehavior.AllowGet);
         }
 
-        public JsonResult Put(StatementVM vm)
+        [HttpPost]
+        public JsonResult Post(StatementVM vm)
         {
             //If ViewModel is invalid
             dynamic result;
@@ -88,6 +91,8 @@ namespace ShareHolderMeeting.Web.Controllers
             }
             return Json(result, JsonRequestBehavior.AllowGet);
         }
+        
+        [HttpDelete]
         public JsonResult Delete(int id)
         {
             dynamic result;

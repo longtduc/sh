@@ -19,9 +19,9 @@ CandidateCtrls.controller('CandidateCtrl', ['$scope', '$http', function ($scope,
             alert('error while loading canidates (/api/Candidate)');
         });
 
-    $scope.postCandidate = function () {
+    $scope.putCandidate = function () {
         var dataSent = { name: $scope.newCandidate.Name, candidateType: $scope.type };
-        $http.post('/api/CandidateDS', dataSent).
+        $http.put('/api/CandidateDS', dataSent).
             success(function (data, status, headers, config) {
                 //alert(JSON.stringify(data));
                 if (status = 201) {
@@ -67,9 +67,9 @@ CandidateCtrls.controller('CandidateCtrl', ['$scope', '$http', function ($scope,
         $scope.selectedRow = -1;
     };
 
-    $scope.putCandidate = function () {
+    $scope.Candidate = function () {
         var dataSent = { id: $scope.editCandidate.Id, name: $scope.editCandidate.Name, candidateType: $scope.type };
-        $http.put('/Api/CandidateDS', dataSent)
+        $http.post('/Api/CandidateDS', dataSent)
          .success(function (data, status, headers, config) {
              //if (status == 200) {
              var length = $scope.candidates.length;

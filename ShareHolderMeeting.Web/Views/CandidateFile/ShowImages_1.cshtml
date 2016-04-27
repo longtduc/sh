@@ -1,0 +1,33 @@
+﻿@model IEnumerable<ShareHolderMeeting.Web.Models.CandidateFile>
+
+@{
+    ViewBag.Title = "how Image with way 1";
+}
+
+<h2>Show Image with way 1</h2>
+<table class="table">
+    <tr>
+        <th>@Html.DisplayNameFor(model => model.Id)</th>
+        <th>@Html.DisplayNameFor(model => model.FileName)</th>
+        <th>@Html.DisplayNameFor(model => model.Content)</th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@Html.DisplayFor(modelItem => item.Id)</td>
+            <td>@Html.DisplayFor(modelItem => item.FileName)</td>
+
+            <td>
+                @{
+                    var base64 = Convert.ToBase64String(item.Content);
+                    var imgSrc = String.Format("data:image/jpeg;base64,{0}", base64);
+                }
+                <img src='@imgSrc' style="max-width:400px; max-height:225px;" />
+            </td>            
+        </tr>
+    }
+</table>
+
+

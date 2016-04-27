@@ -1,0 +1,27 @@
+﻿@model IEnumerable<ShareHolderMeeting.Web.Models.CandidateFile>
+
+@{
+    ViewBag.Title = "how Image with way 2";
+}
+
+<h2>Show Image with way 2</h2>
+<table class="table">
+    <tr>
+        <th>@Html.DisplayNameFor(model => model.Id)</th>
+        <th>@Html.DisplayNameFor(model => model.FileName)</th>
+        <th>@Html.DisplayNameFor(model => model.Content)</th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@Html.DisplayFor(modelItem => item.Id)</td>
+            <td>@Html.DisplayFor(modelItem => item.FileName)</td>
+
+            <td>
+                <img src="@Url.Action("Show","CandidateFile",new {id = item.Id})" style="max-width:400px; max-height:225px" alt="Image" />
+            </td>
+        </tr>
+    }
+</table>

@@ -27,7 +27,6 @@ namespace ShareHolderMeeting.Web.Models
         }
 
         public CandidateType CandidateType { get; set; }
-
         public bool IsValidForVotingCard(VotingCardType type)
         {
             if (type == VotingCardType.BODVotingCard)

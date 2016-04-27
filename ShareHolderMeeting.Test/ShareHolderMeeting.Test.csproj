@@ -64,6 +64,9 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="..\ShareHolderMeeting.Web\Controllers\CandidateFileController.cs">
+      <Link>CandidateFileController.cs</Link>
+    </Compile>
     <Compile Include="CandidateRepo_Stub.cs" />
     <Compile Include="CandidateRepo_Stub_Test.cs" />
     <Compile Include="Candidate_Test.cs" />

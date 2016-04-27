@@ -1,0 +1,12 @@
+﻿<h2>Upload And Resize A File</h2>
+@using (Html.BeginForm("UploadResizeSaveAFileToDB",
+                        "CandidateFile",
+                        FormMethod.Post,
+                        new { enctype = "multipart/form-data" }))
+{
+    <label for="file">Upload Image:</label>
+    <input type="file" name="upload" /><br><br>
+    <input type="submit" value="Upload Image" />
+    <br><br>
+    @ViewBag.Message
+}

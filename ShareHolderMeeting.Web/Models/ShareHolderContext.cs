@@ -16,6 +16,8 @@ namespace ShareHolderMeeting.Web.Models
         public DbSet<ShareHolder> ShareHolders { get; set; }
 
         public DbSet<Candidate> Candidates { get; set; }
+
+        public DbSet<CandidateFile> CandidateFiles { get; set; }
         public DbSet<VotingCard> VotingCards { get; set; }
         public DbSet<VotingCardLine> VotingCardLines { get; set; }
         public DbSet<Statement> Statements { get; set; }

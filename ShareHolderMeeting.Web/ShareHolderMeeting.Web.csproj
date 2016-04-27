@@ -51,6 +51,10 @@
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\System.Web.Mvc.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Extensions" />
@@ -71,10 +75,6 @@
     <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <Private>True</Private>
       <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.2\lib\net45\System.Web.Helpers.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Web.Mvc, Version=__MvcPagesVersion__, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <Private>True</Private>
-      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.2\lib\net45\System.Web.Mvc.dll</HintPath>
     </Reference>
     <Reference Include="System.Web.Optimization">
       <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
@@ -173,6 +173,9 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CandidateController.cs" />
     <Compile Include="Controllers\CandidateDSController.cs" />
+    <Compile Include="Controllers\CandidateFileController.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\RegistrationController.cs" />
@@ -197,16 +200,23 @@
     <Compile Include="Interfaces\UoWVotingCard.cs" />
     <Compile Include="Interfaces\VotingByHandRepo.cs" />
     <Compile Include="Interfaces\VotingCardRepo.cs" />
-    <Compile Include="Migrations\201603020427526_addAmtAlreadyVoted_VotingCard.cs" />
-    <Compile Include="Migrations\201603020427526_addAmtAlreadyVoted_VotingCard.Designer.cs">
-      <DependentUpon>201603020427526_addAmtAlreadyVoted_VotingCard.cs</DependentUpon>
+    <Compile Include="Migrations\201604260449113_addFilesTable2.cs" />
+    <Compile Include="Migrations\201604260449113_addFilesTable2.Designer.cs">
+      <DependentUpon>201604260449113_addFilesTable2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201604260643298_201604260449113_addFilesTable3.cs" />
+    <Compile Include="Migrations\201604260643298_201604260449113_addFilesTable3.Designer.cs">
+      <DependentUpon>201604260643298_201604260449113_addFilesTable3.cs</DependentUpon>
+    </Compile>
+    <Content Include="Migrations\201604260643298_201604260449113_addFilesTable3.sql" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\BhvAccountViewModel.cs" />
     <Compile Include="Models\Candidate.cs" />
     <Compile Include="Models\CandidateValidator.cs" />
     <Compile Include="Models\CoreServices\InputErrors.cs" />
+    <Compile Include="Models\CandidateFile.cs" />
+    <Compile Include="Models\FileType.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Interfaces\IValidator.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -219,6 +229,7 @@
     <Compile Include="Models\VotingCard.cs" />
     <Compile Include="Models\VotingCardLine.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\BhvImageLib.cs" />
     <Compile Include="Services\StatementService.cs" />
     <Compile Include="Services\VotingByHandServices.cs" />
     <Compile Include="Services\VotingCardServices.cs" />
@@ -286,7 +297,8 @@
     <Content Include="Images\orderedList7.png" />
     <Content Include="Images\orderedList8.png" />
     <Content Include="Images\orderedList9.png" />
-    <Content Include="Migrations\201603020427526_addAmtAlreadyVoted_VotingCard.sql" />
+    <Content Include="Migrations\201604260423487_addFilesTable.sql" />
+    <Content Include="Migrations\201604260449113_addFilesTable2.sql" />
     <Content Include="Migrations\CreateShareHolderMeetingDB.sql" />
     <Content Include="Scripts\angular-animate.js" />
     <Content Include="Scripts\angular-animate.min.js" />
@@ -359,11 +371,12 @@
     <Content Include="Views\Voting\Index.cshtml" />
     <Content Include="web_backup.config" />
     <Content Include="Views\VotingCard\Index.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201603020427526_addAmtAlreadyVoted_VotingCard.resx">
-      <DependentUpon>201603020427526_addAmtAlreadyVoted_VotingCard.cs</DependentUpon>
-    </EmbeddedResource>
+    <Content Include="Views\CandidateFile\ShowImages_2.cshtml" />
+    <Content Include="Views\CandidateFile\SaveAFileToDB.cshtml" />
+    <Content Include="Views\CandidateFile\Upload.cshtml" />
+    <Content Include="Views\CandidateFile\ShowImages_1.cshtml" />
+    <Content Include="Views\CandidateFile\UploadResizeSaveAFileToDB.cshtml" />
+    <None Include="Views\CandidateFile\UploadAndResize.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -377,6 +390,14 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App\Voting\votingFilter.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201604260449113_addFilesTable2.resx">
+      <DependentUpon>201604260449113_addFilesTable2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201604260643298_201604260449113_addFilesTable3.resx">
+      <DependentUpon>201604260643298_201604260449113_addFilesTable3.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

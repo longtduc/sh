@@ -3,9 +3,9 @@
 
 var VotingCtrls = angular.module('VotingCtrls', ['ngAnimate', 'ui.bootstrap']);
 
-VotingCtrls.controller('VoteCtrl', function ($scope, $http, $uibModal, $log, $routeParams,$route, votingFactory) {
+VotingCtrls.controller('VoteCtrl', function ($scope, $http, $uibModal, $log, $routeParams, $route, votingFactory) {
 
-   
+
     $scope.reverse = false;
     $scope.showName = false;
 
@@ -19,7 +19,7 @@ VotingCtrls.controller('VoteCtrl', function ($scope, $http, $uibModal, $log, $ro
     //Get votingCards from factory
     $scope.votingCards = [];
     votingFactory.getVotingCards($routeParams.type, function (data) {
-        $scope.votingCards = data;        
+        $scope.votingCards = data;
     });
 
     //Voting Card
@@ -54,7 +54,7 @@ VotingCtrls.controller('VoteCtrl', function ($scope, $http, $uibModal, $log, $ro
     //update voting card
     $scope.updateVoting = function () {
         $http.post('/VotingCard/UpdateVotingCard', $scope.votingCard).
-            success(function (data) {              
+            success(function (data) {
                 for (var i = 0; i < $scope.votingCards.length; i++) {
                     if ($scope.votingCards[i].Id === $scope.votingCard.Id) {
                         $scope.votingCards[i].IsVoted = true;
@@ -123,23 +123,22 @@ VotingCtrls.controller('ModalInstanceCtrl', function ($scope, $http, $uibModalIn
         var each = total / numberOfCandidates;
         for (var i = 0; i < $scope.card.VotingCardLines.length; i++) {
             $scope.card.VotingCardLines[i].VotingAmt = each;
-        }       
+        }
     };
 
     //Vote the candidate the rest
     $scope.voteTheRest = function (id) {
-      
+
 
         var total = $scope.card.NumberOfShares * $scope.card.NumberOfCandidates;
         var votedAmt = 0;
         //Calulate voted amt
         for (var i = 0; i < $scope.card.VotingCardLines.length; i++) {
             if ($scope.card.VotingCardLines[i].Id != id)
-                votedAmt += $scope.card.VotingCardLines[i].VotingAmt;            
+                votedAmt += $scope.card.VotingCardLines[i].VotingAmt;
         }
         //Allocate the rest 
-        if (total > votedAmt)
-        {
+        if (total > votedAmt) {
             for (var i = 0; i < $scope.card.VotingCardLines.length; i++) {
                 if ($scope.card.VotingCardLines[i].Id == id)
                     $scope.card.VotingCardLines[i].VotingAmt = total - votedAmt;
@@ -200,12 +199,12 @@ VotingCtrls.controller('VoteResultCtrl', function ($scope, $http, $routeParams) 
     $scope.reverse = false;
     //Set title for view
     $scope.title = function () {
-        if ($routeParams.type ==1)
+        if ($routeParams.type == 1)
             return 'BOD';
         return 'BOS';
     };
     var dataSent = { votingType: $routeParams.type };
-    $http({ method: 'GET', url: '/VotingCard/GetVotingResult',params: dataSent }).
+    $http({ method: 'GET', url: '/VotingCard/GetVotingResult', params: dataSent }).
         success(function (data, status, headers, config) {
             $scope.votingResult = data;
         }).

@@ -4,6 +4,14 @@
 var registrationApp = angular.module('registrationApp',
                         ['ngRoute', 'shareHolderFactory', 'registrationCtrls']);
 
+registrationApp.value('statusOptions',
+    [
+        { id: 0, name: 'Absent' },
+        { id: 1, name: 'Attended' },
+        { id: 2, name: 'Delegated' }
+    ]
+    );
+
 registrationApp.config(function ($routeProvider) {
     $routeProvider.
       when('/', {

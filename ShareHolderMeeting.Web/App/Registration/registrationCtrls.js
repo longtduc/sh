@@ -3,8 +3,8 @@
 
 var registrationCtrls = angular.module('registrationCtrls', []);
 
-registrationCtrls.controller('registrationCtrl', function ($scope, $http, $route, shareHolderFactory) {  
-    
+registrationCtrls.controller('registrationCtrl', function ($scope, $http, $route, shareHolderFactory, statusOptions) {
+
     //Used for sorting
     $scope.reverse = false;
 
@@ -16,19 +16,16 @@ registrationCtrls.controller('registrationCtrl', function ($scope, $http, $route
         $scope.loading = false;
         calculateStatistic();
     });
-
-    $scope.statusOptions = [
-        { id: 0, name: 'Absent' },
-        { id: 1, name: 'Attended' },
-        { id: 2, name: 'Delegated' }
-    ];
+    
+    //get statusOptions from module.value
+    $scope.statusOptions = statusOptions;
     $scope.statusSelected = 0;
 
     $scope.showName = false;
 
     //Transform enum values into text 
-  
-    $scope.statusText= function (status) {
+
+    $scope.statusText = function (status) {
 
         //Using filter method of js array 
         var result = $scope.statusOptions.filter(function (value, index, array) {
@@ -118,10 +115,10 @@ registrationCtrls.controller('registrationCtrl', function ($scope, $http, $route
         $scope.statisticData = {
             totalShareHolders: totalShareHolders,
             currentShareHolders: currentShareHolders,
-            shareHolderRate: Math.round(currentShareHolders / totalShareHolders * 10000)/100,
+            shareHolderRate: Math.round(currentShareHolders / totalShareHolders * 10000) / 100,
             totalNumberOfShares: totalNumberOfShares,
             currentNumberOfShares: currentNumberOfShares,
-            numberOfSharesRate: Math.round(currentNumberOfShares / totalNumberOfShares * 10000)/100
+            numberOfSharesRate: Math.round(currentNumberOfShares / totalNumberOfShares * 10000) / 100
         };
 
     };

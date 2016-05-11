@@ -208,6 +208,10 @@
     <Compile Include="Migrations\201604260643298_201604260449113_addFilesTable3.Designer.cs">
       <DependentUpon>201604260643298_201604260449113_addFilesTable3.cs</DependentUpon>
     </Compile>
+    <Content Include="App\commonValues.js" />
+    <Content Include="DBScripts\CreateShareHolderMeetingDB_NoData.sql" />
+    <Content Include="DBScripts\Create_aspnet-ShareHolderMeetingWithData.sql" />
+    <Content Include="DBScripts\ResetShareHolderMeetingData.sql" />
     <Content Include="Migrations\201604260643298_201604260449113_addFilesTable3.sql" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -276,9 +280,6 @@
     <Content Include="App\Voting\votingFactory.js" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
-    <Content Include="DatabaseScripts\CreateShareHolderMeetingDB_NoData.sql" />
-    <Content Include="DatabaseScripts\Create_aspnet-ShareHolderMeetingWithData.sql" />
-    <Content Include="DatabaseScripts\ResetShareHolderMeetingData.sql" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />

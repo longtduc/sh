@@ -33,10 +33,10 @@
         </thead>
         <tbody>
             <tr>
-                <td data-ng-if="addingMode">
+                <td ng-show="addingMode">
                     <button class="btn btn-default" ng-click="putShareHolder()"><span class="glyphicon glyphicon-plus-sign"> </span></button>
                 </td>
-                <td data-ng-if="!addingMode">
+                <td ng-show="!addingMode">
                     <button class="btn btn-default" ng-click="postShareHolder()"><span class="glyphicon glyphicon-ok"></span></button>
                     <button class="btn btn-default" ng-click="setAddingMode()"><span class="glyphicon glyphicon-remove"></span></button>
                 </td>
@@ -55,9 +55,9 @@
             </tr>
             <!--<tr ng-repeat="sh in shareHolders | filter : search: strict | orderBy: sortField : reverse">-->
             <tr ng-repeat="sh in shareHolders | filter : search | orderBy: sortField : reverse">
-                <td>
-                    <a href="" ng-click="deleteShareHolder(sh)" class="btn btn-default"><span class="glyphicon glyphicon-trash"></span></a>
+                <td>                  
                     <a href="" ng-click="setEditingMode(sh)" class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span></a>
+                    <a href="" ng-click="deleteShareHolder(sh)" class="btn btn-default"><span class="glyphicon glyphicon-trash"></span></a>
                 </td>
                 <td>{{sh.ShareHolderCode}}</td>
                 <td>{{sh.NumberOfShares | number}}</td>

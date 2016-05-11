@@ -2,15 +2,7 @@
 /// <reference path="D:\00-OnlineInsurance\ShareHolderMeeting\ShareHolderMeeting.Web\Scripts/angular-route.min.js" />
 
 var registrationApp = angular.module('registrationApp',
-                        ['ngRoute', 'shareHolderFactory', 'registrationCtrls']);
-
-registrationApp.value('statusOptions',
-    [
-        { id: 0, name: 'Absent' },
-        { id: 1, name: 'Attended' },
-        { id: 2, name: 'Delegated' }
-    ]
-    );
+                        ['ngRoute', 'shareHolderFactory', 'commonValues', 'registrationCtrls']);
 
 registrationApp.config(function ($routeProvider) {
     $routeProvider.

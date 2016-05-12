@@ -13,10 +13,13 @@ votingApp.controller('voteCtrl', function ($scope, $http, $uibModal, $log, $rout
         return 'BOSs';
     };
 
+    $scope.loading = true;
+
     //Get votingCards from factory
     $scope.votingCards = [];
     votingFactory.getVotingCards($routeParams.type, function (data) {
         $scope.votingCards = data;
+        $scope.loading = false;
     });
 
     //Voting Card
@@ -85,7 +88,6 @@ votingApp.controller('voteCtrl', function ($scope, $http, $uibModal, $log, $rout
     };
 
     //Refesh data
-
     $scope.reloadData = function () {
         $route.reload();
     };

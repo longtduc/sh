@@ -8,6 +8,8 @@ votingByHandApp.controller('votingByHandCtrl', function ($scope, $http, $uibModa
 
     $scope.reverse = false;
 
+    $scope.loading = true;
+
     getVotinByHands();
 
 
@@ -31,7 +33,7 @@ votingByHandApp.controller('votingByHandCtrl', function ($scope, $http, $uibModa
     function getVotinByHands() {
         votingByHandFactory.getVotingByHands(function (data) {
             $scope.votingByHands = data;
-
+            $scope.loading = false;
         });
 
     }

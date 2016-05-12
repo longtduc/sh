@@ -1,7 +1,8 @@
 ﻿/// <reference path="D:\00-OnlineInsurance\ShareHolderMeeting\ShareHolderMeeting.Web\Scripts/angular.min.js" />
 
 shareHolderApp.controller('shareHoldersCtrl', ['$scope', '$http', 'shareHolderFactory', function ($scope, $http, shareHolderFactory) {
-  
+    $scope.loading = true;
+
     $scope.getShareHolders = function () {
         ////Get server data from factory using callback
         //shareHolderFactory.getShareHolders(function (data) {
@@ -36,11 +37,12 @@ shareHolderApp.controller('shareHoldersCtrl', ['$scope', '$http', 'shareHolderFa
 
         //Get ShareHolders
         $scope.getShareHolders();
-
     };
-    
+
     $scope.init();
-        
+
+
+
     //Add a new shareholder
     $scope.putShareHolder = function () {
         var dataSent = {
@@ -55,7 +57,7 @@ shareHolderApp.controller('shareHoldersCtrl', ['$scope', '$http', 'shareHolderFa
                     //update the model                  
                     $scope.shareHolders.push(data);
                     //hide the form and clear data of new
-                    $scope.newShareHolder = {};                  
+                    $scope.newShareHolder = {};
                 }
             })
             .error(function (data, status, headers, config) {
@@ -72,7 +74,7 @@ shareHolderApp.controller('shareHoldersCtrl', ['$scope', '$http', 'shareHolderFa
                 if (status === 200) { //Delete is OK
                     //update the model
                     var i = $scope.shareHolders.indexOf(shareHolder);
-                    $scope.shareHolders.splice(i, 1);                  
+                    $scope.shareHolders.splice(i, 1);
                 };
             })
             .error(function (data, status, header, config) {
@@ -87,7 +89,7 @@ shareHolderApp.controller('shareHoldersCtrl', ['$scope', '$http', 'shareHolderFa
         $scope.newShareHolder.ShareHolderCode = shareHolder.ShareHolderCode,
         $scope.newShareHolder.Name = shareHolder.Name,
         $scope.newShareHolder.NumberOfShares = shareHolder.NumberOfShares
-      
+
         $scope.btnLabel = "Save";
         $scope.addingMode = false;
     };
@@ -131,7 +133,7 @@ shareHolderApp.controller('shareHoldersCtrl', ['$scope', '$http', 'shareHolderFa
             });
 
     };
-  
+
 }]);
 
 

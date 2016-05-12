@@ -208,6 +208,7 @@
     <Compile Include="Migrations\201604260643298_201604260449113_addFilesTable3.Designer.cs">
       <DependentUpon>201604260643298_201604260449113_addFilesTable3.cs</DependentUpon>
     </Compile>
+    <Content Include="App\ajax-loader.gif" />
     <Content Include="App\Candidate\candidateApp.js" />
     <Content Include="App\Candidate\candidateCtrl.js" />
     <Content Include="App\commonValues.js" />
@@ -288,7 +289,6 @@
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Images\accent.png" />
-    <Content Include="Images\bhvImages\ajax-loader.gif" />
     <Content Include="Images\bullet.png" />
     <Content Include="Images\heroAccent.png" />
     <Content Include="Images\orderedList0.png" />
@@ -391,6 +391,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Images\bhvImages\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App\Voting\votingFilter.js" />

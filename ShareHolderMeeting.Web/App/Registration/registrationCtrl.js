@@ -5,6 +5,8 @@ registrationApp.controller('registrationCtrl', function ($scope, $http, $route, 
     //Used for sorting
     $scope.reverse = false;
 
+    $scope.loading = true;
+
     //Get server data from factory   
     $scope.shareHolders = [];
 

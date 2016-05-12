@@ -6,7 +6,7 @@
     <table class="table table-hover table-bordered">
         <thead>
             <tr>
-                <th class="col-md-1">Action</th>
+                <th class="col-md-2">Action</th>
                 <th class="col-md-1">
                     <a href="" ng-click="sortField='Name';reverse=!reverse">User Name</a>
                 </th>
@@ -18,7 +18,8 @@
             <tr ng-repeat="user in model.users | orderBy: sortField : reverse">
                 <td>
                     <a href="#/AssignRole/{{$index}}" class="btn btn-default">Assign Roles</a>
-                    <button ng-click="deleteUser(user);" class="btn btn-default">Delete</button>
+                    <button ng-click="deleteUser(user);" class="btn btn-default">Delete User</button>
+                    <a href="/Account/ResetPassword?email={{user.Name}}" class="btn btn-default">Reset Pwd</a>
                 </td>
                 <td>
                     {{user.Name}}

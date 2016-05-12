@@ -1,5 +1,8 @@
 ﻿
-<div ng-app="CandidateApp" ng-init="type=@ViewBag.Type">
+<div ng-app="candidateApp" ng-init="type=@ViewBag.Type">
+    <div ng-show="loading">
+        <img ng-src="~/Images/bhvImages/ajax-loader.gif" class="ajax-loader" />
+    </div>
     <div ng-view=""></div>   
 </div>
 
@@ -7,5 +10,5 @@
     <script src="~/Scripts/angular.min.js"></script>
     <script src="~/Scripts/angular-route.min.js"></script>
     <script src="~/App/Candidate/CandidateApp.js"></script>
-    <script src="~/App/Candidate/CandidateCtrls.js"></script>
+    <script src="~/App/Candidate/CandidateCtrl.js"></script>
 }

@@ -1,7 +1,6 @@
 ﻿/// <reference path="D:\00-OnlineInsurance\ShareHolderMeeting\ShareHolderMeeting.Web\Scripts/angular.min.js" />
-var CandidateCtrls = angular.module('CandidateCtrls', []);
 
-CandidateCtrls.controller('CandidateCtrl', ['$scope', '$http', function ($scope, $http) {
+candidateApp.controller('candidateCtrl', ['$scope', '$http', function ($scope, $http) {
 
     $scope.candidates = [];
     $scope.newCandidate = {};
@@ -9,11 +8,13 @@ CandidateCtrls.controller('CandidateCtrl', ['$scope', '$http', function ($scope,
     $scope.selectedRow = -1;
     $scope.title = ($scope.type === 1) ? 'BOD Candidates' : 'BOS Candidates';
 
+    $scope.loading = true;
     //Get all candidates from server
     var url = '/api/CandidateDS';
     $http({ method: 'GET', url: url, contentType: 'json', params: { type: $scope.type }, cache: false }).
         success(function (data, status, headers, config) {
             $scope.candidates = data;
+            $scope.loading = false;
         }).
         error(function (data, status, headers, config) {
             alert('error while loading canidates (/api/Candidate)');
@@ -51,7 +52,7 @@ CandidateCtrls.controller('CandidateCtrl', ['$scope', '$http', function ($scope,
         });
     };
 
-   
+
     $scope.setEditingMode = function (candidate) {
         $scope.selectedRow = candidate.Id;
         //DO NOT USE THIS CODE

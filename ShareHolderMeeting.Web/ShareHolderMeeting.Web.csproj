@@ -243,9 +243,9 @@
     <Compile Include="ViewModel\VotingResultVM.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App\Candidate\CandidateApp.js" />
-    <Content Include="App\Candidate\CandidateCtrls.js" />
-    <Content Include="App\Candidate\Partials\Candidate.html" />
+    <Content Include="App\Candidate\candidateApp.js" />
+    <Content Include="App\Candidate\candidateCtrl.js" />
+    <Content Include="App\Candidate\Partials\candidate.html" />
     <Content Include="App\Registration\Partials\Registration.html" />
     <Content Include="App\Registration\registrationApp.js" />
     <Content Include="App\Registration\registrationCtrls.js" />

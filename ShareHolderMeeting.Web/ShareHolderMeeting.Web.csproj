@@ -211,6 +211,7 @@
     <Content Include="App\Candidate\candidateApp.js" />
     <Content Include="App\Candidate\candidateCtrl.js" />
     <Content Include="App\commonValues.js" />
+    <Content Include="App\Users\assignRoleCtrl.js" />
     <Content Include="App\VotingByHand\votingByHandResultCtrl.js" />
     <Content Include="App\Voting\voteResultCtrl.js" />
     <Content Include="DBScripts\CreateShareHolderMeetingDB_NoData.sql" />
@@ -264,7 +265,7 @@
     <Content Include="App\Users\Partials\AssignRoles.html" />
     <Content Include="App\Users\Partials\UsersList.html" />
     <Content Include="App\Users\userApp.js" />
-    <Content Include="App\Users\userCtrls.js" />
+    <Content Include="App\Users\userCtrl.js" />
     <Content Include="App\Users\userFactory.js" />
     <Content Include="App\VotingByHand\Partials\VotingByHand.html" />
     <Content Include="App\VotingByHand\Partials\VotingByHandModal.html" />

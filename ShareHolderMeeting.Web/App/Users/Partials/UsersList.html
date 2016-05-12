@@ -17,7 +17,7 @@
         <tbody>
             <tr ng-repeat="user in model.users | orderBy: sortField : reverse">
                 <td>
-                    <a href="#/AssignRole/{{$index}}" class="btn btn-default">Assign Roles</a>
+                    <a href="#/AssignRole/{{user}}" class="btn btn-default">Assign Roles</a>
                     <button ng-click="deleteUser(user);" class="btn btn-default">Delete User</button>
                     <a href="/Account/ResetPassword?email={{user.Name}}" class="btn btn-default">Reset Pwd</a>
                 </td>

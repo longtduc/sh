@@ -16,7 +16,6 @@ namespace ShareHolderMeeting.Web.Controllerss
     [Authorize(Roles = "Administrators")]
     public class UserController : Controller
     {
-
         private UserManager<ApplicationUser> _userManager;
         private RoleManager<IdentityRole> _roleManager;
         public UserController()
@@ -62,7 +61,7 @@ namespace ShareHolderMeeting.Web.Controllerss
 
         }
 
-        //[HttpPost]
+        [HttpPost]
         //[ValidateAntiForgeryToken]
         public ActionResult AddRole(string userId, string roleId)
         {
@@ -85,16 +84,15 @@ namespace ShareHolderMeeting.Web.Controllerss
             return Json(result, JsonRequestBehavior.AllowGet);
         }
 
+        [HttpGet]
         public JsonResult GetUsers()
         {
-
             var vm = GetUsersWithRoles();
             return Json(vm, JsonRequestBehavior.AllowGet);
-        }
+        }       
         private List<UserRoleVM> GetUsersWithRoles()
         {
-            var vm = new List<UserRoleVM>();
-            //var users = _context.Users.ToList();
+            var vm = new List<UserRoleVM>();          
             var users = _userManager.Users.ToList();
             foreach (var user in users)
             {
@@ -111,6 +109,7 @@ namespace ShareHolderMeeting.Web.Controllerss
             return vm;
         }
 
+        [HttpPost]
         public ActionResult DeleteUser(string userId)
         {
             var userToRemove = _userManager.FindById(userId);

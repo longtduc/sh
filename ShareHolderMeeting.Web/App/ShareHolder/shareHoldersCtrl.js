@@ -1,9 +1,6 @@
 ﻿/// <reference path="D:\00-OnlineInsurance\ShareHolderMeeting\ShareHolderMeeting.Web\Scripts/angular.min.js" />
 
-var shareHoldersCtrls = angular.module('shareHoldersCtrls', []);
-
-shareHoldersCtrls.controller('shareHoldersCtrl', ['$scope', '$http', 'shareHolderFactory', function ($scope, $http, shareHolderFactory) {
-
+shareHolderApp.controller('shareHoldersCtrl', ['$scope', '$http', 'shareHolderFactory', function ($scope, $http, shareHolderFactory) {
   
     $scope.getShareHolders = function () {
         ////Get server data from factory using callback
@@ -138,7 +135,7 @@ shareHoldersCtrls.controller('shareHoldersCtrl', ['$scope', '$http', 'shareHolde
 }]);
 
 
-shareHoldersCtrls.controller('shareHolderPagingCtrl', function ($scope, $http) {
+shareHolderApp.controller('shareHolderPagingCtrl', function ($scope, $http) {
 
     $scope.shareHolders = [];
 

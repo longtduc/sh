@@ -1,8 +1,7 @@
 ﻿/// <reference path="D:\00-OnlineInsurance\ShareHolderMeeting\ShareHolderMeeting.Web\Scripts/angular.min.js" />
-var votingByHandCtrl = angular.module('votingByHandCtrl', ['ngAnimate', 'ui.bootstrap'])
 
 
-votingByHandCtrl.controller('votingByHandCtrl', function ($scope, $http, $uibModal, $log, votingByHandFactory) {
+votingByHandApp.controller('votingByHandCtrl', function ($scope, $http, $uibModal, $log, votingByHandFactory) {
     $scope.votingByHands = [];
 
     $scope.votingByHand = {};
@@ -73,7 +72,7 @@ votingByHandCtrl.controller('votingByHandCtrl', function ($scope, $http, $uibMod
     }
 });
 
-votingByHandCtrl.controller('ModalInstanceCtrl', function ($scope, $http, $uibModalInstance, votingByHandFactory, votingByHand) {
+votingByHandApp.controller('ModalInstanceCtrl', function ($scope, $http, $uibModalInstance, votingByHandFactory, votingByHand) {
 
     $scope.card = {};
     //console.log(votingCard);
@@ -116,15 +115,3 @@ votingByHandCtrl.controller('ModalInstanceCtrl', function ($scope, $http, $uibMo
 
 });
 
-votingByHandCtrl.controller('votingByHandResultCtrl', function ($scope, $http)
-{
-    $scope.model = [];
-
-    $http({ method: 'GET', url: '/VotingByHand/GetVotingByHandResult' })
-        .success(function (data) {
-
-            $scope.model = data;
-            console.log(data);
-        });
-
-});

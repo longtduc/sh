@@ -9,9 +9,11 @@ candidateApp.controller('candidateCtrl', ['$scope', '$http', function ($scope, $
     $scope.title = ($scope.type === 1) ? 'BOD Candidates' : 'BOS Candidates';
 
     $scope.loading = true;
+
     //Get all candidates from server
     var url = '/api/CandidateDS';
-    $http({ method: 'GET', url: url, contentType: 'json', params: { type: $scope.type }, cache: false }).
+
+    $http({ method: 'get', url: url, contentType: 'json', params: { type: $scope.type }, cache: false }).
         success(function (data, status, headers, config) {
             $scope.candidates = data;
             $scope.loading = false;
@@ -52,7 +54,7 @@ candidateApp.controller('candidateCtrl', ['$scope', '$http', function ($scope, $
         });
     };
 
-
+   
     $scope.setEditingMode = function (candidate) {
         $scope.selectedRow = candidate.Id;
         //DO NOT USE THIS CODE
@@ -68,7 +70,7 @@ candidateApp.controller('candidateCtrl', ['$scope', '$http', function ($scope, $
         $scope.selectedRow = -1;
     };
 
-    $scope.Candidate = function () {
+    $scope.postCandidate = function () {
         var dataSent = { id: $scope.editCandidate.Id, name: $scope.editCandidate.Name, candidateType: $scope.type };
         $http.post('/Api/CandidateDS', dataSent)
          .success(function (data, status, headers, config) {

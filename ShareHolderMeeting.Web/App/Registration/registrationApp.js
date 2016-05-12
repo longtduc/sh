@@ -2,7 +2,7 @@
 /// <reference path="D:\00-OnlineInsurance\ShareHolderMeeting\ShareHolderMeeting.Web\Scripts/angular-route.min.js" />
 
 var registrationApp = angular.module('registrationApp',
-                        ['ngRoute', 'shareHolderFactory', 'commonValues', 'registrationCtrls']);
+                        ['ngRoute', 'shareHolderFactory', 'commonValues']);
 
 registrationApp.config(function ($routeProvider) {
     $routeProvider.

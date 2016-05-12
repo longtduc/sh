@@ -3,20 +3,19 @@
 
 
 var votingApp = angular.module('votingApp',
-    ['ngRoute', 'shareHolderFactory', 'votingFactory',
-                                                'VotingCtrls']);
+    ['ngRoute', 'shareHolderFactory', 'votingFactory', 'ngAnimate', 'ui.bootstrap']);
 
 
 votingApp.config(function ($routeProvider) {
-    $routeProvider.      
+    $routeProvider.
       when('/Voting/:type', {
           templateUrl: '/App/Voting/Partials/Voting.html',
-          controller: 'VoteCtrl'
+          controller: 'voteCtrl'
       }).
       when('/VotingResult/:type', {
           templateUrl: '/App/Voting/Partials/VotingResult.html',
-          controller: 'VoteResultCtrl'
-      }).    
+          controller: 'voteResultCtrl'
+      }).
       otherwise({
           redirectTo: '/Voting/1'
       });

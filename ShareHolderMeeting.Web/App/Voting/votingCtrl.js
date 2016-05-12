@@ -1,9 +1,6 @@
 ﻿/// <reference path="D:\00-OnlineInsurance\ShareHolderMeeting\ShareHolderMeeting.Web\Scripts/angular.min.js" />
 
-
-var VotingCtrls = angular.module('VotingCtrls', ['ngAnimate', 'ui.bootstrap']);
-
-VotingCtrls.controller('VoteCtrl', function ($scope, $http, $uibModal, $log, $routeParams, $route, votingFactory) {
+votingApp.controller('voteCtrl', function ($scope, $http, $uibModal, $log, $routeParams, $route, votingFactory) {
 
 
     $scope.reverse = false;
@@ -31,7 +28,7 @@ VotingCtrls.controller('VoteCtrl', function ($scope, $http, $uibModal, $log, $ro
         var modalInstance = $uibModal.open({
             animation: $scope.animationsEnabled,
             templateUrl: '/App/Voting/Partials/VotingModal.html',
-            controller: 'ModalInstanceCtrl',
+            controller: 'modalVotingCtrl',
             size: 'md',
             resolve: {
                 votingCard: cardArg
@@ -97,7 +94,7 @@ VotingCtrls.controller('VoteCtrl', function ($scope, $http, $uibModal, $log, $ro
 
 // Please note that $modalInstance represents a modal window (instance) dependency.
 // It is not the same as the $uibModal service used above.
-VotingCtrls.controller('ModalInstanceCtrl', function ($scope, $http, $uibModalInstance, votingCard) {
+votingApp.controller('modalVotingCtrl', function ($scope, $http, $uibModalInstance, votingCard) {
 
     $scope.card = {};
 
@@ -194,22 +191,4 @@ VotingCtrls.controller('ModalInstanceCtrl', function ($scope, $http, $uibModalIn
     };
 });
 
-VotingCtrls.controller('VoteResultCtrl', function ($scope, $http, $routeParams) {
-    $scope.votingResult = {};
-    $scope.reverse = false;
-    //Set title for view
-    $scope.title = function () {
-        if ($routeParams.type == 1)
-            return 'BOD';
-        return 'BOS';
-    };
-    var dataSent = { votingType: $routeParams.type };
-    $http({ method: 'GET', url: '/VotingCard/GetVotingResult', params: dataSent }).
-        success(function (data, status, headers, config) {
-            $scope.votingResult = data;
-        }).
-        error(function () {
-            alert('Error when loading Voting Result (/VotingCard/GetVotingResult)');
-        });
 
-});

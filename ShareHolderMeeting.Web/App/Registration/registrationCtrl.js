@@ -1,9 +1,6 @@
 ﻿/// <reference path="D:\00-OnlineInsurance\ShareHolderMeeting\ShareHolderMeeting.Web\Scripts/angular.js" />
 
-
-var registrationCtrls = angular.module('registrationCtrls', []);
-
-registrationCtrls.controller('registrationCtrl', function ($scope, $http, $route, shareHolderFactory, statusOptions) {
+registrationApp.controller('registrationCtrl', function ($scope, $http, $route, shareHolderFactory, statusOptions) {
 
     //Used for sorting
     $scope.reverse = false;

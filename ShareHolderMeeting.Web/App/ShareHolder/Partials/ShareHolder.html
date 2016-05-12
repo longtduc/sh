@@ -1,17 +1,11 @@
 ﻿<h3>ShareHolder</h3>
-
+<div ng-init="loading=true;">
+    <img ng-src="../Images/bhvImages/ajax-loader.gif" ng-show="loading" />
+</div>
 
 <label>Search <span class="glyphicon glyphicon-search"></span></label>
 <input type="text" ng-model="search.ShareHolderCode" class="form-control" placeholder="ShareHolder Code" />
 
-
-<div class="row">
-    <span class="col-md-2"></span>
-    <div ng-init="loading = true;">
-        <img ng-src="../Images/bhvImages/ajax-loader.gif" alt="Image not found" ng-show="loading" />
-    </div>
-
-</div>
 <div class="table-responsive">
     <table class="table table-bordered table-hover">
         <thead>
@@ -34,7 +28,7 @@
         <tbody>
             <tr>
                 <td ng-show="addingMode">
-                    <button class="btn btn-default" ng-click="putShareHolder()"><span class="glyphicon glyphicon-plus-sign"> </span></button>
+                    <button class="btn btn-default" ng-click="putShareHolder()"><span class="glyphicon glyphicon-plus-sign"></span></button>
                 </td>
                 <td ng-show="!addingMode">
                     <button class="btn btn-default" ng-click="postShareHolder()"><span class="glyphicon glyphicon-ok"></span></button>
@@ -44,7 +38,7 @@
                     <input type="text" id="newCode" ng-model="newShareHolder.ShareHolderCode" class="form-control" />
                 </td>
                 <td>
-                    <input type="text" id="newShares" ng-model="newShareHolder.NumberOfShares" class="form-control" />
+                    <input type="number" id="newShares" ng-model="newShareHolder.NumberOfShares" class="form-control" />
                 </td>
                 <td>
                     <input type="text" id="newName" ng-model="newShareHolder.Name" class="form-control" />
@@ -55,7 +49,7 @@
             </tr>
             <!--<tr ng-repeat="sh in shareHolders | filter : search: strict | orderBy: sortField : reverse">-->
             <tr ng-repeat="sh in shareHolders | filter : search | orderBy: sortField : reverse">
-                <td>                  
+                <td>
                     <a href="" ng-click="setEditingMode(sh)" class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span></a>
                     <a href="" ng-click="deleteShareHolder(sh)" class="btn btn-default"><span class="glyphicon glyphicon-trash"></span></a>
                 </td>

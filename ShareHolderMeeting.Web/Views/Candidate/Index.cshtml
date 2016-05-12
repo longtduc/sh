@@ -1,14 +1,13 @@
 ﻿
 <div ng-app="candidateApp" ng-init="type=@ViewBag.Type">
-    <div ng-show="loading">
-        <img ng-src="~/Images/bhvImages/ajax-loader.gif" class="ajax-loader" />
-    </div>
-    <div ng-view=""></div>   
+    <img ng-src="~/Images/bhvImages/ajax-loader.gif" class="ajax-loader" ng-show="loading" />
+    <div ng-view=""></div>
 </div>
 
 @section scripts{
-    <script src="~/Scripts/angular.min.js"></script>
-    <script src="~/Scripts/angular-route.min.js"></script>
-    <script src="~/App/Candidate/CandidateApp.js"></script>
-    <script src="~/App/Candidate/CandidateCtrl.js"></script>
+    <script src="~/Scripts/angular.js"></script>
+    <script src="~/Scripts/angular-route.js"></script>
+
+    <script src="~/App/Candidate/candidateApp.js"></script>
+    <script src="~/App/Candidate/candidateCtrl.js"></script>
 }

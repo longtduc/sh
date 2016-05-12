@@ -2,7 +2,7 @@
 /// <reference path="D:\00-OnlineInsurance\ShareHolderMeeting\ShareHolderMeeting.Web\Scripts/angular-route.min.js" />
 
 
-var votingByHandApp = angular.module('votingByHandApp', ['ngRoute', 'votingByHandCtrl', 'votingByHandFactory']);
+var votingByHandApp = angular.module('votingByHandApp', ['ngRoute', 'ngAnimate', 'ui.bootstrap', 'votingByHandFactory']);
 votingByHandApp.config(function ($routeProvider) {
     $routeProvider.
      when('/',

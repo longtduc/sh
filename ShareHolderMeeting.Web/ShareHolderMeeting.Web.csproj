@@ -208,7 +208,11 @@
     <Compile Include="Migrations\201604260643298_201604260449113_addFilesTable3.Designer.cs">
       <DependentUpon>201604260643298_201604260449113_addFilesTable3.cs</DependentUpon>
     </Compile>
+    <Content Include="App\Candidate\candidateApp.js" />
+    <Content Include="App\Candidate\candidateCtrl.js" />
     <Content Include="App\commonValues.js" />
+    <Content Include="App\VotingByHand\votingByHandResultCtrl.js" />
+    <Content Include="App\Voting\voteResultCtrl.js" />
     <Content Include="DBScripts\CreateShareHolderMeetingDB_NoData.sql" />
     <Content Include="DBScripts\Create_aspnet-ShareHolderMeetingWithData.sql" />
     <Content Include="DBScripts\ResetShareHolderMeetingData.sql" />
@@ -243,21 +247,19 @@
     <Compile Include="ViewModel\VotingResultVM.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App\Candidate\candidateApp.js" />
-    <Content Include="App\Candidate\candidateCtrl.js" />
-    <Content Include="App\Candidate\Partials\candidate.html" />
+    <Content Include="App\Candidate\Partials\Candidate.html" />
     <Content Include="App\Registration\Partials\Registration.html" />
     <Content Include="App\Registration\registrationApp.js" />
-    <Content Include="App\Registration\registrationCtrls.js" />
+    <Content Include="App\Registration\registrationCtrl.js" />
     <Content Include="App\Roles\Partials\RoleList.html" />
     <Content Include="App\Roles\roleApp.js" />
-    <Content Include="App\Roles\roleCtrls.js" />
+    <Content Include="App\Roles\roleCtrl.js" />
     <Content Include="App\Roles\roleFactory.js" />
     <Content Include="App\ShareHolder\Partials\ShareHolder.html" />
     <Content Include="App\ShareHolder\shareHolderApp.js" />
     <Content Include="App\ShareHolder\shareHolderFactory.js" />
     <Content Include="App\ShareHolder\shareHolderFilter.js" />
-    <Content Include="App\ShareHolder\shareHoldersCtrls.js" />
+    <Content Include="App\ShareHolder\shareHoldersCtrl.js" />
     <Content Include="App\Statement\statementApp.js" />
     <Content Include="App\Users\Partials\AssignRoles.html" />
     <Content Include="App\Users\Partials\UsersList.html" />
@@ -268,7 +270,7 @@
     <Content Include="App\VotingByHand\Partials\VotingByHandModal.html" />
     <Content Include="App\VotingByHand\Partials\VotingByHandResult.html" />
     <Content Include="App\VotingByHand\votingByHandApp.js" />
-    <Content Include="App\VotingByHand\votingByHandCtrls.js" />
+    <Content Include="App\VotingByHand\votingByHandCtrl.js" />
     <Content Include="App\VotingByHand\votingByHandFactory.js" />
     <Content Include="App\VotingByHand\votingGenApp.js" />
     <Content Include="App\Voting\Partials\Voting.html" />
@@ -276,7 +278,7 @@
     <Content Include="App\Voting\Partials\VotingResult.html" />
     <Content Include="App\Voting\votingApp.js" />
     <Content Include="App\VotingCard\votingCardApp.js" />
-    <Content Include="App\Voting\VotingCtrls.js" />
+    <Content Include="App\Voting\votingCtrl.js" />
     <Content Include="App\Voting\votingFactory.js" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />

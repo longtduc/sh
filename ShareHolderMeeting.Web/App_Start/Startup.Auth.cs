@@ -5,7 +5,9 @@ using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.Google;
 using Owin;
-using ShareHolderMeeting.Web.Models;
+//using ShareHolderMeeting.Web.Models;
+using BHV.Account;
+using BHV.Account.Models;
 
 namespace ShareHolderMeeting.Web
 {

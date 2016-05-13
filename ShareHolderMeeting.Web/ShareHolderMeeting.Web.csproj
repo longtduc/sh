@@ -164,26 +164,30 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Account\Controllers\AccountController.cs" />
+    <Compile Include="Account\Controllers\ManageController.cs" />
+    <Compile Include="Account\Controllers\RoleController.cs" />
+    <Compile Include="Account\Controllers\UserController.cs" />
+    <Compile Include="Account\IdentityConfig.cs" />
+    <Compile Include="Account\Models\AccountViewModels.cs" />
+    <Compile Include="Account\Models\BhvAccountViewModel.cs" />
+    <Compile Include="Account\Models\IdentityModels.cs" />
+    <Compile Include="Account\Models\ManageViewModels.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
-    <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CandidateController.cs" />
     <Compile Include="Controllers\CandidateDSController.cs" />
     <Compile Include="Controllers\CandidateFileController.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\RegistrationController.cs" />
-    <Compile Include="Controllers\RoleController.cs" />
     <Compile Include="Controllers\ShareHolderController.cs" />
     <Compile Include="Controllers\ShareHolderDSController.cs" />
     <Compile Include="Controllers\StatementController.cs" />
-    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Controllers\VotingByHandController.cs" />
     <Compile Include="Controllers\VotingCardController.cs" />
     <Compile Include="Controllers\VotingController.cs" />
@@ -200,36 +204,33 @@
     <Compile Include="Interfaces\UoWVotingCard.cs" />
     <Compile Include="Interfaces\VotingByHandRepo.cs" />
     <Compile Include="Interfaces\VotingCardRepo.cs" />
-    <Compile Include="Migrations\201604260449113_addFilesTable2.cs" />
-    <Compile Include="Migrations\201604260449113_addFilesTable2.Designer.cs">
-      <DependentUpon>201604260449113_addFilesTable2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201604260643298_201604260449113_addFilesTable3.cs" />
-    <Compile Include="Migrations\201604260643298_201604260449113_addFilesTable3.Designer.cs">
-      <DependentUpon>201604260643298_201604260449113_addFilesTable3.cs</DependentUpon>
-    </Compile>
+    <Content Include="Account\Scripts\ajax-loader.gif" />
+    <Content Include="Account\Scripts\Roles\Partials\_roleList.html" />
+    <Content Include="Account\Scripts\Roles\roleApp.js" />
+    <Content Include="Account\Scripts\Roles\roleCtrl.js" />
+    <Content Include="Account\Scripts\Roles\roleFactory.js" />
+    <Content Include="Account\Scripts\Users\assignRoleCtrl.js" />
+    <Content Include="Account\Scripts\Users\Partials\_assignRole.html" />
+    <Content Include="Account\Scripts\Users\Partials\_usersList.html" />
+    <Content Include="Account\Scripts\Users\userApp.js" />
+    <Content Include="Account\Scripts\Users\userCtrl.js" />
+    <Content Include="Account\Scripts\Users\userFactory.js" />
     <Content Include="App\ajax-loader.gif" />
     <Content Include="App\Candidate\candidateApp.js" />
     <Content Include="App\Candidate\candidateCtrl.js" />
     <Content Include="App\commonValues.js" />
-    <Content Include="App\Users\assignRoleCtrl.js" />
     <Content Include="App\VotingByHand\votingByHandResultCtrl.js" />
     <Content Include="App\Voting\voteResultCtrl.js" />
     <Content Include="DBScripts\CreateShareHolderMeetingDB_NoData.sql" />
     <Content Include="DBScripts\Create_aspnet-ShareHolderMeetingWithData.sql" />
     <Content Include="DBScripts\ResetShareHolderMeetingData.sql" />
-    <Content Include="Migrations\201604260643298_201604260449113_addFilesTable3.sql" />
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\BhvAccountViewModel.cs" />
     <Compile Include="Models\Candidate.cs" />
     <Compile Include="Models\CandidateValidator.cs" />
     <Compile Include="Models\CoreServices\InputErrors.cs" />
     <Compile Include="Models\CandidateFile.cs" />
     <Compile Include="Models\FileType.cs" />
-    <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Interfaces\IValidator.cs" />
-    <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\ShareHodlerValidator.cs" />
     <Compile Include="Models\ShareHolder.cs" />
     <Compile Include="Models\ShareHolderContext.cs" />
@@ -253,21 +254,12 @@
     <Content Include="App\Registration\Partials\Registration.html" />
     <Content Include="App\Registration\registrationApp.js" />
     <Content Include="App\Registration\registrationCtrl.js" />
-    <Content Include="App\Roles\Partials\RoleList.html" />
-    <Content Include="App\Roles\roleApp.js" />
-    <Content Include="App\Roles\roleCtrl.js" />
-    <Content Include="App\Roles\roleFactory.js" />
     <Content Include="App\ShareHolder\Partials\ShareHolder.html" />
     <Content Include="App\ShareHolder\shareHolderApp.js" />
     <Content Include="App\ShareHolder\shareHolderFactory.js" />
     <Content Include="App\ShareHolder\shareHolderFilter.js" />
     <Content Include="App\ShareHolder\shareHoldersCtrl.js" />
     <Content Include="App\Statement\statementApp.js" />
-    <Content Include="App\Users\Partials\AssignRoles.html" />
-    <Content Include="App\Users\Partials\UsersList.html" />
-    <Content Include="App\Users\userApp.js" />
-    <Content Include="App\Users\userCtrl.js" />
-    <Content Include="App\Users\userFactory.js" />
     <Content Include="App\VotingByHand\Partials\VotingByHand.html" />
     <Content Include="App\VotingByHand\Partials\VotingByHandModal.html" />
     <Content Include="App\VotingByHand\Partials\VotingByHandResult.html" />
@@ -301,8 +293,6 @@
     <Content Include="Images\orderedList7.png" />
     <Content Include="Images\orderedList8.png" />
     <Content Include="Images\orderedList9.png" />
-    <Content Include="Migrations\201604260423487_addFilesTable.sql" />
-    <Content Include="Migrations\201604260449113_addFilesTable2.sql" />
     <Content Include="Migrations\CreateShareHolderMeetingDB.sql" />
     <Content Include="Scripts\angular-animate.js" />
     <Content Include="Scripts\angular-animate.min.js" />
@@ -312,6 +302,28 @@
     <Content Include="Scripts\angular.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Account\Views\Account\ConfirmEmail.cshtml" />
+    <Content Include="Account\Views\Account\ExternalLoginConfirmation.cshtml" />
+    <Content Include="Account\Views\Account\ExternalLoginFailure.cshtml" />
+    <Content Include="Account\Views\Account\ForgotPassword.cshtml" />
+    <Content Include="Account\Views\Account\ForgotPasswordConfirmation.cshtml" />
+    <Content Include="Account\Views\Account\Login.cshtml" />
+    <Content Include="Account\Views\Account\Register.cshtml" />
+    <Content Include="Account\Views\Account\ResetPassword.cshtml" />
+    <Content Include="Account\Views\Account\ResetPasswordConfirmation.cshtml" />
+    <Content Include="Account\Views\Account\ResetPasswordForUser.cshtml" />
+    <Content Include="Account\Views\Account\SendCode.cshtml" />
+    <Content Include="Account\Views\Account\VerifyCode.cshtml" />
+    <Content Include="Account\Views\Account\_ExternalLoginsListPartial.cshtml" />
+    <Content Include="Account\Views\Manage\AddPhoneNumber.cshtml" />
+    <Content Include="Account\Views\Manage\ChangePassword.cshtml" />
+    <Content Include="Account\Views\Manage\Index.cshtml" />
+    <Content Include="Account\Views\Manage\ManageLogins.cshtml" />
+    <Content Include="Account\Views\Manage\SetPassword.cshtml" />
+    <Content Include="Account\Views\Manage\VerifyPhoneNumber.cshtml" />
+    <Content Include="Account\Views\Role\Index.cshtml" />
+    <Content Include="Account\Views\User\Index.cshtml" />
+    <Content Include="Account\Views\web.config" />
     <None Include="Properties\PublishProfiles\Profile.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -345,28 +357,8 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
-    <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
-    <Content Include="Views\Account\ConfirmEmail.cshtml" />
-    <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
-    <Content Include="Views\Account\ExternalLoginFailure.cshtml" />
-    <Content Include="Views\Account\ForgotPassword.cshtml" />
-    <Content Include="Views\Account\ForgotPasswordConfirmation.cshtml" />
-    <Content Include="Views\Account\Login.cshtml" />
-    <Content Include="Views\Account\Register.cshtml" />
-    <Content Include="Views\Account\ResetPassword.cshtml" />
-    <Content Include="Views\Account\ResetPasswordConfirmation.cshtml" />
-    <Content Include="Views\Account\SendCode.cshtml" />
-    <Content Include="Views\Account\VerifyCode.cshtml" />
-    <Content Include="Views\Manage\AddPhoneNumber.cshtml" />
-    <Content Include="Views\Manage\ChangePassword.cshtml" />
-    <Content Include="Views\Manage\Index.cshtml" />
-    <Content Include="Views\Manage\ManageLogins.cshtml" />
-    <Content Include="Views\Manage\SetPassword.cshtml" />
-    <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\Role\Index.cshtml" />
-    <Content Include="Views\User\Index.cshtml" />
     <Content Include="Views\Candidate\Index.cshtml" />
     <Content Include="Views\Registration\Index.cshtml" />
     <Content Include="Views\ShareHolder\Index.cshtml" />
@@ -390,19 +382,12 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Account\Views\Shared\" />
     <Folder Include="App_Data\" />
     <Folder Include="Images\bhvImages\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App\Voting\votingFilter.js" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201604260449113_addFilesTable2.resx">
-      <DependentUpon>201604260449113_addFilesTable2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201604260643298_201604260449113_addFilesTable3.resx">
-      <DependentUpon>201604260643298_201604260449113_addFilesTable3.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

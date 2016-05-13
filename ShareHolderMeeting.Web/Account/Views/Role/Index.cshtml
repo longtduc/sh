@@ -1,0 +1,16 @@
+﻿@{
+    Layout = " ~/Views/Shared/_Layout.cshtml";
+}
+<div ng-app="roleApp" ng-controller="roleCtrl">
+    <div ng-view=""></div>
+</div>
+
+@section scripts{
+    <script src="~/Scripts/angular.min.js"></script>
+    <script src="~/Scripts/angular-route.min.js"></script>
+
+    <script src="~/Account/Scripts/Roles/roleApp.js"></script>
+    <script src="~/Account/Scripts/Roles/roleCtrl.js"></script>
+    <script src="~/Account/Scripts/Roles/roleFactory.js"></script>
+
+}

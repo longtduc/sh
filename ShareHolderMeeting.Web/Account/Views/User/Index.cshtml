@@ -1,0 +1,19 @@
+﻿@{
+    Layout = " ~/Views/Shared/_Layout.cshtml";
+}
+<div ng-app="userApp" ng-cloak="">
+    <div ng-view=""></div>
+</div>
+
+@section scripts {
+
+    <script src="~/Scripts/angular.min.js"></script>
+    <script src="~/Scripts/angular-route.min.js"></script>
+
+    <script src="~/Account/Scripts/Users/userApp.js"></script>
+    <script src="~/Account/Scripts/Users/userFactory.js"></script>
+    <script src="~/Account/Scripts/Users/userCtrl.js"></script>
+    <script src="~/Account/Scripts/Users/assignRoleCtrl.js"></script>
+
+
+}

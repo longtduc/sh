@@ -219,8 +219,10 @@
     <Content Include="App\Candidate\candidateApp.js" />
     <Content Include="App\Candidate\candidateCtrl.js" />
     <Content Include="App\commonValues.js" />
+    <Content Include="App\Directives\dynamic-number.js" />
     <Content Include="App\VotingByHand\votingByHandResultCtrl.js" />
     <Content Include="App\Voting\voteResultCtrl.js" />
+    <Content Include="Content\SiteExtenstion.css" />
     <Content Include="DBScripts\CreateShareHolderMeetingDB_NoData.sql" />
     <Content Include="DBScripts\Create_aspnet-ShareHolderMeetingWithData.sql" />
     <Content Include="DBScripts\ResetShareHolderMeetingData.sql" />

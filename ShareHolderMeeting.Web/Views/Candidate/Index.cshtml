@@ -1,6 +1,5 @@
 ﻿
-<div ng-app="candidateApp" ng-init="type=@ViewBag.Type">
-    <img ng-src="~/Images/bhvImages/ajax-loader.gif" class="ajax-loader" ng-show="loading" />
+<div ng-app="candidateApp" ng-init="type=@ViewBag.Type" ng-cloak>    
     <div ng-view=""></div>
 </div>
 

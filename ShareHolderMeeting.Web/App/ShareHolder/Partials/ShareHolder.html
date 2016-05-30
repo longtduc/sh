@@ -37,7 +37,9 @@
                     <input type="text" id="newCode" ng-model="newShareHolder.ShareHolderCode" class="form-control" />
                 </td>
                 <td>
-                    <input type="number" id="newShares" ng-model="newShareHolder.NumberOfShares" class="form-control" />
+                    <input type="text" id="newShares" ng-model="newShareHolder.NumberOfShares"
+                           awnum num-neg="false" num-int="12" num-fract="0" num-sep="." num-thousand="true"
+                           class="form-control" />
                 </td>
                 <td>
                     <input type="text" id="newName" ng-model="newShareHolder.Name" class="form-control" />

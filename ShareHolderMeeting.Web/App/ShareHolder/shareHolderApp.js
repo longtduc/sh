@@ -1,7 +1,7 @@
 ﻿/// <reference path="D:\00-OnlineInsurance\ShareHolderMeeting\ShareHolderMeeting.Web\Scripts/angular.min.js" />
 /// <reference path="D:\00-OnlineInsurance\ShareHolderMeeting\ShareHolderMeeting.Web\Scripts/angular-route.min.js" />
 
-var shareHolderApp = angular.module('shareHolderApp', ['ngRoute', 'shareHolderFactory']);
+var shareHolderApp = angular.module('shareHolderApp', ['ngRoute', 'shareHolderFactory', 'dynamicNumber']);
 
 shareHolderApp.config(function ($routeProvider) {
     $routeProvider.

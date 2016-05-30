@@ -46,7 +46,9 @@
                     {{c.CandidateName}}
                 </td>
                 <td>
-                    <input type="text" ng-model="c.VotingAmt" class="form-control input-sm" />
+                    <input type="text" ng-model="c.VotingAmt"
+                           awnum num-neg="false" num-int="12" num-fract="0" num-sep="." num-thousand="true"
+                           class="form-control input-sm" />
                 </td>
                 <td>
                     <button class="btn btn-default input-sm" type="button" ng-click="voteTheRest(c.Id)">Vote The Rest</button>

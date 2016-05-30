@@ -3,7 +3,7 @@
 
 
 var votingApp = angular.module('votingApp',
-    ['ngRoute', 'shareHolderFactory', 'votingFactory', 'ngAnimate', 'ui.bootstrap']);
+    ['ngRoute', 'shareHolderFactory', 'votingFactory', 'dynamicNumber', 'ngAnimate', 'ui.bootstrap']);
 
 
 votingApp.config(function ($routeProvider) {

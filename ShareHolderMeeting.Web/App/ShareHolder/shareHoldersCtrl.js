@@ -84,12 +84,7 @@ shareHolderApp.controller('shareHoldersCtrl', ['$scope', '$http', 'shareHolderFa
 
     //switch to editing mode for updating 
     $scope.setEditingMode = function (shareHolder) {
-
-        $scope.newShareHolder.ShareHolderId = shareHolder.ShareHolderId;
-        $scope.newShareHolder.ShareHolderCode = shareHolder.ShareHolderCode,
-        $scope.newShareHolder.Name = shareHolder.Name,
-        $scope.newShareHolder.NumberOfShares = shareHolder.NumberOfShares
-
+        $scope.newShareHolder = angular.copy(shareHolder);
         $scope.btnLabel = "Save";
         $scope.addingMode = false;
     };

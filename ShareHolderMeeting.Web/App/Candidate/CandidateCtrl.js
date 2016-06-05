@@ -56,11 +56,8 @@ candidateApp.controller('candidateCtrl', ['$scope', '$http', function ($scope, $
 
    
     $scope.setEditingMode = function (candidate) {
-        $scope.selectedRow = candidate.Id;
-        //DO NOT USE THIS CODE
-        //$scope.editCandidate = candidate;
-        $scope.editCandidate.Name = candidate.Name;
-        $scope.editCandidate.Id = candidate.Id;
+        $scope.selectedRow = candidate.Id;        
+        $scope.editCandidate =angular.copy(candidate);       
         $scope.newCandidate = {};
     };
 

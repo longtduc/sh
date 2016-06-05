@@ -17,8 +17,7 @@ angular.module('statementApp', [])
 
         $scope.setEditingMode = function (s) {
             $scope.selectedRow = s.Id;
-            $scope.editedStatement.Description = s.Description;
-            $scope.editedStatement.Id = s.Id;
+            $scope.editedStatement = angular.copy(s);         
         };
 
         $scope.cancelEditing = function () {

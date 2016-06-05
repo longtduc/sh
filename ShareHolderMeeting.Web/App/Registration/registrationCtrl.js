@@ -42,11 +42,7 @@ registrationApp.controller('registrationCtrl', function ($scope, $http, $route, 
     $scope.toBeRegisted = {};
 
     $scope.setRegisteringMode = function (shareHolder) {
-
-        $scope.toBeRegisted.Name = shareHolder.Name;
-        $scope.toBeRegisted.ShareHolderCode = shareHolder.ShareHolderCode;
-        $scope.toBeRegisted.NumberOfShares = shareHolder.NumberOfShares;
-        $scope.toBeRegisted.ShareHolderId = shareHolder.ShareHolderId;
+        $scope.toBeRegisted = angular.copy(shareHolder);       
         $scope.statusSelected = $scope.statusOptions[shareHolder.StatusAtMeeting];
         $scope.registeringMode = true;
     };

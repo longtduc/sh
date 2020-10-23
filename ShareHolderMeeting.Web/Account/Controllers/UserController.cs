@@ -11,7 +11,7 @@ using System.Web.Security;
 
 namespace BHV.Account.Controllers
 {
-    //[Authorize(Roles = "Administrators")]
+    [Authorize(Roles = "Administrators")]
     public class UserController : Controller
     {
         private UserManager<ApplicationUser> _userManager;

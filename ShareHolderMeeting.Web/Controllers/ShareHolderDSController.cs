@@ -14,18 +14,15 @@ namespace ShareHolderMeeting.Web.Controllers
     //[Authorize]
     public class ShareHolderDSController : ApiController
     {
-        private ShareHolderRepository _shareHolderRepo;
+        private IShareHolderRepo _shareHolderRepo;
 
         private ShareHodlerValidator _shareHolderValidator;
 
-        public ShareHolderDSController()
+        public ShareHolderDSController(IShareHolderRepo repo, ShareHodlerValidator val)
         {
-            _shareHolderRepo = new ShareHolderRepository();
-            _shareHolderValidator = new ShareHodlerValidator();
-
+            _shareHolderRepo = repo;
+            _shareHolderValidator = val;
         }
-
-
         public IQueryable<ShareHolder> Get()
         {
             return _shareHolderRepo.All;

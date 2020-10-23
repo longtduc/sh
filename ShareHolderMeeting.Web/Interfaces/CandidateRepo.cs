@@ -10,16 +10,16 @@ using System.Data.Entity;
 
 namespace ShareHolderMeeting.Web.Interfaces
 {
-    public class CandidateRepo:ICandidateRepo
+    public class CandidateRepo : ICandidateRepo
     {
         private ShareHolderContext context;
 
-        public CandidateRepo():this(new ShareHolderContext())
+        public CandidateRepo() : this(new ShareHolderContext())
         {
 
         }
 
-        public CandidateRepo(ShareHolderContext  context)
+        public CandidateRepo(ShareHolderContext context)
         {
             this.context = context;
         }
@@ -66,11 +66,6 @@ namespace ShareHolderMeeting.Web.Interfaces
         public void Save()
         {
             context.SaveChanges();
-        }
-
-        public void Dispose()
-        {
-            context.Dispose();
         }
     }
     public interface ICandidateRepo : IRepository<Candidate> { }

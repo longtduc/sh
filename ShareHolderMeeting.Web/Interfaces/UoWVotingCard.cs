@@ -29,7 +29,7 @@ namespace ShareHolderMeeting.Web.Interfaces
             {
                 if (shareHolders == null)
                 {
-                    shareHolders = new ShareHolderRepository(context);
+                    shareHolders = new ShareHolderRepo(context);
                 }
                 return shareHolders;
             }

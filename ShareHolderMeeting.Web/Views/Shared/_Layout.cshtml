@@ -22,18 +22,18 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Registration", "Index", "Registration")</li>
-                    <li>@Html.ActionLink("VotingByHand", "Index", "VotingByHand")</li>
-                    <li>@Html.ActionLink("Voting", "Index", "Voting")</li>
+                    <li>@Html.ActionLink("Đăng ký Cổ đông", "Index", "Registration")</li>
+                    <li>@Html.ActionLink("Biểu quyết", "Index", "VotingByHand")</li>
+                    <li>@Html.ActionLink("Bầu Cử", "Index", "Voting")</li>
                     <li class="dropdown">
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">Meeting Admin<span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li>@Html.ActionLink("ShareHolders", "Index", "ShareHolder")</li>
-                            <li>@Html.ActionLink("BOD Candidates", "Index", "Candidate", new { type = 1 }, null)</li>
-                            <li>@Html.ActionLink("BOS Candidates", "Index", "Candidate", new { type = 2 }, null)</li>
-                            <li>@Html.ActionLink("Statements", "Index", "Statement")</li>
-                            <li>@Html.ActionLink("VotingByHand Cards", "Index", "VotingByHand")</li>
-                            <li>@Html.ActionLink("Voting Cards", "Index", "VotingCard")</li>
+                            <li>@Html.ActionLink("Cổ đông", "Index", "ShareHolder")</li>
+                            <li>@Html.ActionLink("Ứng viên HDQT", "Index", "Candidate", new { type = 1 }, null)</li>
+                            <li>@Html.ActionLink("Ứng viên BKS", "Index", "Candidate", new { type = 2 }, null)</li>
+                            <li>@Html.ActionLink("Báo cáo, Tờ trình", "Index", "Statement")</li>
+                            <li>@Html.ActionLink("Tạo Phiếu Biểu quyết", "GenerateByHandCards", "VotingByHand")</li>
+                            <li>@Html.ActionLink("Tạo lại Phiếu Bầu", "Index", "VotingCard")</li>
 
 
                         </ul>

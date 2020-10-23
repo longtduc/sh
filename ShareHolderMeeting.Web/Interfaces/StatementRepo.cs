@@ -65,11 +65,7 @@ namespace ShareHolderMeeting.Web.Interfaces
         {
             context.SaveChanges();
         }
-
-        public void Dispose()
-        {
-            
-        }
+      
     }
 
     public interface IStatementRepo : IRepository<Statement> { }

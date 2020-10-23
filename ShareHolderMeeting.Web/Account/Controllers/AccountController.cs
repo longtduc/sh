@@ -68,6 +68,8 @@ namespace BHV.Account.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Login(LoginViewModel model, string returnUrl)
         {
+
+            //return View("~/Account/Views/Account/Register.cshtml");
             if (!ModelState.IsValid)
             {
                 return View("~/Account/Views/Account/Login.cshtml", model);
@@ -76,6 +78,7 @@ namespace BHV.Account.Controllers
             // This doesn't count login failures towards account lockout
             // To enable password failures to trigger account lockout, change to shouldLockout: true
             var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: false);
+           
             switch (result)
             {
                 case SignInStatus.Success:
@@ -87,7 +90,8 @@ namespace BHV.Account.Controllers
                 case SignInStatus.RequiresVerification:
                     return RedirectToAction("SendCode", new { ReturnUrl = returnUrl, RememberMe = model.RememberMe });
 
-                case SignInStatus.Failure:
+                //case SignInStatus.Failure:
+
                 default:
                     ModelState.AddModelError("", "Invalid login attempt.");
                     return View("~/Account/Views/Account/Login.cshtml", model);
@@ -141,7 +145,7 @@ namespace BHV.Account.Controllers
 
         //
         // GET: /Account/Register
-        [Authorize(Roles = "Administrators")]
+        //[Authorize(Roles = "Administrators")]
         public ActionResult Register()
         {
             return View("~/Account/Views/Account/Register.cshtml");
@@ -150,7 +154,7 @@ namespace BHV.Account.Controllers
         //
         // POST: /Account/Register
         [HttpPost]
-        [Authorize(Roles = "Administrators")]
+        //[Authorize(Roles = "Administrators")]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Register(RegisterViewModel model)
         {
@@ -281,7 +285,7 @@ namespace BHV.Account.Controllers
         //
         // POST: /Account/ResetPassword
         [HttpPost]
-        [Authorize(Roles = "Administrators")]
+        //[Authorize(Roles = "Administrators")]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> ResetPassword(ResetPasswordViewModel model)
         {

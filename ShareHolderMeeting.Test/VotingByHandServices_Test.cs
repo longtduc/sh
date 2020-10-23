@@ -12,15 +12,15 @@ namespace ShareHolderMeeting.Test
     [TestClass]
     public class VotingByHandServices_Test
     {
-        private ShareHolderRepository _shareHolderRepo;
+        private IShareHolderRepo _shareHolderRepo;
         private VotingByHandRepo _votingByHandRepo;
         private StatementRepo _statementRepo;
         private VotingByHandServices _svc;
         [TestInitialize]
         public void Init()
         {
-            _shareHolderRepo = new ShareHolderRepository();
-            _votingByHandRepo = new VotingByHandRepo();
+            _shareHolderRepo = new ShareHolderRepo(new ShareHolderContext());
+            _votingByHandRepo = new VotingByHandRepo(new ShareHolderContext());
             _statementRepo = new StatementRepo();
             _svc = new VotingByHandServices();
 

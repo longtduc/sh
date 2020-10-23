@@ -13,21 +13,13 @@ namespace ShareHolderMeeting.Web.Controllers
     [Authorize]
     public class VotingCardController : Controller
     {
-        private readonly IShareHolderRepo _shareHolderRepo;
         private readonly IVotingCardRepo _votingCardRepo;
         private VotingCardServices _votingCardSvc;
 
-        // If you are using Dependency Injection, you can delete the following constructor
-        public VotingCardController()
-            : this(new ShareHolderRepository(), new VotingCardRepo(), new VotingCardServices())
+        public VotingCardController(IVotingCardRepo vcRepo, VotingCardServices vcSvc)
         {
-        }
-
-        public VotingCardController(IShareHolderRepo shRepo, IVotingCardRepo vcRepo, VotingCardServices vcs)
-        {
-            _shareHolderRepo = shRepo;
             _votingCardRepo = vcRepo;
-            _votingCardSvc = vcs;
+            _votingCardSvc = vcSvc;
         }
 
         //Get VotingCards 
@@ -148,12 +140,7 @@ namespace ShareHolderMeeting.Web.Controllers
 
         protected override void Dispose(bool disposing)
         {
-            if (disposing)
-            {
-                _shareHolderRepo.Dispose();
-                _votingCardRepo.Dispose();
-            }
-            base.Dispose(disposing);
+
         }
     }
 }

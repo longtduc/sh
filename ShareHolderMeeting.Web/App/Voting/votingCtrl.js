@@ -9,8 +9,8 @@ votingApp.controller('voteCtrl', function ($scope, $http, $uibModal, $log, $rout
     //Set title for view
     $scope.title = function () {
         if ($routeParams.type == 1)
-            return 'BODs';
-        return 'BOSs';
+            return 'HĐQT';//  return 'BODs';
+        return 'BKS'; // return 'BOSs';
     };
 
     $scope.loading = true;

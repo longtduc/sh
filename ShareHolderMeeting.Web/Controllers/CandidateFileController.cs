@@ -13,8 +13,12 @@ namespace ShareHolderMeeting.Web.Controllers
 {
     public class CandidateFileController : Controller
     {
-        private ShareHolderContext _ctx = new ShareHolderContext();        // GET: CandidateFile
+        private readonly ShareHolderContext _ctx;       
 
+        public CandidateFileController(ShareHolderContext context)
+        {
+            _ctx = context;
+        }
         public ActionResult Upload()
         {
             return View();
@@ -166,7 +170,7 @@ namespace ShareHolderMeeting.Web.Controllers
                 }
                 catch (Exception ex)
                 {
-
+                    
 
                 }
             }

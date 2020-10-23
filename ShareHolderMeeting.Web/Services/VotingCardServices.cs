@@ -12,7 +12,7 @@ namespace ShareHolderMeeting.Web.Services
     {
 
         private VotingCardRepo _votingCardRepo;
-        private ShareHolderRepository _shareHolderRepo;
+        private ShareHolderRepo _shareHolderRepo;
         private CandidateRepo _candidateRepo;
         private UoWvotingCard _uowVotingCard;
         private ShareHolderContext _context;
@@ -20,7 +20,7 @@ namespace ShareHolderMeeting.Web.Services
         {
             _context = new ShareHolderContext();
             _votingCardRepo = new VotingCardRepo(_context);
-            _shareHolderRepo = new ShareHolderRepository(_context);
+            _shareHolderRepo = new ShareHolderRepo(_context);
             _candidateRepo = new CandidateRepo(_context);
             _uowVotingCard = new UoWvotingCard(_context);
         }

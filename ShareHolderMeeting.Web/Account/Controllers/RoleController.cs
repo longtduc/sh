@@ -10,7 +10,7 @@ using System.Web.Security;
 
 namespace BHV.Account.Controllers
 {
-    [Authorize(Roles = "Administrators")]
+    //[Authorize(Roles = "Administrators")]
     public class RoleController : Controller
     {
         //

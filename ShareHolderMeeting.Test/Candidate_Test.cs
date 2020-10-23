@@ -21,5 +21,9 @@ namespace ShareHolderMeeting.Test
             var sut = candidate.IsValidForVotingCard(VotingCardType.BODVotingCard);
             Assert.IsTrue(sut);
         }
+
+
     }
+
+
 }

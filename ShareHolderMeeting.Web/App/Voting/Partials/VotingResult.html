@@ -1,14 +1,16 @@
-﻿<h3>{{title()}}Voting Result </h3>
+﻿<!--<h3>{{title()}}Voting Result </h3>-->
+
+<h3>Kết quả bầu {{title()}} </h3>
 
 <div class="table-responsive">
     <table class="table table-striped table-bordered">
         <thead>
             <tr>
-                <th class="col-md-2">Candidate Id</th>
+                <th class="col-md-2">Mã Ứng viên</th>
                 <th class="col-md-2">
-                    Name
+                    Họ và Tên
                 </th>
-                <th class="col-md-2">Voting Cards</th>
+                <th class="col-md-2">Số phiếu Bầu</th>
                 <th class="col-md-1">
                     <a href="" ng-click="sortField='VotingRate'; reverse = !reverse">Rate</a>
                 </th>
@@ -30,16 +32,16 @@
         <thead>
 
             <tr>
-                <th class="col-md-2">Description</th>
-                <th class="col-md-2">Count</th>
-                <th class="col-md-2">Voting Amount</th>
-                <th class="col-md-1">Rate</th>
+                <th class="col-md-2">Diễn giải</th>
+                <th class="col-md-2">Số lượng</th>
+                <th class="col-md-2">Số Phiếu bầu</th>
+                <th class="col-md-1">Tỷ lệ</th>
             </tr>
         </thead>
         <tbody>
             <tr>
                 <td>
-                    VotingCards Issured
+                    Số Phiếu bầu phát ra
                 </td>
                 <td>
                     {{votingResult.NumberOfVotingCardsIssured | number}}
@@ -51,7 +53,7 @@
             </tr>
             <tr>
                 <td>
-                    VotingCards Received
+                    Số Phiếu bầu nhận được
                 </td>
                 <td>
                     {{votingResult.NumberOfVotingCardsReceived | number}}
@@ -66,7 +68,7 @@
 
             <tr>
                 <td>
-                    VotingCards Not Received
+                    Số Phiếu bầu không nhận được
                 </td>
                 <td>
                     {{votingResult.NumberOfVotingCardNotReceived | number}}
@@ -81,7 +83,7 @@
 
             <tr>
                 <td>
-                    VotingCards Valid
+                    Số Phiếu bầu hợp lệ
                 </td>
                 <td>
                     {{votingResult.NumberOfVotingCardsValidated | number}}

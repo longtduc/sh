@@ -14,7 +14,7 @@
         <tbody>
             <tr>
                 <td>
-                    <button class="btn btn-default" ng-click="putCandidate()">Add</button>
+                    <button class="btn btn-default" ng-click="postCandidate()">Add</button>
                 </td>
                 <td>
                     <input type="text" ng-model="newCandidate.Name" class="form-control" />
@@ -31,7 +31,7 @@
                         <a href="" ng-click="setEditingMode(c)" class="btn btn-default">Edit</a>
                     </span>
                     <span ng-show="selectedRow == c.Id">
-                        <a href="" ng-click="postCandidate()" class="btn btn-default">Save</a>
+                        <a href="" ng-click="putCandidate()" class="btn btn-default">Save</a>
                         <a href="" ng-click="cancelEditing()" class="btn btn-default">Cancel</a>
                     </span>
                 </td>

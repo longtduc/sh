@@ -1,4 +1,6 @@
-﻿<h3>Vote {{title()}}</h3>
+﻿<!--<h3>Vote {{title()}}</h3>-->
+<h3>Bầu {{title()}}</h3>
+
 <img ng-src="../App/ajax-loader.gif" ng-show="loading" />
 
 <b>Search</b>
@@ -30,9 +32,9 @@
                 <th ng-show="showName" class="col-md-2">
                     <a href="" ng-click="sortField='Name'; reverse = !reverse">ShareHolder'sName</a>
                 </th>
-                <th class="col-md-1">
+                <!--<th class="col-md-1">
                     VotingCardId
-                </th>
+                </th>-->
             </tr>
         </thead>
         <tbody>
@@ -51,7 +53,7 @@
                     <input type="checkbox" ng-model="card.IsInvalid" disabled />
                 </td>
                 <td ng-show="showName">{{card.ShareHolderName}}</td>
-                <td>{{card.Id}}</td>
+                <!--<td>{{card.Id}}</td>-->
             </tr>
         </tbody>
         <tfoot>

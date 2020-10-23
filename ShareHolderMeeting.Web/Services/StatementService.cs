@@ -17,11 +17,8 @@ namespace ShareHolderMeeting.Web.Services
         }
         public int Create(StatementVM vm)
         {
-            var entity = new Statement()
-            {
-                Id = vm.Id,
-                Description = vm.Description
-            };
+            var entity = new Statement(vm.Id, vm.Description);
+            
 
             _repo.InsertOrUpdate(entity);
             _repo.Save();
@@ -30,12 +27,8 @@ namespace ShareHolderMeeting.Web.Services
         }
         public int Update(StatementVM vm)
         {
-            var entity = new Statement()
-            {
-                Id = vm.Id,
-                Description = vm.Description
-            };
-
+            var entity = new Statement(vm.Id, vm.Description);
+          
             _repo.InsertOrUpdate(entity);
             _repo.Save();
 

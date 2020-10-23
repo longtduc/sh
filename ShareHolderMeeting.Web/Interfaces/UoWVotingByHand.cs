@@ -26,7 +26,7 @@ namespace ShareHolderMeeting.Web.Interfaces
             get
             {
                 if (shareHolders == null)
-                    shareHolders = new ShareHolderRepository(context);
+                    shareHolders = new ShareHolderRepo(context);
                 return shareHolders;
             }
         }

@@ -10,31 +10,27 @@ namespace ShareHolderMeeting.Web.Controllers
 {
     [Authorize(Roles = "Administrators")]
     public class ShareHolderController : Controller
-	{
-		private readonly IShareHolderRepo shareholderRepository;
+    {
+        private readonly IShareHolderRepo shareholderRepo;
 
-		// If you are using Dependency Injection, you can delete the following constructor
-		public ShareHolderController() : this(new ShareHolderRepository())
-		{
-		}
+        public ShareHolderController(IShareHolderRepo shareholderRepository)
+        {
+            this.shareholderRepo = shareholderRepository;
+        }
 
-		public ShareHolderController(IShareHolderRepo shareholderRepository)
-		{
-			this.shareholderRepository = shareholderRepository;
-		}
-	  
-		public ViewResult Index()
-		{
-			return View(shareholderRepository.All);
-		}
+        public ViewResult Index()
+        {
+            return View(shareholderRepo.All);
+        }
 
-		protected override void Dispose(bool disposing)
-		{
-			if (disposing) {
-				shareholderRepository.Dispose();
-			}
-			base.Dispose(disposing);
-		}
-	}
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                //shareholderRepository.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+    }
 }
 

@@ -72,7 +72,7 @@ namespace ShareHolderMeeting.Web.Services
 
         public void UpdateVoingByHand(VotingByHand entity)
         {
-            var repo = new VotingByHandRepo();
+            var repo = new VotingByHandRepo(new ShareHolderContext());
             repo.UpdateGraph(entity);
             repo.Save();
         }

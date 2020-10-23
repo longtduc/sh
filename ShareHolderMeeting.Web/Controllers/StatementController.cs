@@ -18,14 +18,9 @@ namespace ShareHolderMeeting.Web.Controllers
        
         private StatementService _svc;
 
-        public StatementController()
-            : this(new StatementRepo(),new StatementService())
+       public StatementController(IStatementRepo repo, StatementService svc)
         {
-
-        }
-        public StatementController(IStatementRepo repo, StatementService svc)
-        {
-            _repo = repo;          
+            _repo = repo;
             _svc = svc;
         }
 

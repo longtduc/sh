@@ -10,12 +10,12 @@ namespace ShareHolderMeeting.Test
     [TestClass]
     public class ShareHolderRepository_Test
     {
-        private ShareHolderRepository _shareHolderRepo;
+        private ShareHolderRepo _shareHolderRepo;
         
         [TestInitialize]
         public void Init()
         {
-            _shareHolderRepo = new ShareHolderRepository();
+            _shareHolderRepo = new ShareHolderRepo(new ShareHolderContext());
         
         }
         [TestMethod]

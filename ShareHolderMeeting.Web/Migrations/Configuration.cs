@@ -9,7 +9,7 @@ namespace ShareHolderMeeting.Web.Migrations
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = false;
+            AutomaticMigrationsEnabled = true;
         }
 
         protected override void Seed(ShareHolderMeeting.Web.Models.ShareHolderContext context)

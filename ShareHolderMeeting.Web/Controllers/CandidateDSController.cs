@@ -1,6 +1,11 @@
-﻿using ShareHolderMeeting.Web.Interfaces;
+﻿using ShareHolderMeeting.Web.Commands;
+using ShareHolderMeeting.Web.Commands.CqsForCandidate;
+using ShareHolderMeeting.Web.CqsForCandidate;
+using ShareHolderMeeting.Web.Interfaces;
 using ShareHolderMeeting.Web.Models;
 using ShareHolderMeeting.Web.Models.CoreServices;
+using ShareHolderMeeting.Web.Queries;
+using ShareHolderMeeting.Web.Queries.Handlers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,87 +18,59 @@ namespace ShareHolderMeeting.Web.Controllers
 {
     public class CandidateDSController : ApiController
     {
-        private CandidateRepo _candidateRepo;
-        private CandidateValidator _candidateValidator;
-        public CandidateDSController()
+        private readonly CandidateQueryHandler _queryHandler;
+        private readonly CandidateCommandHandler _commandHander;
+
+        public CandidateDSController(CandidateQueryHandler queryHandler, CandidateCommandHandler commandHander)
         {
-            _candidateRepo = new CandidateRepo();
-            _candidateValidator = new CandidateValidator();
+            _queryHandler = queryHandler;
+            _commandHander = commandHander;
         }
 
-        public IQueryable<Candidate> Get(int type)
-        {
-            var enumType = ToCandidateType(type);
-            return _candidateRepo.All
-                    .Where(c => c.CandidateType == enumType);
-        }
-
-        private CandidateType ToCandidateType(int type)
+        public IEnumerable<Candidate> Get(CandidateType type)
         {
 
-            return (CandidateType)type;
+            var query = new GetCandidatesQuery(type);
+            return _queryHandler.Handler(query);
         }
 
-        public HttpResponseMessage Put([FromBody] Candidate candidate)
+        public HttpResponseMessage Post([FromBody] Candidate candidate)
         {
             var response = new HttpResponseMessage();
 
-            //Validate and return error if any
-            if (!_candidateValidator.IsValid(candidate))
+            var command = new CreateCandidateCommand(candidate);
+            var commandResult = _commandHander.Handler(command);
+            if (commandResult.Success)
             {
-                var brokerRules = _candidateValidator.BrokenRules(candidate);
-                var message = InputErrors.MergeErrors(brokerRules);
-                response = Request.CreateErrorResponse(HttpStatusCode.BadRequest, message);
-                return response;
+                response = Request.CreateResponse<Candidate>(HttpStatusCode.Created, commandResult.ReturnObj as Candidate);
+                response.Headers.Location = new Uri(Request.RequestUri, "/Api/BODCandidateDS/" + (commandResult.ReturnObj as Candidate).Id.ToString());
             }
-
-
-            //Persist
-            try
+            else
             {
-                _candidateRepo.InsertOrUpdate(candidate);
-                _candidateRepo.Save();
-                response = Request.CreateResponse<Candidate>(HttpStatusCode.Created, candidate);
-                response.Headers.Location = new Uri(Request.RequestUri, "/Api/BODCandidateDS/" + candidate.Id.ToString());
-            }
-            catch (Exception ex)
-            {
-                response = Request.CreateErrorResponse(HttpStatusCode.BadRequest, ex.Message);
+                response = Request.CreateErrorResponse(HttpStatusCode.BadRequest, commandResult.Message);
             }
             return response;
         }
 
         public Candidate Delete(int id)
         {
-            var candidateToDelete = _candidateRepo.Find(id);
-            _candidateRepo.Delete(id);
-            _candidateRepo.Save();
-            return candidateToDelete;
+            var removeCmd = new RemoveCandidateCommand(id);
+            return (_commandHander.Handler(removeCmd).ReturnObj as Candidate);
         }
 
-        public HttpResponseMessage Post([FromBody]Candidate candidate)
+        public HttpResponseMessage Put([FromBody] Candidate candidate)
         {
-            var response = new HttpResponseMessage();          
+            var response = new HttpResponseMessage();
+            var cmd = new UpdateCandidateCommand(candidate);
+            var cmdResult = _commandHander.Handler(cmd);
 
-            //Validate and return error if any
-            if (!_candidateValidator.IsValid(candidate))
+            if (cmdResult.Success)
             {
-                var brokerRules = _candidateValidator.BrokenRules(candidate);
-                var message = InputErrors.MergeErrors(brokerRules);
-                response = Request.CreateErrorResponse(HttpStatusCode.BadRequest, message);
-                return response;
-            }
-
-            //Persist
-            try
-            {               
-                _candidateRepo.InsertOrUpdate(candidate);
-                _candidateRepo.Save();
                 response = Request.CreateResponse<Candidate>(HttpStatusCode.OK, candidate);
             }
-            catch (Exception ex)
+            else
             {
-                response = Request.CreateErrorResponse(HttpStatusCode.BadRequest, ex.Message, ex);
+                response = Request.CreateErrorResponse(HttpStatusCode.BadRequest, cmdResult.Message);
             }
             return response;
         }

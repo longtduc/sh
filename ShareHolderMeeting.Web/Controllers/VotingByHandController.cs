@@ -15,26 +15,24 @@ namespace ShareHolderMeeting.Web.Controllers
     public class VotingByHandController : Controller
     {
         private readonly IShareHolderRepo _shareHolderRepo;
-      
+
         private VotingByHandServices _votingByHandSvc;
 
         // If you are using Dependency Injection, you can delete the following constructor
-        public VotingByHandController()
-            : this(new ShareHolderRepository(), new VotingByHandServices())
-        {
-        }
-
-        public VotingByHandController(IShareHolderRepo shRepo, VotingByHandServices vcs)
+        public VotingByHandController(IShareHolderRepo shRepo, VotingByHandServices svc)
         {
             _shareHolderRepo = shRepo;
-            _votingByHandSvc = vcs;
+            _votingByHandSvc = svc;
         }
 
         public ActionResult Index()
         {
             return View();
         }
-
+        public ActionResult GenerateByHandCards()
+        {
+            return View();
+        }
         public JsonResult GetVotingByHands()
         {
 
@@ -91,7 +89,7 @@ namespace ShareHolderMeeting.Web.Controllers
 
         public JsonResult GetVotingByHandResult()
         {
-            var result = _votingByHandSvc.CreateVotingByHandResult();            
+            var result = _votingByHandSvc.CreateVotingByHandResult();
             return Json(result, JsonRequestBehavior.AllowGet);
         }
         protected override void Dispose(bool disposing)

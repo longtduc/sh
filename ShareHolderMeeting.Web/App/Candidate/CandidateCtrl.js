@@ -23,15 +23,18 @@ candidateApp.controller('candidateCtrl', ['$scope', '$http', function ($scope, $
         });
 
     $scope.putCandidate = function () {
-        var dataSent = { name: $scope.newCandidate.Name, candidateType: $scope.type };
+        //var dataSent = { name: $scope.newCandidate.Name, candidateType: $scope.type };
+        var dataSent = { id: $scope.editCandidate.Id, name: $scope.editCandidate.Name, candidateType: $scope.type };
         $http.put('/api/CandidateDS', dataSent).
             success(function (data, status, headers, config) {
-                //alert(JSON.stringify(data));
-                if (status = 201) {
-                    //update the model
-                    $scope.candidates.push(data);
-                    //Reset init values
-                    $scope.newCandidate = {};
+                //if (status == 200) {
+                var length = $scope.candidates.length;
+                for (var i = 0; i < length; i++) {
+                    if ($scope.candidates[i].Id === $scope.editCandidate.Id) {
+                        $scope.candidates[i].Name = $scope.editCandidate.Name;
+                        $scope.cancelEditing();
+                        break;
+                    }
                 }
             }).
             error(function (data, status, headers, config) {
@@ -68,17 +71,18 @@ candidateApp.controller('candidateCtrl', ['$scope', '$http', function ($scope, $
     };
 
     $scope.postCandidate = function () {
-        var dataSent = { id: $scope.editCandidate.Id, name: $scope.editCandidate.Name, candidateType: $scope.type };
+        var dataSent = { name: $scope.newCandidate.Name, candidateType: $scope.type };
+        //var dataSent = { id: $scope.editCandidate.Id, name: $scope.editCandidate.Name, candidateType: $scope.type };
         $http.post('/Api/CandidateDS', dataSent)
-         .success(function (data, status, headers, config) {
-             //if (status == 200) {
-             var length = $scope.candidates.length;
-             for (var i = 0; i < length; i++) {
-                 if ($scope.candidates[i].Id === $scope.editCandidate.Id) {
-                     $scope.candidates[i].Name = $scope.editCandidate.Name;
-                     break;
-                 }
-             }
+            .success(function (data, status, headers, config) {
+                //alert(JSON.stringify(data));
+                if (status = 201) {
+                    //update the model
+                    $scope.candidates.push(data);
+                    //Reset init values
+                    $scope.newCandidate = {};
+                }
+             
              $scope.cancelEditing();
          })
          .error(function (data, status, headers, config) {

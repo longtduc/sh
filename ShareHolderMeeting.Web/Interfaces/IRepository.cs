@@ -6,7 +6,7 @@ using System.Text;
 
 namespace ShareHolderMeeting.Web.Interfaces
 {
-   public interface IRepository<T>: IDisposable where T: class
+   public interface IRepository<T> where T: class
     {
         IQueryable<T> All { get; }
         IQueryable<T> AllIncluding(params Expression<Func<T, object>>[] includeProperties);        

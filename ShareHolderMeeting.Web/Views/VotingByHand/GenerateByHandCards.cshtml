@@ -1,0 +1,57 @@
+﻿
+<div ng-app="votingGenApp" ng-cloak="" ng-controller="votingGenCtrl">
+    <h3>Generate Voting ByHand Cards</h3>
+    
+
+    <div class="row">
+        <div class="col-md-2">
+            <a href="" ng-click="generateVotingByHands()" class="btn btn-danger">Generate</a>
+        </div>
+        <div class="col-md-4">
+            <h4 class="text-danger">You must generate All Voting ByHand Cards before using Voting ByHand functionality</h4>
+        </div>
+    </div>
+    <div class="table-responsive">
+        <table class="table table-hover table-bordered">
+            <thead>
+                <tr>
+                    <th class="col-md-1">
+                        Code
+                    </th>
+                    <th class="col-md-1">
+                        Shares
+                    </th>
+                    <th class="col-md-2">
+                        Name
+                    </th>
+                    <th class="col-md-1">
+                        Id
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="voting in votingByHands">
+                    <td>{{voting.ShareHolderCode}}</td>
+                    <td>{{voting.NumberOfShares | number}}</td>
+                    <td>{{voting.ShareHolderName}}</td>
+                    <td>{{voting.Id}}</td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <th>Total ({{votingByHands.length | number}} ShareHolders )</th>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+</div>
+
+@section scripts{
+    <script src="~/Scripts/angular.js"></script>
+
+    <script src="~/App/VotingByHand/votingGenApp.js"></script>
+    <script src="~/App/VotingByHand/votingByHandFactory.js"></script>
+
+
+}
+

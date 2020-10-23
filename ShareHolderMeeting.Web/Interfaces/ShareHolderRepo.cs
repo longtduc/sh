@@ -9,27 +9,23 @@ using System.Web;
 
 namespace ShareHolderMeeting.Web.Interfaces
 {
-    public class ShareHolderRepository : IShareHolderRepo
+    public class ShareHolderRepo : IShareHolderRepo
     {
-        ShareHolderContext context;
-        public ShareHolderRepository()
-        {
-            context = new ShareHolderContext();
-        }
+        private readonly ShareHolderContext _context;
 
-        public ShareHolderRepository(ShareHolderContext context)
+        public ShareHolderRepo(ShareHolderContext context)
         {
-            this.context = context;
+            this._context = context;
         }
 
         public IQueryable<ShareHolder> All
         {
-            get { return context.ShareHolders; }
+            get { return _context.ShareHolders; }
         }
 
         public IQueryable<ShareHolder> AllIncluding(params Expression<Func<ShareHolder, object>>[] includeProperties)
         {
-            IQueryable<ShareHolder> query = context.ShareHolders;
+            IQueryable<ShareHolder> query = _context.ShareHolders;
             foreach (var includeProperty in includeProperties)
             {
                 query = query.Include(includeProperty);
@@ -39,7 +35,7 @@ namespace ShareHolderMeeting.Web.Interfaces
 
         public ShareHolder Find(int id)
         {
-            return context.ShareHolders.Find(id);
+            return _context.ShareHolders.Find(id);
         }
 
         public void InsertOrUpdate(ShareHolder entity)
@@ -47,31 +43,27 @@ namespace ShareHolderMeeting.Web.Interfaces
             if (entity.ShareHolderId == default(int))
             {
                 // New entity
-                context.ShareHolders.Add(entity);
+                _context.ShareHolders.Add(entity);
             }
             else
             {
                 // Existing entity
-                context.Entry(entity).State = System.Data.Entity.EntityState.Modified;
+                _context.Entry(entity).State = System.Data.Entity.EntityState.Modified;
             }
         }
 
         public void Delete(int id)
         {
-            var entity = context.ShareHolders.Find(id);
-            context.ShareHolders.Remove(entity);
+            var entity = _context.ShareHolders.Find(id);
+            if (entity != null)
+                _context.ShareHolders.Remove(entity);
 
         }
 
         public void Save()
         {
-            context.SaveChanges();
-        }
-
-        public void Dispose()
-        {
-            context.Dispose();
+            _context.SaveChanges();
         }
     }
-    public interface IShareHolderRepo : IRepository<ShareHolder>  { };
+    public interface IShareHolderRepo : IRepository<ShareHolder> { };
 }

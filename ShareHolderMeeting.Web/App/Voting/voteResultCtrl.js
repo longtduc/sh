@@ -4,8 +4,8 @@
     //Set title for view
     $scope.title = function () {
         if ($routeParams.type == 1)
-            return 'BOD';
-        return 'BOS';
+            return 'HĐQT'; //return 'BOD';
+        return 'BKS';
     };
     var dataSent = { votingType: $routeParams.type };
     $http({ method: 'GET', url: '/VotingCard/GetVotingResult', params: dataSent }).

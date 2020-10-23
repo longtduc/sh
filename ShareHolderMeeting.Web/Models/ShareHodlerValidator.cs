@@ -8,10 +8,10 @@ namespace ShareHolderMeeting.Web.Models
 {
     public class ShareHodlerValidator : IValidator<ShareHolder>
     {
-        private ShareHolderRepository _shareHolderRepo;
-        public ShareHodlerValidator()
+        private readonly IShareHolderRepo _shareHolderRepo;
+        public ShareHodlerValidator(IShareHolderRepo repo)
         {
-            _shareHolderRepo = new ShareHolderRepository();
+            _shareHolderRepo = repo; // new ShareHolderRepo(ShareHolderContext context);
         }
         public bool IsValid(ShareHolder entity)
         {

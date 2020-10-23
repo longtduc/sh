@@ -21,15 +21,15 @@ GO
 DBCC CHECKIDENT ('[Statements]', RESEED, 0) 
 GO
 
-delete from [dbo].[ShareHolders]
-GO
-DBCC CHECKIDENT ('[ShareHolders]', RESEED, 0) 
-GO
+--delete from [dbo].[ShareHolders]
+--GO
+--DBCC CHECKIDENT ('[ShareHolders]', RESEED, 0) 
+--GO
 
-delete from [dbo].[Candidates]
-GO
-DBCC CHECKIDENT ('[Candidates]', RESEED, 0) 
-GO
+--delete from [dbo].[Candidates]
+--GO
+--DBCC CHECKIDENT ('[Candidates]', RESEED, 0) 
+--GO
 
 
 

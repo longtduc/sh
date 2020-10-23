@@ -15,9 +15,9 @@ namespace ShareHolderMeeting.Web.Controllers
        
         private VotingCardServices _svc;
         // If you are using Dependency Injection, you can delete the following constructor
-        public VotingController()
+        public VotingController(VotingCardServices svc)
         {        
-            _svc = new VotingCardServices();
+            _svc = svc;
         }
 
         public ViewResult Index()

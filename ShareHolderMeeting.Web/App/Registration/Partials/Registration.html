@@ -30,9 +30,9 @@
                 <th class="col-md-2" ng-show="showName">
                     <a href="" ng-click="sortField='Name'; reverse = !reverse">Name</a>
                 </th>
-                <th class="col-md-1">
+                <!--<th class="col-md-1">
                     Id
-                </th>
+                </th>-->
             </tr>
         </thead>
         <tbody>
@@ -53,9 +53,9 @@
                 <td ng-show="showName">
                     <input type="text" id="newName" ng-model="toBeRegisted.Name" disabled />
                 </td>
-                <td>
+                <!--<td>
                     {{toBeRegisted.shareHolderId}}
-                </td>
+                </td>-->
             </tr>
             <!--<tr ng-repeat="sh in shareHolders | filter : search: strict | orderBy: sortField : reverse">-->
             <tr ng-repeat="sh in shareHolders | filter : search | orderBy: sortField : reverse">
@@ -68,7 +68,7 @@
                     {{statusText(sh.StatusAtMeeting)}}
                 </td>
                 <td ng-show="showName">{{sh.Name}}</td>
-                <td>{{sh.ShareHolderId}}</td>
+                <!--<td>{{sh.ShareHolderId}}</td>-->
             </tr>
         </tbody>
         <tfoot>

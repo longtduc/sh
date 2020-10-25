@@ -21,7 +21,7 @@ namespace ShareHolderMeeting.Test
         {
             _shareHolderRepo = new ShareHolderRepo(new ShareHolderContext());
             _votingByHandRepo = new VotingByHandRepo(new ShareHolderContext());
-            _statementRepo = new StatementRepo();
+            _statementRepo = new StatementRepo(new ShareHolderContext());
             _svc = new VotingByHandServices();
 
         }

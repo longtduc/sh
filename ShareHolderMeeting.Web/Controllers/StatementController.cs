@@ -1,12 +1,8 @@
 ﻿using ShareHolderMeeting.Web.Interfaces;
-using ShareHolderMeeting.Web.Models;
-using ShareHolderMeeting.Web.Models.CoreServices;
 using ShareHolderMeeting.Web.Services;
 using ShareHolderMeeting.Web.ViewModel;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace ShareHolderMeeting.Web.Controllers
@@ -37,70 +33,48 @@ namespace ShareHolderMeeting.Web.Controllers
         }
 
         [HttpPut]
-        public JsonResult Put(StatementVM vm)
+        public JsonResult Put(StatementVM vm) //Create a statement
         {
-            dynamic result;
+            Result result = null;
 
             //If ViewModel is invalid
             var errorMsg = GetModelErrors();        
             if (!String.IsNullOrEmpty(errorMsg))
             {
-                result = new { Status = false, Message = errorMsg };
-                return Json(result, JsonRequestBehavior.AllowGet);
+                
+                return Json(TranslateErrorToClient(new Result(false,errorMsg, 0)), JsonRequestBehavior.AllowGet);
             }
 
-            //Create
-            try
-            {
-                var newId = _svc.Create(vm);
-                result = new { Status = true, Id = newId };
-            }
-            catch (Exception ex)
-            {
-                result = new { Status = false, Message = ex.Message };
-            }
-            return Json(result, JsonRequestBehavior.AllowGet);
+            result = _svc.Create(vm);            
+            return Json(TranslateErrorToClient(result) , JsonRequestBehavior.AllowGet);
         }
 
-        [HttpPost]
+        [HttpPost] //Update a Statement
         public JsonResult Post(StatementVM vm)
         {
             //If ViewModel is invalid
-            dynamic result;
+            Result result = null;
             var errorMsg = GetModelErrors();            
             if (!String.IsNullOrEmpty(errorMsg))
             {
-                result = new { Status = false, Message = errorMsg };
-                return Json(result, JsonRequestBehavior.AllowGet);
-            }
+                result = new Result(false, errorMsg, vm.Id);
+                return Json(TranslateErrorToClient(result), JsonRequestBehavior.AllowGet);
+            }           
 
-            //Update 
-            try
-            {
-                _svc.Update(vm);
-                result = new { Status = true, Id = vm.Id };
-            }
-            catch (Exception ex)
-            {
-                result = new { Status = false, Message = ex.Message };
-            }
-            return Json(result, JsonRequestBehavior.AllowGet);
+            result = _svc.Update(vm);            
+            return Json(TranslateErrorToClient(result), JsonRequestBehavior.AllowGet);
         }
         
+        private dynamic TranslateErrorToClient(Result result)
+        {
+            return new { Status = result.Success, Message = result.ErrorMessage, Id = result.Id }; 
+        }
+
         [HttpDelete]
         public JsonResult Delete(int id)
         {
-            dynamic result;
-            try
-            {
-                _svc.Delete(id);
-                result = new { Status = true, Id = id };
-            }
-            catch (Exception ex)
-            {
-                result = new { Status = false, Message = ex.Message };
-            }
-            return Json(result, JsonRequestBehavior.AllowGet);
+            Result result = _svc.Delete(id);                
+            return Json(TranslateErrorToClient(result), JsonRequestBehavior.AllowGet);
         }
 
         public string GetModelErrors()

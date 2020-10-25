@@ -222,6 +222,8 @@
     <Compile Include="App_Start\IoCContainer\ApplicationCastleInstaller.cs" />
     <Compile Include="App_Start\IoCContainer\CastleControllerFactory.cs" />
     <Compile Include="Class1.cs" />
+    <Compile Include="Common\Class1.cs" />
+    <Compile Include="Common\Result.cs" />
     <Compile Include="CqrsExceptionNotFound\Contracts\Commands\CreateStatementCommand.cs" />
     <Compile Include="CqrsExceptionNotFound\Contracts\Events\CreateStatementEvent.cs" />
     <Compile Include="CqrsExceptionNotFound\CommandHanders\CreateStatementCommandHander.cs" />

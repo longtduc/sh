@@ -170,7 +170,7 @@ namespace ShareHolderMeeting.Web.Controllers
                 }
                 catch (Exception ex)
                 {
-                    
+                    throw ex;
 
                 }
             }

@@ -12,10 +12,10 @@ namespace ShareHolderMeeting.Web.Interfaces
     public class StatementRepo:IStatementRepo
     {
         private ShareHolderContext context;
-        public StatementRepo():this(new ShareHolderContext())
-        {
+        //public StatementRepo():this(new ShareHolderContext())
+        //{
             
-        }
+        //}
 
         public StatementRepo(ShareHolderContext context)
         {

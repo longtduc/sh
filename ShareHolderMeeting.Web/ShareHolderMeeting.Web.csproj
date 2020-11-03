@@ -33,6 +33,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <LangVersion>default</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -221,8 +222,8 @@
     <Compile Include="App_Start\WindsorActivator.cs" />
     <Compile Include="App_Start\IoCContainer\ApplicationCastleInstaller.cs" />
     <Compile Include="App_Start\IoCContainer\CastleControllerFactory.cs" />
-    <Compile Include="Class1.cs" />
     <Compile Include="Common\Class1.cs" />
+    <Compile Include="Common\Helper.cs" />
     <Compile Include="Common\Result.cs" />
     <Compile Include="CqrsExceptionNotFound\Contracts\Commands\CreateStatementCommand.cs" />
     <Compile Include="CqrsExceptionNotFound\Contracts\Events\CreateStatementEvent.cs" />
@@ -283,7 +284,6 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Candidate.cs" />
     <Compile Include="Models\CandidateValidator.cs" />
-    <Compile Include="Models\CoreServices\InputErrors.cs" />
     <Compile Include="Models\CandidateFile.cs" />
     <Compile Include="Models\FileType.cs" />
     <Compile Include="Interfaces\IValidator.cs" />

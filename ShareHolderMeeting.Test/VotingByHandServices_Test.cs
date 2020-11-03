@@ -2,7 +2,6 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using ShareHolderMeeting.Web.Interfaces;
 using System.Linq;
-using ShareHolderMeeting.Web.Models.CoreServices;
 using System.Transactions;
 using ShareHolderMeeting.Web.Models;
 using ShareHolderMeeting.Web.Services;

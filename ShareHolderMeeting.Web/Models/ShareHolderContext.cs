@@ -24,7 +24,8 @@ namespace ShareHolderMeeting.Web.Models
         public DbSet<VotingByHandLine> VotingByHandLines { get; set; }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {           
-            this.Configuration.ProxyCreationEnabled = false;
+            Configuration.ProxyCreationEnabled = true;
+            Configuration.LazyLoadingEnabled = true;
         }
 
     }

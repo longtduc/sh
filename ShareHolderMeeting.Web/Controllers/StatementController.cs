@@ -1,4 +1,5 @@
-﻿using ShareHolderMeeting.Web.Interfaces;
+﻿using ShareHolderMeeting.Web.Common;
+using ShareHolderMeeting.Web.Interfaces;
 using ShareHolderMeeting.Web.Services;
 using ShareHolderMeeting.Web.ViewModel;
 using System;
@@ -10,11 +11,11 @@ namespace ShareHolderMeeting.Web.Controllers
     [Authorize]
     public class StatementController : Controller
     {
-        private IStatementRepo _repo;
-       
-        private StatementService _svc;
+        private readonly IStatementRepo _repo;
 
-       public StatementController(IStatementRepo repo, StatementService svc)
+        private readonly StatementService _svc;
+
+        public StatementController(IStatementRepo repo, StatementService svc)
         {
             _repo = repo;
             _svc = svc;
@@ -34,61 +35,54 @@ namespace ShareHolderMeeting.Web.Controllers
 
         [HttpPut]
         public JsonResult Put(StatementVM vm) //Create a statement
-        {
-            Result result = null;
-
+        {            
             //If ViewModel is invalid
-            var errorMsg = GetModelErrors();        
+            var errorMsg = GetModelErrors();
             if (!String.IsNullOrEmpty(errorMsg))
             {
-                
-                return Json(TranslateErrorToClient(new Result(false,errorMsg, 0)), JsonRequestBehavior.AllowGet);
+                return Json(Helper.TranslateErrorToClient(Result.Fail(errorMsg)), JsonRequestBehavior.AllowGet);
             }
 
-            result = _svc.Create(vm);            
-            return Json(TranslateErrorToClient(result) , JsonRequestBehavior.AllowGet);
+            Result<int> result = _svc.Create(vm);
+            return Json(Helper.TranslateErrorToClient(result), JsonRequestBehavior.AllowGet);
         }
 
         [HttpPost] //Update a Statement
         public JsonResult Post(StatementVM vm)
         {
             //If ViewModel is invalid
-            Result result = null;
-            var errorMsg = GetModelErrors();            
+            var errorMsg = GetModelErrors();
             if (!String.IsNullOrEmpty(errorMsg))
             {
-                result = new Result(false, errorMsg, vm.Id);
-                return Json(TranslateErrorToClient(result), JsonRequestBehavior.AllowGet);
-            }           
+                return Json(Helper.TranslateErrorToClient(Result.Fail(errorMsg)), JsonRequestBehavior.AllowGet);
+            }
 
-            result = _svc.Update(vm);            
-            return Json(TranslateErrorToClient(result), JsonRequestBehavior.AllowGet);
+            Result<int> result = _svc.Update(vm);
+            return Json(Helper.TranslateErrorToClient(result), JsonRequestBehavior.AllowGet);
         }
-        
-        private dynamic TranslateErrorToClient(Result result)
-        {
-            return new { Status = result.Success, Message = result.ErrorMessage, Id = result.Id }; 
-        }
+
+       
+     
 
         [HttpDelete]
         public JsonResult Delete(int id)
         {
-            Result result = _svc.Delete(id);                
-            return Json(TranslateErrorToClient(result), JsonRequestBehavior.AllowGet);
+            Result<int> result = _svc.Delete(id);
+            return Json(Helper.TranslateErrorToClient(result), JsonRequestBehavior.AllowGet);
         }
 
-        public string GetModelErrors()
+        private string GetModelErrors()
         {
             var errorMsg = "";
             if (!ModelState.IsValid)
-            {             
+            {
                 foreach (ModelState modelState in ViewData.ModelState.Values)
                 {
                     foreach (ModelError error in modelState.Errors)
                     {
                         errorMsg += ";" + error.ErrorMessage;
                     }
-                }              
+                }
             }
             return errorMsg;
         }

@@ -15,27 +15,27 @@ namespace ShareHolderMeeting.Web.Services
         {
             _repo = new StatementRepo(new ShareHolderContext());
         }
-        public Result Create(StatementVM vm)
+        public Result<int> Create(StatementVM vm)
         {
             var entity = new Statement(vm.Description);
             try
             {
                 _repo.InsertOrUpdate(entity);
                 _repo.Save();
-                return new Result(true, "", entity.Id);
+                return Result.OK<int>(entity.Id);
             }
             catch (Exception ex)
             {
-                return new Result(false, ex.Message);
+                return Result.Fail<int>(ex.Message);
             }
         }
-        public Result Update(StatementVM vm)
+        public Result<int> Update(StatementVM vm)
         {
 
             var entity = _repo.Find(vm.Id);
 
             if (entity == null)
-                return new Result(false, "Statement not found!", vm.Id);
+                return Result.Fail<int>("Statement not found!");
 
             entity.Description = vm.Description;
 
@@ -46,22 +46,22 @@ namespace ShareHolderMeeting.Web.Services
             }
             catch (Exception ex)
             {
-                return new Result(false, ex.Message, vm.Id);
+                return  Result.Fail<int>(ex.Message);
             }
 
-            return new Result(true, "", vm.Id);
+            return Result.OK<int>(vm.Id);
         }
-        public Result Delete(int id)
+        public Result<int> Delete(int id)
         {
             try
             {
                 _repo.Delete(id);
                 _repo.Save();
-                return new Result(true, "", id);
+                return Result.OK<int>(id);
             }
             catch (Exception ex)
             {
-                return new Result(false, ex.Message, id);
+                return Result.Fail<int>(ex.Message);
             }
 
         }

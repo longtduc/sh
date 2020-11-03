@@ -23,6 +23,9 @@ namespace ShareHolderMeeting.Web.Models
             if (String.IsNullOrEmpty(entity.ShareHolderCode))
                 yield return "ShareHolder Code must be input ";
 
+            if (String.IsNullOrEmpty(entity.Name))
+                yield return "ShareHolder Name is required";
+
             if (ShareHolderIsExisted(entity))
                 yield return "ShareHolder Already existed ";
 

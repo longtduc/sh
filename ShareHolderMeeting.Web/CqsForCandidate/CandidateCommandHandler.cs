@@ -1,6 +1,6 @@
-﻿using ShareHolderMeeting.Web.CqsForCandidate;
+﻿using ShareHolderMeeting.Web.Common;
+using ShareHolderMeeting.Web.CqsForCandidate;
 using ShareHolderMeeting.Web.Models;
-using ShareHolderMeeting.Web.Models.CoreServices;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -56,7 +56,7 @@ namespace ShareHolderMeeting.Web.Commands.CqsForCandidate
                 return new CommandResult()
                 {
                     ReturnObj = candidate,
-                    Message = InputErrors.MergeErrors(brokerRules),
+                    Message = Helper.MergeErrors(brokerRules),
                     Success = false
                 };
             }
@@ -93,7 +93,7 @@ namespace ShareHolderMeeting.Web.Commands.CqsForCandidate
                 return new CommandResult()
                 {
                     ReturnObj = candidate,
-                    Message = InputErrors.MergeErrors(brokerRules),
+                    Message = Helper.MergeErrors(brokerRules),
                     Success = false
                 };
             }

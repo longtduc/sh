@@ -1,6 +1,6 @@
-﻿using ShareHolderMeeting.Web.Interfaces;
+﻿using ShareHolderMeeting.Web.Common;
+using ShareHolderMeeting.Web.Interfaces;
 using ShareHolderMeeting.Web.Models;
-using ShareHolderMeeting.Web.Models.CoreServices;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -46,10 +46,10 @@ namespace ShareHolderMeeting.Web.Controllers
         {
             //Validate and returnn errors if any
             var response = new HttpResponseMessage();
-            if (!_shareHolderValidator.IsValid(shareHolder))
+            var brokerRules = _shareHolderValidator.BrokenRules(shareHolder);
+            if (brokerRules.Count() > 0)
             {
-                var brokerRules = _shareHolderValidator.BrokenRules(shareHolder);
-                var message = InputErrors.MergeErrors(brokerRules);
+                var message = Helper.MergeErrors(brokerRules);
                 response = Request.CreateErrorResponse(HttpStatusCode.BadRequest, message);
                 return response;
             }
@@ -83,10 +83,10 @@ namespace ShareHolderMeeting.Web.Controllers
         {
             //Validate and Return Errors
             var response = new HttpResponseMessage();
-            if (!_shareHolderValidator.IsValid(shareHolder))
+            var brokerRules = _shareHolderValidator.BrokenRules(shareHolder);
+            if (brokerRules.Count() > 0)
             {
-                var brokerRules = _shareHolderValidator.BrokenRules(shareHolder);
-                var message = InputErrors.MergeErrors(brokerRules);
+                var message = Helper.MergeErrors(brokerRules);
                 response = Request.CreateErrorResponse(HttpStatusCode.BadRequest, message);
                 return response;
             }
@@ -94,7 +94,6 @@ namespace ShareHolderMeeting.Web.Controllers
             //Persist
             try
             {
-
                 _shareHolderRepo.InsertOrUpdate(shareHolder);
                 _shareHolderRepo.Save();
                 response = Request.CreateResponse<ShareHolder>(HttpStatusCode.OK, shareHolder);

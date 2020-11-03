@@ -85,7 +85,7 @@ namespace ShareHolderMeeting.Web.Services
             var result = new VotingByHandResultVM(votingByHands);
             return result;
         }
-
+        
         public void Save()
         {
             _uowVotingByHand.VotingByHands.Save();

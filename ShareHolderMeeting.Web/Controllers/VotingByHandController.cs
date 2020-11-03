@@ -7,7 +7,6 @@ using ShareHolderMeeting.Web.Models;
 using ShareHolderMeeting.Web.Services;
 using ShareHolderMeeting.Web.ViewModel;
 using ShareHolderMeeting.Web.Interfaces;
-using ShareHolderMeeting.Web.Models.CoreServices;
 
 namespace ShareHolderMeeting.Web.Controllers
 {

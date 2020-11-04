@@ -40,9 +40,6 @@ namespace ShareHolderMeeting.Web.Controllers
             return Json(result, JsonRequestBehavior.AllowGet);
         }
 
-
-
-
     }
 }
 

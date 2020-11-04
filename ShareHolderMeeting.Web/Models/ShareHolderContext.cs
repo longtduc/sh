@@ -23,7 +23,10 @@ namespace ShareHolderMeeting.Web.Models
         public DbSet<VotingByHand> VotingByHands { get; set; }
         public DbSet<VotingByHandLine> VotingByHandLines { get; set; }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
-        {           
+        {
+            base.OnModelCreating(modelBuilder);
+            //modelBuilder.Entity<ShareHolder>().HasOptional<VotingCard>(s=>s.VotingCards);
+
             Configuration.ProxyCreationEnabled = true;
             Configuration.LazyLoadingEnabled = true;
         }

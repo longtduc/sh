@@ -22,12 +22,12 @@ namespace ShareHolderMeeting.Web.Interfaces
 
         public IQueryable<VotingByHand> All
         {
-            get { return _context.VotingByHands; }
+            get { return _context.VotingByHands.Where(v=>v.ShareHolderId != null); }
         }
 
         public IQueryable<VotingByHand> AllIncluding(params Expression<Func<VotingByHand, object>>[] includeProperties)
         {
-            IQueryable<VotingByHand> query = _context.VotingByHands;
+            IQueryable<VotingByHand> query = _context.VotingByHands.Where(v => v.ShareHolderId != null);
             foreach (var includeProperty in includeProperties)
             {
                 query = query.Include(includeProperty);
@@ -37,7 +37,10 @@ namespace ShareHolderMeeting.Web.Interfaces
 
         public VotingByHand Find(int id)
         {
-            return _context.VotingByHands.Find(id);
+            var result = _context.VotingByHands.Find(id);
+            if (result.ShareHolderId == null)
+                throw new ArgumentOutOfRangeException();
+            return result;
         }
 
         public void InsertOrUpdate(VotingByHand entity)

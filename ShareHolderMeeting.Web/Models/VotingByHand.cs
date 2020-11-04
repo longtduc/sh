@@ -10,10 +10,11 @@ namespace ShareHolderMeeting.Web.Models
         public int Id { get; set; }
         public bool IsVoted { get; set; }
         public ICollection<VotingByHandLine> VotingByHandLines { get; set; }
-        public int ShareHolderId { get; set; }
         public string ShareHolderCode { get; set; }
         public string ShareHolderName { get; set; }
         public int NumberOfShares { get; set; }
+        public Nullable<int> ShareHolderId { get; set; }
+
         public ShareHolder ShareHolder { get; set; }
 
         public VotingByHand()

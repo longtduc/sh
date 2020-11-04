@@ -5,6 +5,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Data;
+using System.Data.Entity;
 
 namespace ShareHolderMeeting.Web.Services
 {
@@ -14,98 +16,69 @@ namespace ShareHolderMeeting.Web.Services
         private VotingCardRepo _votingCardRepo;
         private ShareHolderRepo _shareHolderRepo;
         private CandidateRepo _candidateRepo;
-        private UoWvotingCard _uowVotingCard;
+        private VotingByHandRepo _votingByHandRepo;
+        //private UoWvotingCard _uowVotingCard;
         private ShareHolderContext _context;
-        //private UoWVotingByHand _uoWVotingByHand;
+        private StatementRepo _statementRepo;
+
         public VotingCardServices()
         {
             _context = new ShareHolderContext();
             _votingCardRepo = new VotingCardRepo(_context);
+            _votingByHandRepo = new VotingByHandRepo(_context);
             _shareHolderRepo = new ShareHolderRepo(_context);
+
             _candidateRepo = new CandidateRepo(_context);
-            _uowVotingCard = new UoWvotingCard(_context);
-            //_uoWVotingByHand = new UoWVotingByHand(_context);
+            _statementRepo = new StatementRepo(_context);
+            //_uowVotingCard = new UoWvotingCard(_context);
         }
+
+
 
         public void ChangeShareHolderStatus(int shareHolderId, int newStatus)
         {
-            ShareHolder sh = _uowVotingCard.ShareHolders.Find(shareHolderId);
-            if (sh == null || sh.StatusAtMeeting == (StatusAtMeeting)newStatus)
+            ShareHolder sh = _shareHolderRepo.Find(shareHolderId);
+            var newStatusInEnum = (StatusAtMeeting)newStatus;
+            if (sh == null || sh.StatusAtMeeting == newStatusInEnum)
                 return;
 
+            if ((sh.StatusAtMeeting == StatusAtMeeting.Attended && newStatusInEnum == StatusAtMeeting.Delegated)
+                || sh.StatusAtMeeting == StatusAtMeeting.Delegated && newStatusInEnum == StatusAtMeeting.Attended)
+            {
+                sh.StatusAtMeeting = newStatusInEnum;
+                _shareHolderRepo.Save();
+                return;
+            }
+
             //Update Status
-            sh.StatusAtMeeting = (StatusAtMeeting)newStatus;
+            sh.StatusAtMeeting = newStatusInEnum;
             StatusAtMeeting newStateInEnum = (StatusAtMeeting)newStatus;
 
             switch (newStateInEnum)
             {
                 case StatusAtMeeting.Absent:
-                    //Delete Voting Card when registering shareholders
-                    DeleteVotingCard(shareHolderId);
+                    sh.RemoveAllVotingCardsAndVotingByHands();
                     break;
                 case StatusAtMeeting.Attended:
-                    //Create VotingCard for BOD,BOS
-                    CreateVotingCard(sh, VotingCardType.BOSVotingCard);
-                    CreateVotingCard(sh, VotingCardType.BODVotingCard);
+                    CreateVotingCardsAndVotingByHands(sh);
                     break;
                 case StatusAtMeeting.Delegated:
-                    //Create VotingCard for BOD,BOS
-                    CreateVotingCard(sh, VotingCardType.BODVotingCard);
-                    CreateVotingCard(sh, VotingCardType.BOSVotingCard);
+                    CreateVotingCardsAndVotingByHands(sh);
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();
             }
-            sh.StatusAtMeeting = newStateInEnum;
-            _uowVotingCard.ShareHolders.InsertOrUpdate(sh);
-
-            Commit();
+            _shareHolderRepo.Save();
         }
 
-        public void CreateVotingCard(ShareHolder shareHolder, VotingCardType type)
+        private void CreateVotingCardsAndVotingByHands(ShareHolder sh)
         {
+            //Create VotingCard for BOD,BOS
+            var candidates = _candidateRepo.All.ToList();
+            sh.CreateVotingCards(candidates);
 
-            //Find VotingCard
-            var votingCard = _votingCardRepo
-                .All
-                .Where(m => m.ShareHolderId == shareHolder.ShareHolderId)
-                .FirstOrDefault();
-
-            if (votingCard == null) //Create if not existed
-            {
-                var candidates = _candidateRepo.All.ToList();
-                votingCard = new VotingCard(shareHolder, candidates, type);
-                _uowVotingCard.VotingCards.InsertOrUpdate(votingCard);
-            }
-
-
-        }
-
-        public void DeleteVotingCard(int shareHolderId)
-        {
-            var votingCards = _votingCardRepo.All.
-                Where(m => m.ShareHolderId == shareHolderId);
-
-            if (votingCards == null)
-                return;
-            foreach (var card in votingCards)
-            {
-                _uowVotingCard.VotingCards.Delete(card.Id);
-            }
-
-            var votingByHands = _vo
-
-        }
-
-        //private void UpdateStatusForShareHolder(int shareHolderId, int newStatus)
-        //{
-        //    var sh = _uowVotingCard.ShareHolders.Find(shareHolderId);
-        //    sh.StatusAtMeeting = (StatusAtMeeting)newStatus;
-        //    _uowVotingCard.ShareHolders.InsertOrUpdate(sh);
-        //}
-        public void Commit()
-        {
-            _uowVotingCard.Commit();
+            var statements = _statementRepo.All.ToList();
+            sh.CreateVotingByHands(statements);
         }
 
         public VotingCard GetVotingCard(int id)

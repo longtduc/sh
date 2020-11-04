@@ -35,7 +35,11 @@ namespace ShareHolderMeeting.Web.Interfaces
 
         public ShareHolder Find(int id)
         {
-            return _context.ShareHolders.Find(id);
+            return _context.ShareHolders
+                    .Include(i=>i.VotingCards)
+                    .Include(j=>j.VotingByHands)
+                    .Where(s=>s.ShareHolderId==id)
+                    .FirstOrDefault();
         }
 
         public void InsertOrUpdate(ShareHolder entity)
@@ -64,6 +68,26 @@ namespace ShareHolderMeeting.Web.Interfaces
         {
             _context.SaveChanges();
         }
+
+        public void RemoveAllVotingCardsAndVotingByHands(ShareHolder entity)
+        {
+            if (_context != null)
+                _context.Entry(entity).State = System.Data.Entity.EntityState.Modified;
+            //Note: Error message "Collection was modified; enumeration operation may not execute"
+            //Fix: entity.VotingCards => entity.VotingCards.ToList()
+            foreach (var item in entity.VotingCards.ToList()) 
+            {
+                _context.Entry(item).State = System.Data.Entity.EntityState.Deleted;
+            }
+
+            foreach (var item in entity.VotingByHands.ToList())
+            {
+                _context.Entry(item).State = System.Data.Entity.EntityState.Deleted;
+            }
+        }
     }
-    public interface IShareHolderRepo : IRepository<ShareHolder> { };
+    public interface IShareHolderRepo : IRepository<ShareHolder>
+    {
+        void RemoveAllVotingCardsAndVotingByHands(ShareHolder sh);
+    };
 }

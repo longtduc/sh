@@ -1,6 +1,7 @@
 ﻿using ShareHolderMeeting.Web.Common;
 using ShareHolderMeeting.Web.Interfaces;
 using ShareHolderMeeting.Web.Models;
+using ShareHolderMeeting.Web.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,9 +24,16 @@ namespace ShareHolderMeeting.Web.Controllers
             _shareHolderRepo = repo;
             _shareHolderValidator = val;
         }
-        public IQueryable<ShareHolder> Get()
+        public IQueryable<ShareHolderVM> Get()
         {
-            return _shareHolderRepo.All;
+            return _shareHolderRepo.All.Select(sh => new ShareHolderVM()
+            {
+                ShareHolderId = sh.ShareHolderId,
+                Name = sh.Name,
+                NumberOfShares = sh.NumberOfShares,
+                ShareHolderCode = sh.ShareHolderCode,
+                StatusAtMeeting = sh.StatusAtMeeting
+            }) ;
         }
 
         public IEnumerable<ShareHolder> Get(int pageIndex, int pageSize)

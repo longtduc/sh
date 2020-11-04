@@ -22,12 +22,12 @@ namespace ShareHolderMeeting.Web.Interfaces
         }
         public IQueryable<VotingCard> All
         {
-            get { return _context.VotingCards; }
+            get { return _context.VotingCards.Where(v=>v.ShareHolderId != null); }
         }
 
         public IQueryable<VotingCard> AllIncluding(params Expression<Func<VotingCard, object>>[] includeProperties)
         {
-            IQueryable<VotingCard> query = _context.VotingCards;
+            IQueryable<VotingCard> query = _context.VotingCards.Where(v => v.ShareHolderId != null);
             foreach (var includeProperty in includeProperties)
             {
                 query = query.Include(includeProperty);
@@ -37,7 +37,10 @@ namespace ShareHolderMeeting.Web.Interfaces
 
         public VotingCard Find(int id)
         {
-            return _context.VotingCards.Find(id);
+            var result = _context.VotingCards.Find(id);
+            if (result.ShareHolderId == null)
+                throw new ArgumentOutOfRangeException();
+            return result;
         }
 
         public void InsertOrUpdate(VotingCard entity)
@@ -57,6 +60,9 @@ namespace ShareHolderMeeting.Web.Interfaces
         public void Delete(int id)
         {
             var entity = _context.VotingCards.Find(id);
+
+            if (entity.ShareHolderId == null)
+                throw new ArgumentOutOfRangeException();
             _context.VotingCards.Remove(entity);
         }
 
@@ -81,6 +87,6 @@ namespace ShareHolderMeeting.Web.Interfaces
     }
     public interface IVotingCardRepo : IRepository<VotingCard>
     {
-        void UpdateGraph(VotingCard entity);
+        void UpdateGraph(VotingCard entity);        
     }
 }

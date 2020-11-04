@@ -29,7 +29,7 @@ namespace ShareHolderMeeting.Web.Controllers
 
             var allVotingCards = _votingCardRepo
                 .AllIncluding(m => m.ShareHolder)
-                .Where(m => m.VotingCardType == type)
+                .Where(m => m.VotingCardType == type && m.ShareHolderId != null )
                 .ToList();
             var result = allVotingCards.Select(m => new
             {
@@ -41,7 +41,7 @@ namespace ShareHolderMeeting.Web.Controllers
                 ShareHolderCode = m.ShareHolder.ShareHolderCode,
                 ShareHolderName = m.ShareHolder.Name,
                 AmtAlreadyVoted = m.AmtAlreadyVoted,
-                m.ShareHolderId,
+                ShareHolderId = m.ShareHolder.ShareHolderId
             });
 
             return Json(result, JsonRequestBehavior.AllowGet);
@@ -69,7 +69,8 @@ namespace ShareHolderMeeting.Web.Controllers
         //Update VotingCard 
         public JsonResult UpdateVotingCard(VotingCard votingCard)
         {
-            object result = null;
+
+            object result = null;            
             try
             {
                 votingCard.IsVoted = true;

@@ -1,4 +1,7 @@
-﻿using ShareHolderMeeting.Web.Models;
+﻿using Application.Common.Interfaces;
+using Domain.Entities;
+using Persistence;
+using ShareHolderMeeting.Web.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +13,7 @@ namespace ShareHolderMeeting.Web.CqrsExceptionNotFound
     {
         public void Handler(CreateStatementEvent @event)
         {
-            using (ShareHolderContext context = new ShareHolderContext())
+            using (var context = new ShareHolderContext())
             {
                 context.Statements.Add(new Statement(@event.Description));
                 context.SaveChanges();

@@ -1,4 +1,6 @@
-﻿using ShareHolderMeeting.Web.Models;
+﻿using Application.Common.Interfaces;
+using Domain.Entities;
+using ShareHolderMeeting.Web.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,8 +14,8 @@ namespace ShareHolderMeeting.Web.CqrsExceptionNotFound
     }
     public class CreateStatementCommandHander
     {
-        private readonly ShareHolderContext _context;
-        public CreateStatementCommandHander(ShareHolderContext context)
+        private readonly IShareHolderContext _context;
+        public CreateStatementCommandHander(IShareHolderContext context)
         {
             _context = context;
         }

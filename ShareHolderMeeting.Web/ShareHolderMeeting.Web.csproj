@@ -222,9 +222,16 @@
     <Compile Include="App_Start\WindsorActivator.cs" />
     <Compile Include="App_Start\IoCContainer\ApplicationCastleInstaller.cs" />
     <Compile Include="App_Start\IoCContainer\CastleControllerFactory.cs" />
-    <Compile Include="Common\Class1.cs" />
-    <Compile Include="Common\Helper.cs" />
-    <Compile Include="Common\Result.cs" />
+    <Compile Include="Controllers\CandidateController.cs" />
+    <Compile Include="Controllers\CandidateDSController.cs" />
+    <Compile Include="Controllers\CandidateFileController.cs" />
+    <Compile Include="Controllers\ControllerHelper.cs" />
+    <Compile Include="Controllers\RegistrationController.cs" />
+    <Compile Include="Controllers\ShareHolderController.cs" />
+    <Compile Include="Controllers\ShareHolderDSController.cs" />
+    <Compile Include="Controllers\VotingByHandController.cs" />
+    <Compile Include="Controllers\VotingCardController.cs" />
+    <Compile Include="Controllers\VotingController.cs" />
     <Compile Include="CqrsExceptionNotFound\Contracts\Commands\CreateStatementCommand.cs" />
     <Compile Include="CqrsExceptionNotFound\Contracts\Events\CreateStatementEvent.cs" />
     <Compile Include="CqrsExceptionNotFound\CommandHanders\CreateStatementCommandHander.cs" />
@@ -235,30 +242,11 @@
     <Compile Include="CqsForCandidate\ICommandHander.cs" />
     <Compile Include="CqsForCandidate\RemoveCandidateCommand.cs" />
     <Compile Include="CqsForCandidate\UpdateCandidateCommand.cs" />
-    <Compile Include="Controllers\CandidateController.cs" />
-    <Compile Include="Controllers\CandidateDSController.cs" />
-    <Compile Include="Controllers\CandidateFileController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\RegistrationController.cs" />
-    <Compile Include="Controllers\ShareHolderController.cs" />
-    <Compile Include="Controllers\ShareHolderDSController.cs" />
     <Compile Include="Controllers\StatementController.cs" />
-    <Compile Include="Controllers\VotingByHandController.cs" />
-    <Compile Include="Controllers\VotingCardController.cs" />
-    <Compile Include="Controllers\VotingController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Interfaces\CandidateRepo.cs" />
-    <Compile Include="Interfaces\IRepository.cs" />
-    <Compile Include="Interfaces\IUoWVotingByHand.cs" />
-    <Compile Include="Interfaces\IUoWVotingCard.cs" />
-    <Compile Include="Interfaces\ShareHolderRepo.cs" />
-    <Compile Include="Interfaces\StatementRepo.cs" />
-    <Compile Include="Interfaces\UoWVotingByHand.cs" />
-    <Compile Include="Interfaces\UoWVotingCard.cs" />
-    <Compile Include="Interfaces\VotingByHandRepo.cs" />
-    <Compile Include="Interfaces\VotingCardRepo.cs" />
     <Content Include="Account\Scripts\ajax-loader.gif" />
     <Content Include="Account\Scripts\Roles\Partials\_roleList.html" />
     <Content Include="Account\Scripts\Roles\roleApp.js" />
@@ -310,32 +298,15 @@
       <DependentUpon>202011041058437_ChangeVotingCard.ShareHolderIdToNullable.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Models\Candidate.cs" />
     <Compile Include="Models\CandidateValidator.cs" />
-    <Compile Include="Models\CandidateFile.cs" />
-    <Compile Include="Models\FileType.cs" />
-    <Compile Include="Interfaces\IValidator.cs" />
     <Compile Include="Models\ShareHodlerValidator.cs" />
-    <Compile Include="Models\ShareHolder.cs" />
-    <Compile Include="Models\ShareHolderContext.cs" />
-    <Compile Include="Models\Statement.cs" />
-    <Compile Include="Models\VotingByHand.cs" />
-    <Compile Include="Models\VotingByHandLine.cs" />
-    <Compile Include="Models\VotingCard.cs" />
-    <Compile Include="Models\VotingCardLine.cs" />
+    <Compile Include="Models\VotingCardHelper.cs" />
     <Compile Include="Plumbing\WindsorControllerFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Queries\GetCandidatesQuery.cs" />
     <Compile Include="Queries\Handlers\CandidateQueryHandler.cs" />
     <Compile Include="Services\BhvImageLib.cs" />
-    <Compile Include="Services\StatementService.cs" />
-    <Compile Include="Services\VotingByHandServices.cs" />
-    <Compile Include="Services\VotingCardServices.cs" />
     <Compile Include="Startup.cs" />
-    <Compile Include="ViewModel\ShareHolderVM.cs" />
-    <Compile Include="ViewModel\StatementVM.cs" />
-    <Compile Include="ViewModel\VotingByHandResultVM.cs" />
-    <Compile Include="ViewModel\VotingResultVM.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App\Candidate\Partials\Candidate.html" />
@@ -502,6 +473,20 @@
     <EmbeddedResource Include="Migrations\202011041058437_ChangeVotingCard.ShareHolderIdToNullable.resx">
       <DependentUpon>202011041058437_ChangeVotingCard.ShareHolderIdToNullable.cs</DependentUpon>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Application\Application.csproj">
+      <Project>{eed15ea1-73e4-4fe4-888c-3a29aea6db36}</Project>
+      <Name>Application</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Domain\Domain.csproj">
+      <Project>{0d01ff1d-469b-431a-9525-3652706cc3f0}</Project>
+      <Name>Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Persistence\Persistence.csproj">
+      <Project>{8386e68f-2ac6-4532-87dd-2f9994be7a26}</Project>
+      <Name>Persistence</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

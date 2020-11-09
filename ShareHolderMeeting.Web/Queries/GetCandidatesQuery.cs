@@ -1,4 +1,5 @@
 ﻿//using ShareHolderMeeting.Web.Cqs.Data;
+using Domain.Entities;
 using ShareHolderMeeting.Web.Models;
 using System;
 using System.Collections.Generic;

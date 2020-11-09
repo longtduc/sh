@@ -8,7 +8,6 @@ using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
 using Castle.MicroKernel.Registration;
-using ShareHolderMeeting.Web.Interfaces;
 using ShareHolderMeeting.Web.App_Start;
 using ShareHolderMeeting.Web.Infrastructure;
 

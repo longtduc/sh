@@ -1,4 +1,6 @@
-﻿using ShareHolderMeeting.Web.Interfaces;
+﻿using Application.Common.Interfaces;
+using Domain.Entities;
+using Persistence;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,8 +10,8 @@ namespace ShareHolderMeeting.Web.Models
 {
     public class ShareHodlerValidator : IValidator<ShareHolder>
     {
-        private readonly IShareHolderRepo _shareHolderRepo;
-        public ShareHodlerValidator(IShareHolderRepo repo)
+        private readonly IShareHolderContext _shareHolderRepo;
+        public ShareHodlerValidator(IShareHolderContext repo)
         {
             _shareHolderRepo = repo; // new ShareHolderRepo(ShareHolderContext context);
         }
@@ -38,7 +40,7 @@ namespace ShareHolderMeeting.Web.Models
         private bool ShareHolderIsExisted(ShareHolder shareHolder)
         {
             var result = _shareHolderRepo.
-                All.
+                ShareHolders.
                 Where(s => s.ShareHolderCode == shareHolder.ShareHolderCode && s.ShareHolderId != shareHolder.ShareHolderId).
                 FirstOrDefault();
             return (result != null);

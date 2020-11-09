@@ -1,4 +1,6 @@
-﻿using ShareHolderMeeting.Web.Common;
+﻿
+using Application.Common.Interfaces;
+using Domain.Common;
 using ShareHolderMeeting.Web.CqsForCandidate;
 using ShareHolderMeeting.Web.Models;
 using System;
@@ -10,8 +12,8 @@ namespace ShareHolderMeeting.Web.Commands.CqsForCandidate
 {
     public class CandidateCommandHandler
     {
-        private readonly ShareHolderContext _context;
-        public CandidateCommandHandler(ShareHolderContext context)
+        private readonly IShareHolderContext _context;
+        public CandidateCommandHandler(IShareHolderContext context)
         {
             _context = context;
         }
@@ -56,7 +58,7 @@ namespace ShareHolderMeeting.Web.Commands.CqsForCandidate
                 return new CommandResult()
                 {
                     ReturnObj = candidate,
-                    Message = Helper.MergeErrors(brokerRules),
+                    Message = CoreHelper.MergeErrors(brokerRules),
                     Success = false
                 };
             }
@@ -93,14 +95,16 @@ namespace ShareHolderMeeting.Web.Commands.CqsForCandidate
                 return new CommandResult()
                 {
                     ReturnObj = candidate,
-                    Message = Helper.MergeErrors(brokerRules),
+                    Message = CoreHelper.MergeErrors(brokerRules),
                     Success = false
                 };
             }
             try
             {
                 //_context.Candidates.Attach(candidate);
-                _context.Entry(candidate).State = System.Data.Entity.EntityState.Modified;
+                var entity = _context.Candidates.Find(cmd.Candidate.Id);
+
+                entity.Name = cmd.Candidate.Name;
                 _context.SaveChanges();
                 return new CommandResult()
                 {

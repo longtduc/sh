@@ -3,24 +3,25 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Application.Common.Interfaces;
+using Persistence;
 using ShareHolderMeeting.Web.Models;
-using ShareHolderMeeting.Web.Interfaces;
 
 namespace ShareHolderMeeting.Web.Controllers
 {
     [Authorize(Roles = "Administrators")]
     public class ShareHolderController : Controller
     {
-        private readonly IShareHolderRepo shareholderRepo;
+        private readonly IShareHolderContext _context;
 
-        public ShareHolderController(IShareHolderRepo shareholderRepository)
+        public ShareHolderController(IShareHolderContext context)
         {
-            this.shareholderRepo = shareholderRepository;
+            _context = context;
         }
 
         public ViewResult Index()
         {
-            return View(shareholderRepo.All);
+            return View(_context.ShareHolders.ToList());
         }
 
         protected override void Dispose(bool disposing)

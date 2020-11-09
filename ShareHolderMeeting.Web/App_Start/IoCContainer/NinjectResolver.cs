@@ -1,7 +1,8 @@
-﻿using Ninject;
+﻿using Application.Common.Interfaces;
+using Ninject;
 using Ninject.Extensions.ChildKernel;
 using Ninject.Injection;
-using ShareHolderMeeting.Web.Interfaces;
+using Persistence;
 using ShareHolderMeeting.Web.Models;
 using ShareHolderMeeting.Web.Queries.Handlers;
 //using ShareHolderMeeting.Web.Requests.Queries.Candidates;
@@ -57,8 +58,8 @@ namespace ShareHolderMeeting.Web.App_Start.IoContainer
 
         private IKernel AddRequestBindings(IKernel kernel)
         {
-            kernel.Bind<ICandidateRepo>().To<CandidateRepo>().InSingletonScope();
-            kernel.Bind<IShareHolderRepo>().To<ShareHolderRepo>().InTransientScope();
+            //kernel.Bind<ICandidateRepo>().To<CandidateRepo>().InSingletonScope(); //Notes
+            kernel.Bind<IShareHolderContext>().To<ShareHolderContext>().InTransientScope();
             kernel.Bind<CandidateValidator>().To<CandidateValidator>().InTransientScope();
             kernel.Bind<ShareHodlerValidator>().To<ShareHodlerValidator>().InTransientScope();
             kernel.Bind<ShareHolderContext>().To<ShareHolderContext>().InSingletonScope();

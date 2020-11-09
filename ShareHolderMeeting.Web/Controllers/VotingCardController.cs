@@ -6,19 +6,22 @@ using System.Web.Mvc;
 using ShareHolderMeeting.Web.Models;
 using ShareHolderMeeting.Web.Services;
 using ShareHolderMeeting.Web.ViewModel;
-using ShareHolderMeeting.Web.Interfaces;
+using Domain.Entities;
+using Application.Common.Interfaces;
+using Application.Common.Models;
+using Application.Services;
 
 namespace ShareHolderMeeting.Web.Controllers
 {
     [Authorize]
     public class VotingCardController : Controller
     {
-        private readonly IVotingCardRepo _votingCardRepo;
+        private readonly IShareHolderContext _context;
         private VotingCardServices _votingCardSvc;
 
-        public VotingCardController(IVotingCardRepo vcRepo, VotingCardServices vcSvc)
+        public VotingCardController(IShareHolderContext context, VotingCardServices vcSvc)
         {
-            _votingCardRepo = vcRepo;
+            _context = context;
             _votingCardSvc = vcSvc;
         }
 
@@ -27,9 +30,8 @@ namespace ShareHolderMeeting.Web.Controllers
         {
             VotingCardType type = ToVotingCardType(votingType);
 
-            var allVotingCards = _votingCardRepo
-                .AllIncluding(m => m.ShareHolder)
-                .Where(m => m.VotingCardType == type && m.ShareHolderId != null )
+            var allVotingCards = _context.VotingCards.Include("ShareHolder")
+                .Where(m => m.VotingCardType == type && m.ShareHolderId != null)
                 .ToList();
             var result = allVotingCards.Select(m => new
             {
@@ -58,28 +60,33 @@ namespace ShareHolderMeeting.Web.Controllers
         {
             var votingCard = _votingCardSvc.GetVotingCard(id);
             //For json serialization
-            foreach (var line in votingCard.VotingCardLines)
-            {
-                line.VotingCard = null;
-            }
-            return Json(votingCard, JsonRequestBehavior.AllowGet);
+            if (votingCard == null)
+                return Json(null, JsonRequestBehavior.AllowGet);
+
+            var votingCardDto = VotingCardHelper.ToVotingCardDto(votingCard);
+
+            return Json(votingCardDto, JsonRequestBehavior.AllowGet);
 
         }
 
         //Update VotingCard 
-        public JsonResult UpdateVotingCard(VotingCard votingCard)
+        public JsonResult Vote(VotingCardVM votingCardDto)
         {
 
-            object result = null;            
+            object result = null;
+            var votingCard = _context.VotingCards
+                                .Include("VotingCardLines").Where(v=>v.Id ==votingCardDto.Id).FirstOrDefault();
+            if (votingCard == null)
+                throw new InvalidOperationException();
+
+            //Validate VotingCardVM on server here
+
             try
             {
-                votingCard.IsVoted = true;
-                votingCard.SetAmtAlreadyVoted();
+                var votingCardLines = VotingCardHelper.ToVotingCardLines(votingCardDto.VotingCardLines);
+                votingCard.Vote(votingCardDto.IsInvalid, votingCardLines);
+                _context.SaveChanges();
 
-                _votingCardRepo.UpdateGraph(votingCard);
-
-                //Commit
-                _votingCardRepo.Save();
                 var returnedObj = new { AmtAlreadyVoted = votingCard.AmtAlreadyVoted };
                 result = new { Status = true, Message = "", ReturnedObj = returnedObj };
             }
@@ -94,14 +101,14 @@ namespace ShareHolderMeeting.Web.Controllers
         //Reverting VotingCard
         public JsonResult RevertVotingCard(int id)
         {
-            var currentCard = _votingCardRepo.Find(id);
+            var currentCard = _context.VotingCards.Find(id);            
+            if (currentCard != null)
+                Json(new { status = false, Message="VotingCard id = {id} not found"}, JsonRequestBehavior.AllowGet);
 
-            currentCard.IsInvalid = false;
-            currentCard.IsVoted = false;
-            currentCard.SetAmtAlreadyVoted();
+            currentCard.RevertVoting();
 
-            _votingCardRepo.InsertOrUpdate(currentCard);
-            _votingCardRepo.Save();
+            //_context.InsertOrUpdate(currentCard); //Notes
+            _context.SaveChanges();
 
             return Json(new { status = true }, JsonRequestBehavior.AllowGet);
         }
@@ -110,7 +117,7 @@ namespace ShareHolderMeeting.Web.Controllers
         public JsonResult GetVotingResult(int votingType)
         {
             VotingCardType type = ToVotingCardType(votingType);
-            var result = _votingCardSvc.CreateVotingResultVM(type);
+            VotingResultVM result = _votingCardSvc.CreateVotingResultVM(type);             
             return Json(result, JsonRequestBehavior.AllowGet);
         }
 
@@ -126,9 +133,8 @@ namespace ShareHolderMeeting.Web.Controllers
         {
             object result = null;
             try
-            {
-                var _svc = new VotingCardServices();
-                _svc.GenerateVotingCards();
+            {                
+                _votingCardSvc.GenerateVotingCards(new ShareHolderService(_context));
                 result = new { Status = true, Message = "You have just generated All Voting Cards" };
             }
             catch (Exception ex)
@@ -137,7 +143,6 @@ namespace ShareHolderMeeting.Web.Controllers
             }
             return Json(result, JsonRequestBehavior.AllowGet);
         }
-
 
         protected override void Dispose(bool disposing)
         {

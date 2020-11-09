@@ -4,20 +4,20 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Web;
 using System.Web.Mvc;
+using Application.Services;
 using ShareHolderMeeting.Web.Models;
 using ShareHolderMeeting.Web.Services;
-using ShareHolderMeeting.Web.Interfaces;
 
 namespace ShareHolderMeeting.Web.Controllers
 {
     [Authorize]
     public class RegistrationController : Controller
     {
-        private VotingCardServices _svc;
+        private ShareHolderService _svc;
         // If you are using Dependency Injection, you can delete the following constructor
-        public RegistrationController(VotingCardServices svc)
+        public RegistrationController(ShareHolderService service)
         {
-            _svc = svc;
+            _svc = service;
         }
 
         public ViewResult Index()

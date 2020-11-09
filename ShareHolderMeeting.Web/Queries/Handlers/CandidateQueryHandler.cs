@@ -1,4 +1,6 @@
 ﻿//using ShareHolderMeeting.Web.Cqs;
+using Application.Common.Interfaces;
+using Domain.Entities;
 using ShareHolderMeeting.Web.Models;
 using ShareHolderMeeting.Web.Queries;
 using System;
@@ -10,9 +12,9 @@ namespace ShareHolderMeeting.Web.Queries.Handlers
 {
     public class CandidateQueryHandler
     {
-        private readonly ShareHolderContext _context;
+        private readonly IShareHolderContext _context;
         
-        public CandidateQueryHandler(ShareHolderContext context)
+        public CandidateQueryHandler(IShareHolderContext context)
         {
             _context = context;
         }

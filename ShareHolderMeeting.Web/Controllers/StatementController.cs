@@ -1,7 +1,7 @@
-﻿using ShareHolderMeeting.Web.Common;
-using ShareHolderMeeting.Web.Interfaces;
-using ShareHolderMeeting.Web.Services;
-using ShareHolderMeeting.Web.ViewModel;
+﻿using Application.Common.Interfaces;
+using Application.Common.Models;
+using Application.Services;
+using Persistence;
 using System;
 using System.Linq;
 using System.Web.Mvc;
@@ -11,13 +11,13 @@ namespace ShareHolderMeeting.Web.Controllers
     [Authorize]
     public class StatementController : Controller
     {
-        private readonly IStatementRepo _repo;
+        private readonly IShareHolderContext _context;
 
         private readonly StatementService _svc;
 
-        public StatementController(IStatementRepo repo, StatementService svc)
+        public StatementController(IShareHolderContext repo, StatementService svc)
         {
-            _repo = repo;
+            _context = repo;            
             _svc = svc;
         }
 
@@ -29,7 +29,7 @@ namespace ShareHolderMeeting.Web.Controllers
         [HttpGet]
         public JsonResult GetStatements()
         {
-            var result = _repo.All.ToList();
+            var result = _context.Statements.ToList();
             return Json(result, JsonRequestBehavior.AllowGet);
         }
 
@@ -40,11 +40,11 @@ namespace ShareHolderMeeting.Web.Controllers
             var errorMsg = GetModelErrors();
             if (!String.IsNullOrEmpty(errorMsg))
             {
-                return Json(Helper.TranslateErrorToClient(Result.Fail(errorMsg)), JsonRequestBehavior.AllowGet);
+                return Json(ControllerHelper.TranslateErrorToClient(Result.Fail(errorMsg)), JsonRequestBehavior.AllowGet);
             }
 
             Result<int> result = _svc.Create(vm);
-            return Json(Helper.TranslateErrorToClient(result), JsonRequestBehavior.AllowGet);
+            return Json(ControllerHelper.TranslateErrorToClient(result), JsonRequestBehavior.AllowGet);
         }
 
         [HttpPost] //Update a Statement
@@ -54,21 +54,19 @@ namespace ShareHolderMeeting.Web.Controllers
             var errorMsg = GetModelErrors();
             if (!String.IsNullOrEmpty(errorMsg))
             {
-                return Json(Helper.TranslateErrorToClient(Result.Fail(errorMsg)), JsonRequestBehavior.AllowGet);
+                return Json(ControllerHelper.TranslateErrorToClient(Result.Fail(errorMsg)), JsonRequestBehavior.AllowGet);
             }
 
             Result<int> result = _svc.Update(vm);
-            return Json(Helper.TranslateErrorToClient(result), JsonRequestBehavior.AllowGet);
-        }
-
-       
+            return Json(ControllerHelper.TranslateErrorToClient(result), JsonRequestBehavior.AllowGet);
+        }      
      
 
         [HttpDelete]
         public JsonResult Delete(int id)
         {
             Result<int> result = _svc.Delete(id);
-            return Json(Helper.TranslateErrorToClient(result), JsonRequestBehavior.AllowGet);
+            return Json(ControllerHelper.TranslateErrorToClient(result), JsonRequestBehavior.AllowGet);
         }
 
         private string GetModelErrors()

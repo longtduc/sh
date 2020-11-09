@@ -1,18 +1,20 @@
 namespace ShareHolderMeeting.Web.Migrations
 {
+    using Application.Common.Interfaces;
+    using Persistence;
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<ShareHolderMeeting.Web.Models.ShareHolderContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<ShareHolderContext>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = true;
         }
 
-        protected override void Seed(ShareHolderMeeting.Web.Models.ShareHolderContext context)
+        protected override void Seed(ShareHolderContext context)
         {
             //  This method will be called after migrating to the latest version.
 

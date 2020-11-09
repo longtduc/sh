@@ -8,14 +8,16 @@ using ShareHolderMeeting.Web.Models;
 using System.Drawing;
 using ShareHolderMeeting.Web.Services;
 using System.Drawing.Imaging;
+using Domain.Entities;
+using Application.Common.Interfaces;
 
 namespace ShareHolderMeeting.Web.Controllers
 {
     public class CandidateFileController : Controller
     {
-        private readonly ShareHolderContext _ctx;       
+        private readonly IShareHolderContext _ctx;       
 
-        public CandidateFileController(ShareHolderContext context)
+        public CandidateFileController(IShareHolderContext context)
         {
             _ctx = context;
         }
@@ -61,7 +63,7 @@ namespace ShareHolderMeeting.Web.Controllers
                 {
                     var file = new CandidateFile
                     {
-                        FileType = Models.FileType.Picture,
+                        FileType = FileType.Picture,
                         FileName = upload.FileName,
                         CandidateId = 1,
                         ContentType = ""
@@ -152,7 +154,7 @@ namespace ShareHolderMeeting.Web.Controllers
                 {
                     var file = new CandidateFile
                     {
-                        FileType = Models.FileType.Picture,
+                        FileType = FileType.Picture,
                         FileName = upload.FileName,
                         CandidateId = 1,
                         ContentType = "image/jpeg"

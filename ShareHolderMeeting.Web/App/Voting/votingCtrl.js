@@ -54,7 +54,7 @@ votingApp.controller('voteCtrl', function ($scope, $http, $uibModal, $log, $rout
     //update voting card
     $scope.updateVoting = function () {        
         //alert(JSON.stringify($scope.votingCard));
-        $http.post('/VotingCard/UpdateVotingCard', $scope.votingCard).            
+        $http.post('/VotingCard/Vote', $scope.votingCard).            
             success(function (data) {
                 for (var i = 0; i < $scope.votingCards.length; i++) {
                     if ($scope.votingCards[i].Id === $scope.votingCard.Id) {
@@ -66,7 +66,7 @@ votingApp.controller('voteCtrl', function ($scope, $http, $uibModal, $log, $rout
                 }
             }).
             error(function () {
-                alert('Error happend when updating VotingCard (/VotingCard/UpdateVotingCard)');
+                alert('Error happend when Voting');
             });
     };
 
@@ -165,7 +165,7 @@ votingApp.controller('modalVotingCtrl', function ($scope, $http, $uibModalInstan
                 //alert(JSON.stringify(data));
             }).
         error(function () {
-            alert('Error when loading voting card (/VotingCard/GetVotingCard)' + JSON.stringify(dataSent));
+            alert('Error when loading the voting card' + JSON.stringify(dataSent));
         });;
     };
     //Validate input data

@@ -6,21 +6,23 @@ using System.Web.Mvc;
 using ShareHolderMeeting.Web.Models;
 using ShareHolderMeeting.Web.Services;
 using ShareHolderMeeting.Web.ViewModel;
-using ShareHolderMeeting.Web.Interfaces;
+using Domain.Entities;
+using Application.Common.Interfaces;
+using Application.Services;
 
 namespace ShareHolderMeeting.Web.Controllers
 {
     [Authorize]
     public class VotingByHandController : Controller
     {
-        private readonly IShareHolderRepo _shareHolderRepo;
+        private readonly IShareHolderContext _context;
 
         private VotingByHandServices _votingByHandSvc;
 
         // If you are using Dependency Injection, you can delete the following constructor
-        public VotingByHandController(IShareHolderRepo shRepo, VotingByHandServices svc)
+        public VotingByHandController(IShareHolderContext shRepo, VotingByHandServices svc)
         {
-            _shareHolderRepo = shRepo;
+            _context = shRepo;
             _votingByHandSvc = svc;
         }
 
@@ -73,6 +75,8 @@ namespace ShareHolderMeeting.Web.Controllers
 
         public JsonResult UpdateVoingByHand(VotingByHand entity)
         {
+            //Validation the input here
+
             dynamic result = new { Status = true };
             try
             {

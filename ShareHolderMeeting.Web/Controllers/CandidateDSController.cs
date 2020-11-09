@@ -1,7 +1,7 @@
-﻿using ShareHolderMeeting.Web.Commands;
+﻿using Domain.Entities;
+using ShareHolderMeeting.Web.Commands;
 using ShareHolderMeeting.Web.Commands.CqsForCandidate;
 using ShareHolderMeeting.Web.CqsForCandidate;
-using ShareHolderMeeting.Web.Interfaces;
 using ShareHolderMeeting.Web.Models;
 using ShareHolderMeeting.Web.Queries;
 using ShareHolderMeeting.Web.Queries.Handlers;

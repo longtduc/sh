@@ -1,5 +1,6 @@
-﻿using ShareHolderMeeting.Web.Common;
-using ShareHolderMeeting.Web.Interfaces;
+﻿using Application.Common.Interfaces;
+using Domain.Common;
+using Domain.Entities;
 using ShareHolderMeeting.Web.Models;
 using ShareHolderMeeting.Web.ViewModel;
 using System;
@@ -15,18 +16,18 @@ namespace ShareHolderMeeting.Web.Controllers
     //[Authorize]
     public class ShareHolderDSController : ApiController
     {
-        private IShareHolderRepo _shareHolderRepo;
+        private IShareHolderContext _context;
 
         private ShareHodlerValidator _shareHolderValidator;
 
-        public ShareHolderDSController(IShareHolderRepo repo, ShareHodlerValidator val)
+        public ShareHolderDSController(IShareHolderContext repo, ShareHodlerValidator val)
         {
-            _shareHolderRepo = repo;
+            _context = repo;
             _shareHolderValidator = val;
         }
         public IQueryable<ShareHolderVM> Get()
         {
-            return _shareHolderRepo.All.Select(sh => new ShareHolderVM()
+            return _context.ShareHolders.Select(sh => new ShareHolderVM()
             {
                 ShareHolderId = sh.ShareHolderId,
                 Name = sh.Name,
@@ -38,13 +39,13 @@ namespace ShareHolderMeeting.Web.Controllers
 
         public IEnumerable<ShareHolder> Get(int pageIndex, int pageSize)
         {
-            return _shareHolderRepo.All.AsEnumerable().Skip(pageIndex * pageSize).Take(pageSize);
+            return _context.ShareHolders.AsEnumerable().Skip(pageIndex * pageSize).Take(pageSize);
         }
 
         public ShareHolder Get(int id)
         {
 
-            var shareHolder = _shareHolderRepo.All.First(m => m.ShareHolderId == id);
+            var shareHolder = _context.ShareHolders.Find(id);
             if (shareHolder == null)
                 throw new HttpResponseException(HttpStatusCode.NotFound);
             return shareHolder;
@@ -57,7 +58,7 @@ namespace ShareHolderMeeting.Web.Controllers
             var brokerRules = _shareHolderValidator.BrokenRules(shareHolder);
             if (brokerRules.Count() > 0)
             {
-                var message = Helper.MergeErrors(brokerRules);
+                var message = CoreHelper.MergeErrors(brokerRules);
                 response = Request.CreateErrorResponse(HttpStatusCode.BadRequest, message);
                 return response;
             }
@@ -65,8 +66,8 @@ namespace ShareHolderMeeting.Web.Controllers
             //Persist
             try
             {
-                _shareHolderRepo.InsertOrUpdate(shareHolder);
-                _shareHolderRepo.Save();
+                _context.ShareHolders.Add(shareHolder);
+                _context.SaveChanges();
                 response = Request.CreateResponse<ShareHolder>(HttpStatusCode.Created, shareHolder);
                 response.Headers.Location = new Uri(Request.RequestUri, "/Api/ShareHolderDS/" + shareHolder.ShareHolderId.ToString());
             }
@@ -81,9 +82,11 @@ namespace ShareHolderMeeting.Web.Controllers
         public ShareHolder Delete(int id)
         {
 
-            var shareHolder = _shareHolderRepo.Find(id);
-            _shareHolderRepo.Delete(id);
-            _shareHolderRepo.Save();
+            var shareHolder = _context.ShareHolders.Find(id);
+            if (shareHolder == null)
+                return null;
+            _context.ShareHolders.Remove(shareHolder);
+            _context.SaveChanges();
             return shareHolder;
         }
 
@@ -94,16 +97,24 @@ namespace ShareHolderMeeting.Web.Controllers
             var brokerRules = _shareHolderValidator.BrokenRules(shareHolder);
             if (brokerRules.Count() > 0)
             {
-                var message = Helper.MergeErrors(brokerRules);
+                var message = CoreHelper.MergeErrors(brokerRules);
                 response = Request.CreateErrorResponse(HttpStatusCode.BadRequest, message);
                 return response;
             }
-
+            var entity = _context.ShareHolders.Find(shareHolder.ShareHolderId);
+            if (entity ==  null)
+            {
+                response = Request.CreateErrorResponse(HttpStatusCode.BadRequest, $"ShareHolder {shareHolder.ShareHolderId} not found");
+                return response;
+            }
             //Persist
             try
             {
-                _shareHolderRepo.InsertOrUpdate(shareHolder);
-                _shareHolderRepo.Save();
+                entity.Name = shareHolder.Name;
+                entity.NumberOfShares = shareHolder.NumberOfShares;
+                entity.ShareHolderCode = shareHolder.ShareHolderCode;
+
+                _context.SaveChanges(); 
                 response = Request.CreateResponse<ShareHolder>(HttpStatusCode.OK, shareHolder);
             }
             catch (Exception ex)

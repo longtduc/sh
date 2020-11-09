@@ -1,4 +1,5 @@
-﻿using ShareHolderMeeting.Web.Interfaces;
+﻿using Application.Common.Interfaces;
+using Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,7 +7,7 @@ using System.Web;
 
 namespace ShareHolderMeeting.Web.Models
 {
-    public class CandidateValidator:IValidator<Candidate>
+    public class CandidateValidator : IValidator<Candidate>
     {
         public bool IsValid(Candidate entity)
         {

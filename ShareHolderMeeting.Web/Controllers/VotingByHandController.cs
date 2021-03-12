@@ -1,14 +1,8 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-using ShareHolderMeeting.Web.Models;
-using ShareHolderMeeting.Web.Services;
-using ShareHolderMeeting.Web.ViewModel;
-using Domain.Entities;
 using Application.Common.Interfaces;
-using Application.Services;
+using Application.VotingByHands;
+using Domain.Entities;
+using System;
+using System.Web.Mvc;
 
 namespace ShareHolderMeeting.Web.Controllers
 {

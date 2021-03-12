@@ -1,8 +1,8 @@
 ﻿using Application.Common.Interfaces;
+using Application.ShareHolders;
 using Domain.Common;
 using Domain.Entities;
 using ShareHolderMeeting.Web.Models;
-using ShareHolderMeeting.Web.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,9 +25,9 @@ namespace ShareHolderMeeting.Web.Controllers
             _context = repo;
             _shareHolderValidator = val;
         }
-        public IQueryable<ShareHolderVM> Get()
+        public IQueryable<ShareHolderDto> Get()
         {
-            return _context.ShareHolders.Select(sh => new ShareHolderVM()
+            return _context.ShareHolders.Select(sh => new ShareHolderDto()
             {
                 ShareHolderId = sh.ShareHolderId,
                 Name = sh.Name,

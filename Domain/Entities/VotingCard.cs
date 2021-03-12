@@ -15,7 +15,7 @@ namespace Domain.Entities
         public int NumberOfShares { get; set; }
         public int AmtAlreadyVoted { get; set; }
         public ShareHolder ShareHolder { get; set; }
-        public Nullable<int> ShareHolderId { get; set; }
+        public int ShareHolderId { get; set; }
         public VotingCardType VotingCardType { get; set; }
         public ICollection<VotingCardLine> VotingCardLines { get; set; }
 
@@ -35,7 +35,7 @@ namespace Domain.Entities
             this.VotingCardType = type;
             foreach (var candidate in candidates)
             {
-                if (candidate.IsValidForVotingCard(type))
+                if (candidate.CanBeVoted(type))
                 {
                     var line = new VotingCardLine()
                     {

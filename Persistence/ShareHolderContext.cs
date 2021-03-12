@@ -23,6 +23,7 @@ namespace Persistence
         public DbSet<Statement> Statements { get; set; }
         public DbSet<VotingByHand> VotingByHands { get; set; }
         public DbSet<VotingByHandLine> VotingByHandLines { get; set; }
+      
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -35,6 +36,21 @@ namespace Persistence
         void Application.Common.Interfaces.IShareHolderContext.SaveChanges()
         {
             SaveChanges();
+        }
+
+        public void RemoveVotingCardsAndVotingByHands(int shareHolderId)
+        {
+            var votingCards = VotingCards.Where(v => v.ShareHolderId == shareHolderId);
+            foreach (var item in votingCards)
+            {
+                Entry(item).State = EntityState.Deleted;
+            }
+
+            var votingByHands = VotingByHands.Where(v => v.ShareHolderId == shareHolderId);
+            foreach (var item in votingByHands)
+            {
+                Entry(item).State = EntityState.Deleted;
+            }
         }
     }
 }

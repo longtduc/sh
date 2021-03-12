@@ -17,6 +17,7 @@ namespace BHV.Account.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
+        private readonly string _loginView = "~/Account/Views/Account/Login.cshtml";
 
         public AccountController()
         {
@@ -58,7 +59,7 @@ namespace BHV.Account.Controllers
         public ActionResult Login(string returnUrl)
         {
             ViewBag.ReturnUrl = returnUrl;
-            return View("~/Account/Views/Account/Login.cshtml");
+            return View(_loginView);
         }
 
         //
@@ -72,7 +73,7 @@ namespace BHV.Account.Controllers
             //return View("~/Account/Views/Account/Register.cshtml");
             if (!ModelState.IsValid)
             {
-                return View("~/Account/Views/Account/Login.cshtml", model);
+                return View(_loginView, model);
             }
 
             // This doesn't count login failures towards account lockout
@@ -94,7 +95,7 @@ namespace BHV.Account.Controllers
 
                 default:
                     ModelState.AddModelError("", "Invalid login attempt.");
-                    return View("~/Account/Views/Account/Login.cshtml", model);
+                    return View(_loginView, model);
             }
         }
 

@@ -10,6 +10,7 @@ using ShareHolderMeeting.Web.Models;
 namespace ShareHolderMeeting.Web.Controllers
 {
     [Authorize]
+    
     public class CandidateController : Controller
     {
         public CandidateController(IShareHolderContext context)
@@ -24,11 +25,7 @@ namespace ShareHolderMeeting.Web.Controllers
             ViewBag.Type = type;
             return View(_context.Candidates.Where(c => c.CandidateType == (CandidateType)type));
         }
-
-        protected override void Dispose(bool disposing)
-        {
-            base.Dispose(disposing);
-        }
+     
     }
 }
 

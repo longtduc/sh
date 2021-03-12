@@ -8,7 +8,6 @@ namespace Domain.Entities
     public class Candidate
     {
         public int Id { get; set; }
-
         private string name;
         public string Name
         {
@@ -27,7 +26,7 @@ namespace Domain.Entities
         }
 
         public CandidateType CandidateType { get; set; }
-        public bool IsValidForVotingCard(VotingCardType type)
+        public bool CanBeVoted(VotingCardType type)
         {
             if (type == VotingCardType.BODVotingCard)
                 return (this.CandidateType == CandidateType.BODCandidate);

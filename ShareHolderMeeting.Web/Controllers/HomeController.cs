@@ -7,17 +7,19 @@ using System.Web.Mvc;
 
 namespace ShareHolderMeeting.Web.Controllers
 {
+    
     public class HomeController : Controller
     {
+    
         public ActionResult Index()
         {
+            
             return View();
         }
 
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
-
+            ViewBag.Message = "Your application description page.";            
             return View();
         }
 
@@ -28,6 +30,13 @@ namespace ShareHolderMeeting.Web.Controllers
             return View();
         }
 
+        
+        public ActionResult ThrowException()
+        {
+            throw new Exception("This is unhandled exception");
+        }
+
+        
 
 
     }

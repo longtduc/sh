@@ -1,7 +1,6 @@
 ﻿using Application.Common.Interfaces;
 using Application.Common.Models;
-using Application.Services;
-using Persistence;
+using Application.Statements;
 using System;
 using System.Linq;
 using System.Web.Mvc;
@@ -34,7 +33,7 @@ namespace ShareHolderMeeting.Web.Controllers
         }
 
         [HttpPut]
-        public JsonResult Put(StatementVM vm) //Create a statement
+        public JsonResult Put(StatementDto vm) //Create a statement
         {            
             //If ViewModel is invalid
             var errorMsg = GetModelErrors();
@@ -48,7 +47,7 @@ namespace ShareHolderMeeting.Web.Controllers
         }
 
         [HttpPost] //Update a Statement
-        public JsonResult Post(StatementVM vm)
+        public JsonResult Post(StatementDto vm)
         {
             //If ViewModel is invalid
             var errorMsg = GetModelErrors();

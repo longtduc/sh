@@ -40,37 +40,9 @@ namespace Domain.Entities
         {
             if (statements == null)
                 throw new ArgumentNullException();
-            VotingByHands.Add(new VotingByHand(this,statements));
-            
+            VotingByHands.Add(new VotingByHand(this,statements));            
         }
-
-
-        public void AddVotingCard(VotingCard votingCard)
-        {
-            if (votingCard == null)
-                throw new ArgumentNullException();
-
-            VotingCards.Add(votingCard);
-        }
-
-        public void AddVotingByHand(VotingByHand votingByHand)
-        {
-            if (votingByHand == null)
-                throw new ArgumentNullException();
-
-            VotingByHands.Add(votingByHand);
-        }
-        
-        public void RemoveAllVotingCardsAndVotingByHands()
-        {
-            foreach (var item in VotingCards.ToList())
-            {
-                item.RemoveVotingCardLines();
-                VotingCards.Remove(item);
-            }
-            //VotingCards.Clear();
-            //VotingByHands.Clear();
-        }        
+       
     }
 
     public enum StatusAtMeeting

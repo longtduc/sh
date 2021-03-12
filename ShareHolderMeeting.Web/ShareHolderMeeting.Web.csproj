@@ -232,16 +232,6 @@
     <Compile Include="Controllers\VotingByHandController.cs" />
     <Compile Include="Controllers\VotingCardController.cs" />
     <Compile Include="Controllers\VotingController.cs" />
-    <Compile Include="CqrsExceptionNotFound\Contracts\Commands\CreateStatementCommand.cs" />
-    <Compile Include="CqrsExceptionNotFound\Contracts\Events\CreateStatementEvent.cs" />
-    <Compile Include="CqrsExceptionNotFound\CommandHanders\CreateStatementCommandHander.cs" />
-    <Compile Include="CqrsExceptionNotFound\EventHandlers\StatementEvenHander.cs" />
-    <Compile Include="CqsForCandidate\CandidateCommandHandler.cs" />
-    <Compile Include="CqsForCandidate\CreateCandidateCommand.cs" />
-    <Compile Include="CqsForCandidate\CommandResult.cs" />
-    <Compile Include="CqsForCandidate\ICommandHander.cs" />
-    <Compile Include="CqsForCandidate\RemoveCandidateCommand.cs" />
-    <Compile Include="CqsForCandidate\UpdateCandidateCommand.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\StatementController.cs" />
     <Compile Include="Global.asax.cs">
@@ -266,9 +256,7 @@
     <Content Include="App\VotingByHand\votingByHandResultCtrl.js" />
     <Content Include="App\Voting\voteResultCtrl.js" />
     <Content Include="Content\SiteExtenstion.css" />
-    <Content Include="DBScripts\CreateShareHolderMeetingDB_NoData.sql" />
-    <Content Include="DBScripts\Create_aspnet-ShareHolderMeetingWithData.sql" />
-    <Content Include="DBScripts\ResetShareHolderMeetingData.sql" />
+    <Compile Include="Infrastructure\RangeExceptionAttribute.cs" />
     <Compile Include="Migrations\202011040345356_RemoveVotingCard.ShareHolderId.cs" />
     <Compile Include="Migrations\202011040345356_RemoveVotingCard.ShareHolderId.Designer.cs">
       <DependentUpon>202011040345356_RemoveVotingCard.ShareHolderId.cs</DependentUpon>
@@ -297,9 +285,15 @@
     <Compile Include="Migrations\202011041058437_ChangeVotingCard.ShareHolderIdToNullable.Designer.cs">
       <DependentUpon>202011041058437_ChangeVotingCard.ShareHolderIdToNullable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202011092336351_AddedNewField.cs" />
+    <Compile Include="Migrations\202011092336351_AddedNewField.Designer.cs">
+      <DependentUpon>202011092336351_AddedNewField.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202011092341139_RemoveNullableFromShareHolderIdForForeignKey.cs" />
+    <Compile Include="Migrations\202011092341139_RemoveNullableFromShareHolderIdForForeignKey.Designer.cs">
+      <DependentUpon>202011092341139_RemoveNullableFromShareHolderIdForForeignKey.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Models\CandidateValidator.cs" />
-    <Compile Include="Models\ShareHodlerValidator.cs" />
     <Compile Include="Models\VotingCardHelper.cs" />
     <Compile Include="Plumbing\WindsorControllerFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -472,6 +466,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202011041058437_ChangeVotingCard.ShareHolderIdToNullable.resx">
       <DependentUpon>202011041058437_ChangeVotingCard.ShareHolderIdToNullable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202011092336351_AddedNewField.resx">
+      <DependentUpon>202011092336351_AddedNewField.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202011092341139_RemoveNullableFromShareHolderIdForForeignKey.resx">
+      <DependentUpon>202011092341139_RemoveNullableFromShareHolderIdForForeignKey.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

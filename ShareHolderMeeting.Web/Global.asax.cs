@@ -10,6 +10,7 @@ using System.Web.Routing;
 using Castle.MicroKernel.Registration;
 using ShareHolderMeeting.Web.App_Start;
 using ShareHolderMeeting.Web.Infrastructure;
+using System.Diagnostics;
 
 namespace ShareHolderMeeting.Web
 {
@@ -18,11 +19,14 @@ namespace ShareHolderMeeting.Web
         //private IWindsorContainer container;
         protected void Application_Start()
         {
-            AreaRegistration.RegisterAllAreas();
+
+            //AreaRegistration.RegisterAllAreas(); //Used for Areas
             GlobalConfiguration.Configure(WebApiConfig.Register);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+            Debug.WriteLine("Write from Debug.Write()");
+            
 
             // Initialize Castle & install application components
             var container = new WindsorContainer();

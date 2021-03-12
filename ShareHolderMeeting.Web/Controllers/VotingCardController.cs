@@ -1,15 +1,12 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-using ShareHolderMeeting.Web.Models;
-using ShareHolderMeeting.Web.Services;
-using ShareHolderMeeting.Web.ViewModel;
-using Domain.Entities;
 using Application.Common.Interfaces;
 using Application.Common.Models;
-using Application.Services;
+using Application.ShareHolders;
+using Application.VotingCards;
+using Domain.Entities;
+using ShareHolderMeeting.Web.Models;
+using System;
+using System.Linq;
+using System.Web.Mvc;
 
 namespace ShareHolderMeeting.Web.Controllers
 {
@@ -31,7 +28,7 @@ namespace ShareHolderMeeting.Web.Controllers
             VotingCardType type = ToVotingCardType(votingType);
 
             var allVotingCards = _context.VotingCards.Include("ShareHolder")
-                .Where(m => m.VotingCardType == type && m.ShareHolderId != null)
+                .Where(m => m.VotingCardType == type)
                 .ToList();
             var result = allVotingCards.Select(m => new
             {
@@ -70,7 +67,7 @@ namespace ShareHolderMeeting.Web.Controllers
         }
 
         //Update VotingCard 
-        public JsonResult Vote(VotingCardVM votingCardDto)
+        public JsonResult Vote(VotingCardDto votingCardDto)
         {
 
             object result = null;
@@ -117,7 +114,7 @@ namespace ShareHolderMeeting.Web.Controllers
         public JsonResult GetVotingResult(int votingType)
         {
             VotingCardType type = ToVotingCardType(votingType);
-            VotingResultVM result = _votingCardSvc.CreateVotingResultVM(type);             
+            VotingResultView result = _votingCardSvc.CreateVotingResultVM(type);             
             return Json(result, JsonRequestBehavior.AllowGet);
         }
 

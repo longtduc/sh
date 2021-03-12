@@ -1,12 +1,6 @@
+using Application.ShareHolders;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Linq.Expressions;
-using System.Web;
 using System.Web.Mvc;
-using Application.Services;
-using ShareHolderMeeting.Web.Models;
-using ShareHolderMeeting.Web.Services;
 
 namespace ShareHolderMeeting.Web.Controllers
 {

@@ -51,20 +51,26 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Candidates\CandidateCommandHandler.cs" />
+    <Compile Include="Candidates\CandidateValidator.cs" />
+    <Compile Include="Candidates\CreateCandidateCommand.cs" />
+    <Compile Include="Common\Interfaces\ICommandHander.cs" />
+    <Compile Include="Candidates\RemoveCandidateCommand.cs" />
+    <Compile Include="Candidates\UpdateCandidateCommand.cs" />
     <Compile Include="Common\Interfaces\IShareHolderContext.cs" />
     <Compile Include="Common\Interfaces\IValidator.cs" />
-    <Compile Include="Common\Models\ShareHolderVM.cs" />
-    <Compile Include="Common\Models\StatementVM.cs" />
-    <Compile Include="Common\Models\VotingByHandResultVM.cs" />
-    <Compile Include="Common\Models\VotingCardVM.cs" />
-    <Compile Include="Services\ShareHolderService.cs" />
-    <Compile Include="Services\StatementService.cs" />
-    <Compile Include="Common\Models\Class1.cs" />
+    <Compile Include="ShareHolders\ShareHolderDto.cs" />
+    <Compile Include="Statements\StatementDto.cs" />
+    <Compile Include="VotingByHands\VotingByHandResultView.cs" />
+    <Compile Include="VotingCards\VotingCardDto.cs" />
+    <Compile Include="ShareHolders\ShareHolderService.cs" />
+    <Compile Include="Statements\StatementService.cs" />
     <Compile Include="Common\Models\Result.cs" />
-    <Compile Include="Common\Models\VotingResultVM.cs" />
+    <Compile Include="VotingCards\VotingResultView.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\VotingByHandServices.cs" />
-    <Compile Include="Services\VotingCardServices.cs" />
+    <Compile Include="VotingByHands\VotingByHandServices.cs" />
+    <Compile Include="VotingCards\VotingCardServices.cs" />
+    <Compile Include="ShareHolders\ShareHodlerValidator.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Common\Behaviours\" />

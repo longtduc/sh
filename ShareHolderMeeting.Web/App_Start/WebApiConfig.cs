@@ -13,7 +13,6 @@ namespace ShareHolderMeeting.Web
             // Web API configuration and services
             config.DependencyResolver = new NinjectResolver();
 
-
             // Web API routes
             config.MapHttpAttributeRoutes();
 

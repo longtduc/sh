@@ -1,6 +1,6 @@
 ﻿using Application.Common.Models;
+using Application.VotingCards;
 using Domain.Entities;
-using ShareHolderMeeting.Web.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +10,7 @@ namespace ShareHolderMeeting.Web.Models
 {
     public class VotingCardHelper
     {
-        public static VotingCardLine ToVotingCardLine(VotingCardLineVM dto)
+        public static VotingCardLine ToVotingCardLine(VotingCardLineDto dto)
         {
             if (dto == null)
                 throw new InvalidOperationException();
@@ -25,7 +25,7 @@ namespace ShareHolderMeeting.Web.Models
             };
         }
 
-        public static IList<VotingCardLine> ToVotingCardLines(ICollection<VotingCardLineVM> dto)
+        public static IList<VotingCardLine> ToVotingCardLines(ICollection<VotingCardLineDto> dto)
         {
             if (dto == null)
                 throw new InvalidOperationException();
@@ -38,9 +38,9 @@ namespace ShareHolderMeeting.Web.Models
             return VotingCardLines;
         }
 
-        public static VotingCardVM ToVotingCardDto(VotingCard votingCard)
+        public static VotingCardDto ToVotingCardDto(VotingCard votingCard)
         {
-            var votingCardDto = new VotingCardVM()
+            var votingCardDto = new VotingCardDto()
             {
                 Id = votingCard.Id,
                 IsInvalid = votingCard.IsInvalid,
@@ -50,11 +50,11 @@ namespace ShareHolderMeeting.Web.Models
                 ShareHolderId = votingCard.ShareHolderId,
                 NumberOfShares = votingCard.NumberOfShares,
                 VotingCardType = votingCard.VotingCardType,
-                VotingCardLines = new List<VotingCardLineVM>()
+                VotingCardLines = new List<VotingCardLineDto>()
             };
             foreach (var item in votingCard.VotingCardLines)
             {
-                var lineDto = new VotingCardLineVM()
+                var lineDto = new VotingCardLineDto()
                 {
                     Id = item.Id,
                     CandidateId = item.CandidateId,

@@ -1,15 +1,15 @@
-﻿using Castle.MicroKernel.Registration;
+﻿using Application.Common.Interfaces;
+using Application.ShareHolders;
+using Application.Statements;
+using Application.VotingByHands;
+using Application.VotingCards;
+using Castle.MicroKernel.Registration;
 using Castle.MicroKernel.SubSystems.Configuration;
 using Castle.Windsor;
-using System;
-using System.Collections.Generic;
+using Persistence;
 using System.Linq;
 using System.Reflection;
 using System.Web.Mvc;
-using System.Web.Http;
-using Application.Common.Interfaces;
-using Application.Services;
-using Persistence;
 
 namespace ShareHolderMeeting.Web.Infrastructure
 {

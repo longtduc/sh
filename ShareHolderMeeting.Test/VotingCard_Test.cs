@@ -2,6 +2,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using ShareHolderMeeting.Web.Models;
 using System.Collections.Generic;
+using Domain.Entities;
 
 namespace ShareHolderMeeting.Test
 {
@@ -36,12 +37,12 @@ namespace ShareHolderMeeting.Test
         }
 
         [TestMethod]
-        [ExpectedException(typeof(ArgumentException))]
+        [ExpectedException(typeof(InvalidOperationException))]
         public void CreateVotingCard_WhenShareHolderIsABSENT_RaiseException()
         {
             _shareHolder.StatusAtMeeting = StatusAtMeeting.Absent;
             var sut = new VotingCard(_shareHolder, _candidates, VotingCardType.BODVotingCard);
-            Assert.IsNotNull(sut);
+            //Assert.IsNotNull(sut);
         }
 
         [TestMethod]

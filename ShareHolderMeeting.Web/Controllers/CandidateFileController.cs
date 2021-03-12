@@ -15,7 +15,7 @@ namespace ShareHolderMeeting.Web.Controllers
 {
     public class CandidateFileController : Controller
     {
-        private readonly IShareHolderContext _ctx;       
+        private readonly IShareHolderContext _ctx;
 
         public CandidateFileController(IShareHolderContext context)
         {
@@ -78,7 +78,7 @@ namespace ShareHolderMeeting.Web.Controllers
                 }
                 catch (Exception)
                 {
-
+                    //
 
                 }
             }
@@ -120,14 +120,14 @@ namespace ShareHolderMeeting.Web.Controllers
         public ActionResult UploadAndResize(HttpPostedFileBase upload)
         {
             if (upload != null && upload.ContentLength > 0)
-            {   
+            {
                 try
                 {
-                   Image bmpImg = BhvImageLib.ResizeByWidth(upload.InputStream, 1024);
+                    Image bmpImg = BhvImageLib.ResizeByWidth(upload.InputStream, 1024);
 
                     string path = Path.Combine(Server.MapPath("~/Images"),
-                                      Path.GetFileName(upload.FileName));                   
-               
+                                      Path.GetFileName(upload.FileName));
+
                     bmpImg.Save(path, ImageFormat.Jpeg);
                 }
                 catch (Exception ex)
@@ -159,7 +159,7 @@ namespace ShareHolderMeeting.Web.Controllers
                         CandidateId = 1,
                         ContentType = "image/jpeg"
                     };
-                    
+
                     var bmpImg = BhvImageLib.ResizeByWidth(upload.InputStream, 1024);
 
                     bmpImg.Save(@"D:\pic1Resized-XYZ.jpg", ImageFormat.Jpeg);

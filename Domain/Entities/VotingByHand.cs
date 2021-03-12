@@ -13,7 +13,7 @@ namespace Domain.Entities
         public string ShareHolderCode { get; set; }
         public string ShareHolderName { get; set; }
         public int NumberOfShares { get; set; }
-        public Nullable<int> ShareHolderId { get; set; }
+        public int ShareHolderId { get; set; }
 
         public ShareHolder ShareHolder { get; set; }
 

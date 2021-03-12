@@ -1,14 +1,13 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using ShareHolderMeeting.Web.Models;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Collections.Generic;
-using ShareHolderMeeting.Web.ViewModel;
 using System.Linq;
+using Domain.Entities;
+using Application.VotingByHands;
 
 namespace ShareHolderMeeting.Test
 {
     [TestClass]
-    public class VotingByHandResultVM_Test
+    public class VotingByHandResultView_Test
     {
         private List<VotingByHand> _votingByHands;
         [TestInitialize]
@@ -44,22 +43,22 @@ namespace ShareHolderMeeting.Test
         [TestMethod]
         public void Create_StatementResultsCountShouldEqualToTwo()
         {
-            var sut = new VotingByHandResultVM(_votingByHands);
+            var sut = new VotingByHandResultView(_votingByHands);
             Assert.AreEqual(2, sut.StatementResults.Count);
         }
 
         [TestMethod]
         public void Create_TotalNumberOfSharesShouldEqualTo3000()
         {
-            var sut = new VotingByHandResultVM(_votingByHands);
+            var sut = new VotingByHandResultView(_votingByHands);
             Assert.AreEqual(3000, sut.TotalNumberOfShares);
         }
 
         [TestMethod]
         public void Create_Accumulate_AmountOfNOAndYESIsEqualToZERO()
         {
-            var sut = new VotingByHandResultVM(_votingByHands);
-          
+            var sut = new VotingByHandResultView(_votingByHands);
+
             Assert.AreEqual(6000, sut.StatementResults.Sum(s => s.AmtOfSharesYes));
             Assert.AreEqual(0, sut.StatementResults.Sum(s => s.AmtOfSharesNo));
             Assert.AreEqual(0, sut.StatementResults.Sum(s => s.AmtOfSharesOther));
@@ -72,7 +71,7 @@ namespace ShareHolderMeeting.Test
             {
                 line.VotingOption = VotingOption.No;
             }
-            var sut = new VotingByHandResultVM(_votingByHands);
+            var sut = new VotingByHandResultView(_votingByHands);
             //Assert.AreEqual(3000, sut.StatementResults.Sum(s=>s.AmtOfSharesYes));
             Assert.AreEqual(4000, sut.StatementResults.Sum(s => s.AmtOfSharesYes));
             Assert.AreEqual(2000, sut.StatementResults.Sum(s => s.AmtOfSharesNo));
@@ -82,7 +81,7 @@ namespace ShareHolderMeeting.Test
         [TestMethod]
         public void Create_Accumulate_YesRateShouldEqualTo100()
         {
-            var sut = new VotingByHandResultVM(_votingByHands);
+            var sut = new VotingByHandResultView(_votingByHands);
             //Assert.AreEqual(3000, sut.StatementResults.Sum(s=>s.AmtOfSharesYes));
             Assert.AreEqual(100, sut.StatementResults.ElementAt(0).YesRate);
             Assert.AreEqual(0, sut.StatementResults.ElementAt(0).NoRate);

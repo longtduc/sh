@@ -1,8 +1,10 @@
 ## User/Password
 
-longtduc@gmail.com/abcd1234
+longtduc@gmail.com/abcd1234, administrator
+diemtduc@gmail.com/abcd1234
 
-## Castle.Windsor ASP.NET MVC bootstrapping package
+## Ninject is used for Web API
+## Castle.Windsor ASP.NET MVC bootstrapping package used for MVC
 ------------------------------------------------
 
 This package simplifies bootstrapping of `Castle.Windsor` container in your ASP.NET MVC 4 application. 
@@ -20,3 +22,9 @@ Fo more informations [how to use Windsor](http://docs.castleproject.org/Windsor.
 [documentation](http://docs.castleproject.org/Windsor.MainPage.ashx).
 
 [![endorse](https://api.coderwall.com/rarous/endorsecount.png)](https://coderwall.com/rarous)
+
+# How to use web.config customErrors in ASP.NET MVC?
+- https://www.tutorialsteacher.com/articles/web-config-customerrors-in-aspnet-mvc
+
+# How to create a custom filter in ASP.NET MVC?
+- https://www.tutorialsteacher.com/articles/create-custom-filters

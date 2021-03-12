@@ -23,7 +23,6 @@ candidateApp.controller('candidateCtrl', ['$scope', '$http', function ($scope, $
         });
 
     $scope.putCandidate = function () {
-        //var dataSent = { name: $scope.newCandidate.Name, candidateType: $scope.type };
         var dataSent = { id: $scope.editCandidate.Id, name: $scope.editCandidate.Name, candidateType: $scope.type };
         $http.put('/api/CandidateDS', dataSent).
             success(function (data, status, headers, config) {
@@ -72,7 +71,6 @@ candidateApp.controller('candidateCtrl', ['$scope', '$http', function ($scope, $
 
     $scope.postCandidate = function () {
         var dataSent = { name: $scope.newCandidate.Name, candidateType: $scope.type };
-        //var dataSent = { id: $scope.editCandidate.Id, name: $scope.editCandidate.Name, candidateType: $scope.type };
         $http.post('/Api/CandidateDS', dataSent)
             .success(function (data, status, headers, config) {
                 //alert(JSON.stringify(data));

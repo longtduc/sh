@@ -36,7 +36,13 @@ namespace ShareHolderMeeting.Web.Controllers
             throw new Exception("This is unhandled exception");
         }
 
-        
+        public ActionResult NullReferenceException()
+        {
+            throw new NullReferenceException();
+        }
+
+
+
 
 
     }

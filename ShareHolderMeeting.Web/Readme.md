@@ -24,7 +24,39 @@ Fo more informations [how to use Windsor](http://docs.castleproject.org/Windsor.
 [![endorse](https://api.coderwall.com/rarous/endorsecount.png)](https://coderwall.com/rarous)
 
 # How to use web.config customErrors in ASP.NET MVC?
+- home/throwException
 - https://www.tutorialsteacher.com/articles/web-config-customerrors-in-aspnet-mvc
 
-# How to create a custom filter in ASP.NET MVC?
+
+# Filter types in MVC
+- Authentication filters (MVC 5)
+- Authorization filters
+- Action filters
+- Result filters
+- Exception filters
+
+## when to use filter
+
+- Custom Authentication
+- Custom Authorization(User based or Role based)
+- Error handling or logging
+- User Activity Logging
+- Data Caching
+- Data Compression
+
+## Predefined filter
+- Authorize
+- ValidateInput
+- HandleError
+- RequireHttps
+- OutputCache, etc
+
+## Three level of filter
+- Global level (FilterConfig.cs) 
+- Controller level
+- Action level
+
+## How to create a custom filter in ASP.NET MVC?
 - https://www.tutorialsteacher.com/articles/create-custom-filters
+- Home/NullReferenceException and see D:\SourceCodes\ShareHolderMeeting\ShareHolderMeeting.Web\Log\Log.txt
+- LogCustomExceptionFilter.cs => FilterConfig.cs

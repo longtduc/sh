@@ -257,6 +257,7 @@
     <Content Include="App\Voting\voteResultCtrl.js" />
     <Content Include="Content\SiteExtenstion.css" />
     <Compile Include="Infrastructure\RangeExceptionAttribute.cs" />
+    <Compile Include="Log\LogCustomExceptionFilter.cs" />
     <Compile Include="Migrations\202011040345356_RemoveVotingCard.ShareHolderId.cs" />
     <Compile Include="Migrations\202011040345356_RemoveVotingCard.ShareHolderId.Designer.cs">
       <DependentUpon>202011040345356_RemoveVotingCard.ShareHolderId.cs</DependentUpon>

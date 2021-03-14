@@ -1,4 +1,5 @@
-﻿using System.Web;
+﻿using ExceptionFilterInMVC.Models;
+using System.Web;
 using System.Web.Mvc;
 
 namespace ShareHolderMeeting.Web
@@ -7,7 +8,8 @@ namespace ShareHolderMeeting.Web
     {
         public static void RegisterGlobalFilters(GlobalFilterCollection filters)
         {
-            filters.Add(new HandleErrorAttribute());
+            //filters.Add(new HandleErrorAttribute());
+            filters.Add(new LogCustomExceptionFilter());
         }
     }
 }

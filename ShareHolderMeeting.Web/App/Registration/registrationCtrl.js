@@ -57,7 +57,7 @@ registrationApp.controller('registrationCtrl', function ($scope, $http, $route, 
         };
 
         //alert(JSON.stringify(dataSent));
-        $http.post('/Registration/updateStatus', dataSent)
+        $http.put('/Registration/updateStatus', dataSent)
             .success(function (data) {
                 if (data.status === true) {
                     var length = $scope.shareHolders.length;

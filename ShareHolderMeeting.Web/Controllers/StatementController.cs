@@ -2,7 +2,9 @@
 using Application.Common.Models;
 using Application.Statements;
 using System;
+using System.Data.Entity;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web.Mvc;
 
 namespace ShareHolderMeeting.Web.Controllers
@@ -26,14 +28,14 @@ namespace ShareHolderMeeting.Web.Controllers
         }
 
         [HttpGet]
-        public JsonResult GetStatements()
+        public async Task<JsonResult> GetStatements()
         {
-            var result = _context.Statements.ToList();
-            return Json(result, JsonRequestBehavior.AllowGet);
+            var result = _context.Statements.ToListAsync();
+            return Json(await result, JsonRequestBehavior.AllowGet);
         }
 
-        [HttpPut]
-        public JsonResult Put(StatementDto vm) //Create a statement
+        [HttpPost]
+        public JsonResult Post(StatementDto vm) //Create a statement
         {            
             //If ViewModel is invalid
             var errorMsg = GetModelErrors();
@@ -46,8 +48,8 @@ namespace ShareHolderMeeting.Web.Controllers
             return Json(ControllerHelper.TranslateErrorToClient(result), JsonRequestBehavior.AllowGet);
         }
 
-        [HttpPost] //Update a Statement
-        public JsonResult Post(StatementDto vm)
+        [HttpPut] //Update a Statement
+        public JsonResult Put(StatementDto vm)
         {
             //If ViewModel is invalid
             var errorMsg = GetModelErrors();
@@ -58,8 +60,8 @@ namespace ShareHolderMeeting.Web.Controllers
 
             Result<int> result = _svc.Update(vm);
             return Json(ControllerHelper.TranslateErrorToClient(result), JsonRequestBehavior.AllowGet);
-        }      
-     
+        }
+
 
         [HttpDelete]
         public JsonResult Delete(int id)

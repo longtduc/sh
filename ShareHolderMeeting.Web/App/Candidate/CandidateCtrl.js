@@ -22,7 +22,7 @@ candidateApp.controller('candidateCtrl', ['$scope', '$http', function ($scope, $
             alert('error while loading canidates (/api/Candidate)');
         });
 
-    $scope.putCandidate = function () {
+    $scope.update = function () {
         var dataSent = { id: $scope.editCandidate.Id, name: $scope.editCandidate.Name, candidateType: $scope.type };
         $http.put('/api/CandidateDS', dataSent).
             success(function (data, status, headers, config) {
@@ -43,7 +43,7 @@ candidateApp.controller('candidateCtrl', ['$scope', '$http', function ($scope, $
 
 
 
-    $scope.deleteCandidate = function (candidate) {
+    $scope.delete = function (candidate) {
         var dataSent = { id: candidate.Id };
         $http.delete('/api/CandidateDS', { params: dataSent }).success(function (data, status, header, config) {
             if (status === 200) { //Delete is OK
@@ -69,7 +69,7 @@ candidateApp.controller('candidateCtrl', ['$scope', '$http', function ($scope, $
         $scope.selectedRow = -1;
     };
 
-    $scope.postCandidate = function () {
+    $scope.create = function () {
         var dataSent = { name: $scope.newCandidate.Name, candidateType: $scope.type };
         $http.post('/Api/CandidateDS', dataSent)
             .success(function (data, status, headers, config) {

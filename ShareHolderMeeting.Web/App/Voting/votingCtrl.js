@@ -54,7 +54,7 @@ votingApp.controller('voteCtrl', function ($scope, $http, $uibModal, $log, $rout
     //update voting card
     $scope.updateVoting = function () {        
         //alert(JSON.stringify($scope.votingCard));
-        $http.post('/VotingCard/Vote', $scope.votingCard).            
+        $http.put('/VotingCard/Vote', $scope.votingCard).            
             success(function (data) {
                 for (var i = 0; i < $scope.votingCards.length; i++) {
                     if ($scope.votingCards[i].Id === $scope.votingCard.Id) {

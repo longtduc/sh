@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using Application.Common.Interfaces;
@@ -19,9 +21,9 @@ namespace ShareHolderMeeting.Web.Controllers
             _context = context;
         }
 
-        public ViewResult Index()
+        public async Task<ViewResult> Index()
         {
-            return View(_context.ShareHolders.ToList());
+            return View(await _context.ShareHolders.ToListAsync());
         }
 
         protected override void Dispose(bool disposing)

@@ -26,10 +26,10 @@ angular.module('statementApp', [])
             $scope.selectedRow = -1;
         };
 
-        $scope.put = function () {
+        $scope.create = function () {
             var dataSent = { Id: 0, Description: $scope.newStatement.Description };
 
-            $http({ method: 'put', url: '/Statement/Put', params: dataSent })
+            $http({ method: 'post', url: '/Statement/Post', params: dataSent })
                 .success(
                     function (data) {
                         if (data.Status) {
@@ -60,10 +60,10 @@ angular.module('statementApp', [])
 
         };
 
-        $scope.post = function () {
+        $scope.update = function () {
             var dataSent = { id: $scope.editedStatement.Id, description: $scope.editedStatement.Description };
             //console.log(dataSent);
-            $http({ method: 'post', url: '/Statement/post', params: dataSent })
+            $http({ method: 'put', url: '/Statement/put', params: dataSent })
                 .success(function (data) {
                     if (data.Status == true) {
                         var length = $scope.statements.length;

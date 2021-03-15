@@ -69,3 +69,8 @@ Fo more informations [how to use Windsor](http://docs.castleproject.org/Windsor.
 - Home/GetLocationAsyn 
 + use await Task.Delay(1000);
 + took only ~ 2000ms
+
+- SingleOrDefaultAsync(): Get a single object as a result
+- FindAsync(): Asynchronously finds the entity with the given primary key value.
+- SaveChangesAsync(): Asynchronously save all changes..
+- ToListAsync()

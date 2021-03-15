@@ -5,7 +5,9 @@ using Application.VotingCards;
 using Domain.Entities;
 using ShareHolderMeeting.Web.Models;
 using System;
+using System.Data.Entity;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web.Mvc;
 
 namespace ShareHolderMeeting.Web.Controllers
@@ -23,13 +25,13 @@ namespace ShareHolderMeeting.Web.Controllers
         }
 
         //Get VotingCards 
-        public JsonResult GetVotingCards(int votingType)
+        public async Task<JsonResult> GetVotingCards(int votingType)
         {
             VotingCardType type = ToVotingCardType(votingType);
 
             var allVotingCards = _context.VotingCards.Include("ShareHolder")
-                .Where(m => m.VotingCardType == type)
-                .ToList();
+                .Where(m => m.VotingCardType == type);
+                
             var result = allVotingCards.Select(m => new
             {
                 m.Id,
@@ -41,9 +43,9 @@ namespace ShareHolderMeeting.Web.Controllers
                 ShareHolderName = m.ShareHolder.Name,
                 AmtAlreadyVoted = m.AmtAlreadyVoted,
                 ShareHolderId = m.ShareHolder.ShareHolderId
-            });
+            }).ToListAsync();
 
-            return Json(result, JsonRequestBehavior.AllowGet);
+            return Json(await result, JsonRequestBehavior.AllowGet);
         }
 
         private VotingCardType ToVotingCardType(int votingType)

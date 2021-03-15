@@ -8,12 +8,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Http;
 
 namespace ShareHolderMeeting.Web.Controllers
 {
-    //[Authorize]
+    [Authorize]
     public class ShareHolderDSController : ApiController
     {
         private IShareHolderContext _context;
@@ -51,7 +52,7 @@ namespace ShareHolderMeeting.Web.Controllers
             return shareHolder;
         }
 
-        public HttpResponseMessage Put([FromBody]ShareHolder shareHolder)
+        public HttpResponseMessage Post([FromBody]ShareHolder shareHolder)
         {
             //Validate and returnn errors if any
             var response = new HttpResponseMessage();
@@ -90,7 +91,7 @@ namespace ShareHolderMeeting.Web.Controllers
             return shareHolder;
         }
 
-        public HttpResponseMessage Post([FromBody]ShareHolder shareHolder)
+        public HttpResponseMessage Put([FromBody]ShareHolder shareHolder)
         {
             //Validate and Return Errors
             var response = new HttpResponseMessage();

@@ -60,3 +60,12 @@ Fo more informations [how to use Windsor](http://docs.castleproject.org/Windsor.
 - https://www.tutorialsteacher.com/articles/create-custom-filters
 - Home/NullReferenceException and see D:\SourceCodes\ShareHolderMeeting\ShareHolderMeeting.Web\Log\Log.txt
 - LogCustomExceptionFilter.cs => FilterConfig.cs
+
+## How to use async, await in MVC
+
+- Home/GetLocation
++ use Thread.Sleep(3000);          
++ ~ 3000ms 
+- Home/GetLocationAsyn 
++ use await Task.Delay(1000);
++ took only ~ 2000ms

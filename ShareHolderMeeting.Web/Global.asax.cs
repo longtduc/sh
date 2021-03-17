@@ -47,11 +47,27 @@ namespace ShareHolderMeeting.Web
             //RouteConfig.RegisterRoutes(RouteTable.Routes);
         }
 
-        //protected void Application_Error(object sender, EventArgs e)
-        //{
-        //    Server.ClearError();
-        //    Response.Redirect("home/error");
-        //}
+        protected void Application_Error(object sender, EventArgs e)
+        {
+            //get the last error of server  
+            var error = Server.GetLastError();
+
+            //get the http code of error: 400, 404, 500...  
+            var code = (error is HttpException) ? (error as HttpException).GetHttpCode() : 500;
+
+            //write log  
+
+            //send email  
+
+            //clear response stream  
+            Response.Clear();
+
+            //clear server's error  
+            Server.ClearError();
+
+            //redirect to error page  
+            Response.Redirect(string.Format("~/Error/Index/{0}", code));
+        }
     }
 }
 

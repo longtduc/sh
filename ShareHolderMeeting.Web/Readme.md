@@ -81,4 +81,9 @@ Fo more informations [how to use Windsor](http://docs.castleproject.org/Windsor.
 + EntityFramework version 4.4 can not migrate to the new model => Degraded to version 6.1.2
 + Removed folder Migrations from ShareHolderMeeting.Web project
 
+## How to add Application_Error to deal with unhandled exceptions
+
+- Must not use LogCustomExceptionFilter.cs
+- Create ErrorController.cs, action Index and View to redirect to after processing unhandled exceptions
+
 

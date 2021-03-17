@@ -226,6 +226,7 @@
     <Compile Include="Controllers\CandidateDSController.cs" />
     <Compile Include="Controllers\CandidateFileController.cs" />
     <Compile Include="Controllers\ControllerHelper.cs" />
+    <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\RegistrationController.cs" />
     <Compile Include="Controllers\ShareHolderController.cs" />
     <Compile Include="Controllers\ShareHolderDSController.cs" />
@@ -391,6 +392,7 @@
     <None Include="Views\CandidateFile\UploadAndResize.cshtml" />
     <Content Include="Views\VotingByHand\GenerateByHandCards.cshtml" />
     <Content Include="Views\VotingByHand\Index.cshtml" />
+    <Content Include="Views\Error\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

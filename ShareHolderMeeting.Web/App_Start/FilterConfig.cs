@@ -10,8 +10,9 @@ namespace ShareHolderMeeting.Web
         {
             //Built-in Filter
             //filters.Add(new HandleErrorAttribute()); 
+
             //Custom Filter
-            filters.Add(new LogCustomExceptionFilter());
+            //filters.Add(new LogCustomExceptionFilter());
         }
     }
 }

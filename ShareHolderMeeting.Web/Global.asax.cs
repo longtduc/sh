@@ -46,6 +46,12 @@ namespace ShareHolderMeeting.Web
             //WebApiConfig.Register(GlobalConfiguration.Configuration);
             //RouteConfig.RegisterRoutes(RouteTable.Routes);
         }
+
+        //protected void Application_Error(object sender, EventArgs e)
+        //{
+        //    Server.ClearError();
+        //    Response.Redirect("home/error");
+        //}
     }
 }
 

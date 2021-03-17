@@ -19,7 +19,7 @@ namespace ShareHolderMeeting.Web.Controllers
         {
             _context = context;
         }
-
+        
         private IShareHolderContext _context { get; }
 
         public async Task<ViewResult> Index(int type)

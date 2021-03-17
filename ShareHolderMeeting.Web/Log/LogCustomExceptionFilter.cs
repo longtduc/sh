@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Application.Statements;
+using System;
 using System.IO;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 
@@ -22,14 +24,24 @@ namespace ExceptionFilterInMVC.Models
 
                 //saving the data in a text file called Log.txt
                 //You can also save this in a dabase
+
                 File.AppendAllText(HttpContext.Current.Server.MapPath("~/Log/Log.txt"), Message);
+                //saveToTempTable(Message);
 
                 filterContext.ExceptionHandled = true;
                 filterContext.Result = new ViewResult()
                 {
                     ViewName = "Error"
                 };
+
             }
+        }
+
+        private void saveToTempTable(string message)
+        {
+            var svc = new StatementService(new Persistence.ShareHolderContext());
+            svc.Create(new StatementDto() { Description = message });
+            return;
         }
     }
 }

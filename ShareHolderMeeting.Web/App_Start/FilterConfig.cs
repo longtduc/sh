@@ -8,7 +8,9 @@ namespace ShareHolderMeeting.Web
     {
         public static void RegisterGlobalFilters(GlobalFilterCollection filters)
         {
-            //filters.Add(new HandleErrorAttribute());
+            //Built-in Filter
+            //filters.Add(new HandleErrorAttribute()); 
+            //Custom Filter
             filters.Add(new LogCustomExceptionFilter());
         }
     }

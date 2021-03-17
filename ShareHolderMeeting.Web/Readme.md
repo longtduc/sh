@@ -59,7 +59,8 @@ Fo more informations [how to use Windsor](http://docs.castleproject.org/Windsor.
 ## How to create a custom filter in ASP.NET MVC?
 - https://www.tutorialsteacher.com/articles/create-custom-filters
 - Home/NullReferenceException and see D:\SourceCodes\ShareHolderMeeting\ShareHolderMeeting.Web\Log\Log.txt
-- LogCustomExceptionFilter.cs => FilterConfig.cs
+- LogCustomExceptionFilter.cs => FilterConfig.cs (Log/Log.txt)
+- LogCustomExceptionFilter.cs => FilterConfig.cs (saveToTempTable.cs)
 
 ## How to use async, await in MVC
 

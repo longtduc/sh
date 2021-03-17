@@ -258,43 +258,6 @@
     <Content Include="Content\SiteExtenstion.css" />
     <Compile Include="Infrastructure\RangeExceptionAttribute.cs" />
     <Compile Include="Log\LogCustomExceptionFilter.cs" />
-    <Compile Include="Migrations\202011040345356_RemoveVotingCard.ShareHolderId.cs" />
-    <Compile Include="Migrations\202011040345356_RemoveVotingCard.ShareHolderId.Designer.cs">
-      <DependentUpon>202011040345356_RemoveVotingCard.ShareHolderId.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202011040443300_RemovedVotingCardLines.VotingCardId.cs" />
-    <Compile Include="Migrations\202011040443300_RemovedVotingCardLines.VotingCardId.Designer.cs">
-      <DependentUpon>202011040443300_RemovedVotingCardLines.VotingCardId.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202011040728488_AddedShareHolderIdWithNullableTypeOfInteger.cs" />
-    <Compile Include="Migrations\202011040728488_AddedShareHolderIdWithNullableTypeOfInteger.Designer.cs">
-      <DependentUpon>202011040728488_AddedShareHolderIdWithNullableTypeOfInteger.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202011040735538_ChangedNullabeToNotNullForVotingCardLine.VotingCardId.cs" />
-    <Compile Include="Migrations\202011040735538_ChangedNullabeToNotNullForVotingCardLine.VotingCardId.Designer.cs">
-      <DependentUpon>202011040735538_ChangedNullabeToNotNullForVotingCardLine.VotingCardId.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202011040756554_ChangedVotingByHand.ShareHolderIdToNullable.cs" />
-    <Compile Include="Migrations\202011040756554_ChangedVotingByHand.ShareHolderIdToNullable.Designer.cs">
-      <DependentUpon>202011040756554_ChangedVotingByHand.ShareHolderIdToNullable.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202011041047340_ChangeVotingCard.ShareHolderIdToInteger-NotNull.cs" />
-    <Compile Include="Migrations\202011041047340_ChangeVotingCard.ShareHolderIdToInteger-NotNull.Designer.cs">
-      <DependentUpon>202011041047340_ChangeVotingCard.ShareHolderIdToInteger-NotNull.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202011041058437_ChangeVotingCard.ShareHolderIdToNullable.cs" />
-    <Compile Include="Migrations\202011041058437_ChangeVotingCard.ShareHolderIdToNullable.Designer.cs">
-      <DependentUpon>202011041058437_ChangeVotingCard.ShareHolderIdToNullable.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202011092336351_AddedNewField.cs" />
-    <Compile Include="Migrations\202011092336351_AddedNewField.Designer.cs">
-      <DependentUpon>202011092336351_AddedNewField.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202011092341139_RemoveNullableFromShareHolderIdForForeignKey.cs" />
-    <Compile Include="Migrations\202011092341139_RemoveNullableFromShareHolderIdForForeignKey.Designer.cs">
-      <DependentUpon>202011092341139_RemoveNullableFromShareHolderIdForForeignKey.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\VotingCardHelper.cs" />
     <Compile Include="Plumbing\WindsorControllerFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -347,7 +310,6 @@
     <Content Include="Images\orderedList7.png" />
     <Content Include="Images\orderedList8.png" />
     <Content Include="Images\orderedList9.png" />
-    <Content Include="Migrations\CreateShareHolderMeetingDB.sql" />
     <Content Include="Scripts\angular-animate.js" />
     <Content Include="Scripts\angular-animate.min.js" />
     <Content Include="Scripts\angular-route.js" />
@@ -445,35 +407,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App\Voting\votingFilter.js" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\202011040345356_RemoveVotingCard.ShareHolderId.resx">
-      <DependentUpon>202011040345356_RemoveVotingCard.ShareHolderId.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202011040443300_RemovedVotingCardLines.VotingCardId.resx">
-      <DependentUpon>202011040443300_RemovedVotingCardLines.VotingCardId.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202011040728488_AddedShareHolderIdWithNullableTypeOfInteger.resx">
-      <DependentUpon>202011040728488_AddedShareHolderIdWithNullableTypeOfInteger.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202011040735538_ChangedNullabeToNotNullForVotingCardLine.VotingCardId.resx">
-      <DependentUpon>202011040735538_ChangedNullabeToNotNullForVotingCardLine.VotingCardId.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202011040756554_ChangedVotingByHand.ShareHolderIdToNullable.resx">
-      <DependentUpon>202011040756554_ChangedVotingByHand.ShareHolderIdToNullable.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202011041047340_ChangeVotingCard.ShareHolderIdToInteger-NotNull.resx">
-      <DependentUpon>202011041047340_ChangeVotingCard.ShareHolderIdToInteger-NotNull.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202011041058437_ChangeVotingCard.ShareHolderIdToNullable.resx">
-      <DependentUpon>202011041058437_ChangeVotingCard.ShareHolderIdToNullable.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202011092336351_AddedNewField.resx">
-      <DependentUpon>202011092336351_AddedNewField.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202011092341139_RemoveNullableFromShareHolderIdForForeignKey.resx">
-      <DependentUpon>202011092341139_RemoveNullableFromShareHolderIdForForeignKey.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Application\Application.csproj">

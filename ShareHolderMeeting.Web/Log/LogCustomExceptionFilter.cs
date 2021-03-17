@@ -1,4 +1,6 @@
 ﻿using Application.Statements;
+using Domain.Entities;
+using Persistence;
 using System;
 using System.IO;
 using System.Threading.Tasks;
@@ -22,11 +24,11 @@ namespace ExceptionFilterInMVC.Models
                                  "Error Message : " + exceptionMessage
                                 + Environment.NewLine + "Stack Trace : " + stackTrace;
 
-                //saving the data in a text file called Log.txt
-                //You can also save this in a dabase
-
-                File.AppendAllText(HttpContext.Current.Server.MapPath("~/Log/Log.txt"), Message);
-                //saveToTempTable(Message);
+                //1-saving the data in a text file called Log.txt                
+                //File.AppendAllText(HttpContext.Current.Server.MapPath("~/Log/Log.txt"), Message);
+                
+                //2 -save this in a database
+                saveToLogTable(Message);
 
                 filterContext.ExceptionHandled = true;
                 filterContext.Result = new ViewResult()
@@ -37,11 +39,16 @@ namespace ExceptionFilterInMVC.Models
             }
         }
 
-        private void saveToTempTable(string message)
+        private void saveToLogTable(string message)
         {
-            var svc = new StatementService(new Persistence.ShareHolderContext());
-            svc.Create(new StatementDto() { Description = message });
-            return;
+            //var svc = new StatementService(new Persistence.ShareHolderContext());
+            //svc.Create(new StatementDto() { Description = message });
+            //return;
+            using (var ctx = new ShareHolderContext())
+            {
+                ctx.LogExceptions.Add(new LogException(message));
+                ctx.SaveChanges();
+            }
         }
     }
 }

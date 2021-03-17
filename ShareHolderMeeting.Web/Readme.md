@@ -60,7 +60,6 @@ Fo more informations [how to use Windsor](http://docs.castleproject.org/Windsor.
 - https://www.tutorialsteacher.com/articles/create-custom-filters
 - Home/NullReferenceException and see D:\SourceCodes\ShareHolderMeeting\ShareHolderMeeting.Web\Log\Log.txt
 - LogCustomExceptionFilter.cs => FilterConfig.cs (Log/Log.txt)
-- LogCustomExceptionFilter.cs => FilterConfig.cs (saveToTempTable.cs)
 
 ## How to use async, await in MVC
 
@@ -75,3 +74,11 @@ Fo more informations [how to use Windsor](http://docs.castleproject.org/Windsor.
 - FindAsync(): Asynchronously finds the entity with the given primary key value.
 - SaveChangesAsync(): Asynchronously save all changes..
 - ToListAsync()
+## How to log unhandled exception to database 
+- Added LogException table and modified LogCustomExceptionFilter.cs
+- Migration:
++ Moved to Infrastructure project
++ EntityFramework version 4.4 can not migrate to the new model => Degraded to version 6.1.2
++ Removed folder Migrations from ShareHolderMeeting.Web project
+
+

@@ -23,6 +23,7 @@ namespace Persistence
         public DbSet<Statement> Statements { get; set; }
         public DbSet<VotingByHand> VotingByHands { get; set; }
         public DbSet<VotingByHandLine> VotingByHandLines { get; set; }
+        public DbSet<LogException> LogExceptions { get; set; }
       
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

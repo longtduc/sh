@@ -6,4 +6,17 @@
 
 <h1 class="text-danger">Error</h1>
 <h2 class="text-danger">An error occurred while processing your request.</h2>
+<p>
+    @if (Model != null)
+    {
+        <h3>Controller: Model.ControllerName</h3>
+        <h3>Action: Model.ActionName</h3>
+        <h3>Exception: Model.Exception</h3>
+    }
+    else
+    {
+        <h3>Message: @ViewBag.Message</h3>
+    }
+
+</p>
 

@@ -11,6 +11,8 @@ using Castle.MicroKernel.Registration;
 using ShareHolderMeeting.Web.App_Start;
 using ShareHolderMeeting.Web.Infrastructure;
 using System.Diagnostics;
+using Application.Common.Exceptions;
+using Persistence;
 
 namespace ShareHolderMeeting.Web
 {
@@ -56,6 +58,8 @@ namespace ShareHolderMeeting.Web
             var code = (error is HttpException) ? (error as HttpException).GetHttpCode() : 500;
 
             //write log  
+
+            new ExceptionsLog(new ShareHolderContext()).SaveToLogTable(error.Message);
 
             //send email  
 

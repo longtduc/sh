@@ -23,11 +23,6 @@ Fo more informations [how to use Windsor](http://docs.castleproject.org/Windsor.
 
 [![endorse](https://api.coderwall.com/rarous/endorsecount.png)](https://coderwall.com/rarous)
 
-# How to use web.config customErrors in ASP.NET MVC?
-- home/throwException
-- https://www.tutorialsteacher.com/articles/web-config-customerrors-in-aspnet-mvc
-
-
 # Filter types in MVC
 - Authentication filters (MVC 5)
 - Authorization filters
@@ -56,17 +51,23 @@ Fo more informations [how to use Windsor](http://docs.castleproject.org/Windsor.
 - Controller level
 - Action level
 
+# How to use web.config customErrors in ASP.NET MVC?
+- https://www.tutorialsteacher.com/articles/web-config-customerrors-in-aspnet-mvc
+- exception/WithTryCatch
+- exception/WithoutHandleErrorBuiltIn
+- exception/WithHandleErrorBuiltIn 
+
 ## How to create a custom filter in ASP.NET MVC?
 - https://www.tutorialsteacher.com/articles/create-custom-filters
-- Home/NullReferenceException and see D:\SourceCodes\ShareHolderMeeting\ShareHolderMeeting.Web\Log\Log.txt
-- LogCustomExceptionFilter.cs => FilterConfig.cs (Log/Log.txt)
+- Implement: CustomExceptionFilter.cs, add it to FilterConfig.cs
+- exception/WithoutHandleErrorBuiltIn and see ...\Log\Log.txt or table LogException
 
 ## How to use async, await in MVC
 
-- Home/GetLocation
+- AsyncAwait/GetLocation
 + use Thread.Sleep(3000);          
 + ~ 3000ms 
-- Home/GetLocationAsyn 
+- AsyncAwait/GetLocationAsyn 
 + use await Task.Delay(1000);
 + took only ~ 2000ms
 
@@ -75,7 +76,7 @@ Fo more informations [how to use Windsor](http://docs.castleproject.org/Windsor.
 - SaveChangesAsync(): Asynchronously save all changes..
 - ToListAsync()
 ## How to log unhandled exception to database 
-- Added LogException table and modified LogCustomExceptionFilter.cs
+- Added LogException table 
 - Migration:
 + Moved to Infrastructure project
 + EntityFramework version 4.4 can not migrate to the new model => Degraded to version 6.1.2
@@ -83,7 +84,11 @@ Fo more informations [how to use Windsor](http://docs.castleproject.org/Windsor.
 
 ## How to add Application_Error to deal with unhandled exceptions
 
-- Must not use LogCustomExceptionFilter.cs
+- Application_Error will override custom exception filter
 - Create ErrorController.cs, action Index and View to redirect to after processing unhandled exceptions
 
-
+# Exception handling in ASP.NET MVC
+- Exception/WithTryCatch
+- Exception/WithHandleErrorBuiltIn
+- Exception/WithoutHandleErrorBuiltIn
+- OnException/ThrowException

@@ -222,11 +222,14 @@
     <Compile Include="App_Start\WindsorActivator.cs" />
     <Compile Include="App_Start\IoCContainer\ApplicationCastleInstaller.cs" />
     <Compile Include="App_Start\IoCContainer\CastleControllerFactory.cs" />
+    <Compile Include="Controllers\AsyncAwaitController.cs" />
     <Compile Include="Controllers\CandidateController.cs" />
     <Compile Include="Controllers\CandidateDSController.cs" />
     <Compile Include="Controllers\CandidateFileController.cs" />
     <Compile Include="Controllers\ControllerHelper.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
+    <Compile Include="Controllers\ExceptionController.cs" />
+    <Compile Include="Controllers\OnExceptionController.cs" />
     <Compile Include="Controllers\RegistrationController.cs" />
     <Compile Include="Controllers\ShareHolderController.cs" />
     <Compile Include="Controllers\ShareHolderDSController.cs" />
@@ -258,7 +261,7 @@
     <Content Include="App\Voting\voteResultCtrl.js" />
     <Content Include="Content\SiteExtenstion.css" />
     <Compile Include="Infrastructure\RangeExceptionAttribute.cs" />
-    <Compile Include="Log\LogCustomExceptionFilter.cs" />
+    <Compile Include="Log\CustomExceptionFilter.cs" />
     <Compile Include="Models\VotingCardHelper.cs" />
     <Compile Include="Plumbing\WindsorControllerFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -393,6 +396,7 @@
     <Content Include="Views\VotingByHand\GenerateByHandCards.cshtml" />
     <Content Include="Views\VotingByHand\Index.cshtml" />
     <Content Include="Views\Error\Index.cshtml" />
+    <Content Include="Views\Shared\Error2.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -405,7 +409,10 @@
     <Folder Include="Account\Views\Shared\" />
     <Folder Include="App_Data\" />
     <Folder Include="Images\bhvImages\" />
+    <Folder Include="Views\AsyncAwait\" />
+    <Folder Include="Views\ForExceptionTest\" />
     <Folder Include="Views\GenerateCards\" />
+    <Folder Include="Views\OnException\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App\Voting\votingFilter.js" />

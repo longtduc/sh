@@ -18,7 +18,7 @@ namespace Application.Common.Interfaces
         DbSet<Statement> Statements { get; set; }
         DbSet<VotingByHand> VotingByHands { get; set; }
         DbSet<VotingByHandLine> VotingByHandLines { get; set; }
-        DbSet<LogException> LogExceptions { get; set; }
+        DbSet<ExceptionLog> ExceptionLogs { get; set; }
         void RemoveVotingCardsAndVotingByHands(int shareHolderId);
         void SaveChanges();
     }

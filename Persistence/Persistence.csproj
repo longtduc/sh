@@ -58,6 +58,10 @@
     <Compile Include="Migrations\202103171112008_removed MyProperty.Designer.cs">
       <DependentUpon>202103171112008_removed MyProperty.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202103180732056_rename LogException to ExceptionLogs.cs" />
+    <Compile Include="Migrations\202103180732056_rename LogException to ExceptionLogs.Designer.cs">
+      <DependentUpon>202103180732056_rename LogException to ExceptionLogs.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ShareHolderContext.cs" />
@@ -85,6 +89,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202103171112008_removed MyProperty.resx">
       <DependentUpon>202103171112008_removed MyProperty.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103180732056_rename LogException to ExceptionLogs.resx">
+      <DependentUpon>202103180732056_rename LogException to ExceptionLogs.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

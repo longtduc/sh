@@ -19,7 +19,7 @@ namespace Application.Common.Exceptions
 
         public void SaveToLogTable(string message)
         {
-            _ctx.LogExceptions.Add(new LogException(message));
+            _ctx.ExceptionLogs.Add(new ExceptionLog(message));
             _ctx.SaveChanges();
         }
     }

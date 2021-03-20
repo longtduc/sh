@@ -46,7 +46,7 @@
     <Compile Include="Entities\Candidate.cs" />
     <Compile Include="Entities\CandidateFile.cs" />
     <Compile Include="Entities\FileType.cs" />
-    <Compile Include="Entities\LogException.cs" />
+    <Compile Include="Entities\ExceptionLog.cs" />
     <Compile Include="Entities\ShareHolder.cs" />
     <Compile Include="Entities\Statement.cs" />
     <Compile Include="Entities\VotingByHand.cs" />
